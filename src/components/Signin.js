@@ -1,5 +1,5 @@
 import React from 'react';
-const USERS = 'http://localhost:3001/users';
+const USERS = 'http://localhost:3001/api/v1/users';
 
 
 export default class Signin extends React.Component {
@@ -37,18 +37,17 @@ export default class Signin extends React.Component {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({
-        name: this.state.username,
+      body: JSON.stringify({user:{
+        name: this.state.name,
         username: this.state.username,
-        password: this.state.password
-      })
+        password: this.state.password,
+        img_url: 'https://english.metro.taipei/images/default.png'
+      }})
     }
     fetch(USERS, reqObj)
     .then(resp => resp.json())
-    .then((user) => {
-      this.props.setUser(user)
-      this.props.history.push('/login');
-    })
+    .then(data => console.log(data))
+    this.props.history.push('/login');
   }
 
   render(){

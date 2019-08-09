@@ -7,7 +7,7 @@ export default {
             },
             body: JSON.stringify(loginData)
         }
-        return fetch('http://localhost:3001/api/v1/auth', reqObj)
+        return fetch('http://localhost:3001/api/v1/login', reqObj)
         .then(res => res.json())
     },
     currentUser: (token) => {
