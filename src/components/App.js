@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
 import { Route, Switch } from 'react-router-dom';
 import Navbar from './Navbar';
 import Login from './Login';
 import Signin from './Signin';
+import NewsList from './NewsList'
 import '../App.css';
 
 class App extends Component {
@@ -10,7 +12,7 @@ class App extends Component {
   constructor(){
     super();
     this.state = {
-      auth: { user:{} }
+      auth: { user: {} }
     };
   }
 
@@ -18,17 +20,19 @@ class App extends Component {
     this.setState({
       auth: { user }
     })
+    localStorage.setItem('user', user.jwt)
   }
 
   handleLogout(user){
     this.setState({
         auth: { user: {} }
     })
-    localStorage.removeItem('token')
+    localStorage.removeItem('user')
   }
 
 render(){
   return (
+    <Router>
       <div>
         <Navbar 
           user={this.state.auth.user}
@@ -42,9 +46,13 @@ render(){
             <Route path="/signin" render={(routeProps) => {
               return <Signin {...routeProps} handleLogin={(user) => {this.handleLogin(user)}} />
             }} />
+            <Route path="/newslist" render={(routeProps) => {
+              return <NewsList {...routeProps} handleLogin={(user) => {this.handleLogin(user)}} />
+            }} />
           </div>
         </div>
       </div>
+    </Router>
     );
   }
 }

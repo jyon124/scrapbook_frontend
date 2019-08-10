@@ -37,9 +37,9 @@ class Login extends React.Component {
                     error: true
                 })
             } else {
-                console.log("AH")
+                console.log("Logged in")
                 this.props.handleLogin(data)
-                this.props.history.push('/')
+                this.props.history.push('/newslist')
             }
         })
     }

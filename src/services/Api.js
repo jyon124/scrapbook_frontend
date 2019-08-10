@@ -1,3 +1,5 @@
+const API_URL = 'http://localhost:3001/'
+
 export default {
     login: (loginData) => {
         const reqObj = {
@@ -12,11 +14,23 @@ export default {
     },
     currentUser: (token) => {
         const reqObj = {
+            method: 'GET',
             headers: {
                 'Authorization': token
             }
         }
         return fetch('http://localhost:3001/api/v1/current_user', reqObj)
         .then(res => res.json())
+        .then(data => console.log(data))
+    },
+    fetchNews: () => {
+        let reqObj = {
+            method: 'GET',
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("user")}`
+            }
+          }
+        return fetch(`${API_URL}news`, reqObj)
+        .then(resp => resp.json())
     }
 }
