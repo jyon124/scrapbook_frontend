@@ -1,6 +1,6 @@
 export default function news(state=[], action){
     switch(action.type){
-        case 'FETCH_NEWS':
+        case 'FETCH_NEWS_SUCCESS':
             return state.concat([...action.news])
         case 'LOADING':
             console.log('LOADING')
