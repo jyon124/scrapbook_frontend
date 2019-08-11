@@ -2,12 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Route, Switch } from 'react-router-dom';
 import { fetchNews } from '../actions';
+import NewsCard from './NewsCard'
 
 
 class NewsList extends React.Component {
-    constructor(props){
-        super(props);
-    }
 
     componentDidMount(){
         this.props.fetchNews()
@@ -16,12 +14,7 @@ class NewsList extends React.Component {
     renderNews = () => {
        return this.props.news.map(news => {
         return (
-        <div>
-            <img src={news.urlToImage} key={news.id} width="240em" height="170em" />
-            <h4 style={{'font-size':'13px'}}>{news.title}</h4>
-            <button>View Full Coverage</button>
-            <hr/>
-        </div>
+            < NewsCard news={news} />
             )
         })
     }
@@ -35,7 +28,7 @@ class NewsList extends React.Component {
             const news = this.props.news.find(news => news.id === id)
             console.log(news)
             return <div>
-                {/* <NewsCard news={this.props.news} /> */}
+                {/* <NewsShow oneNews={this.props.news} /> */}
             </div>
             }} />
             <Route path='/newslist' render={()=> {

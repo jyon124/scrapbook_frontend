@@ -8,8 +8,7 @@ export function fetchNews(){
         Api.fetchNews()
         .then(news => {
             console.log(news, "News")
-            // Put into Store so they have access to news info
-            dispatch({type: 'FETCH_NEWS_SUCCESS', news: news})
+            dispatch({type: FETCH_NEWS, news: news})
         })
     };
     

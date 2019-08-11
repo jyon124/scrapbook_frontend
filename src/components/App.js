@@ -33,6 +33,7 @@ class App extends Component {
 render(){
   return (
     <Router>
+      <Switch>
       <div>
         <Navbar 
           user={this.state.auth.user}
@@ -52,6 +53,7 @@ render(){
           </div>
         </div>
       </div>
+      </Switch>
     </Router>
     );
   }
