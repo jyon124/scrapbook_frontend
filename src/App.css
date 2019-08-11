@@ -3,7 +3,7 @@
 
 body, html {
     font-family: 'Roboto Slab', serif;
-    /* margin: 0; */
+    margin: 0;
     width: 100%;
     height: 100%;
     padding: 0;
@@ -19,18 +19,22 @@ body, html {
  .newsImg {
     display: block;
      width: fill;
-     height: 12em;;
+     height: 11em;;
+
+     /* border: solid rgb(36, 29, 16); */
+     box-sizing: border-box;
  }
  
  .newsCards {
+    
      display: inline-block;
      justify-content: center;
      -webkit-justify-content: center;
-     max-width: 40em;
+     max-width: 39.5em;
      padding-left: 200px;
      padding-right: 200px;
 
-     /* border: solid blasck; */
+     /* border: solid black; */
      box-sizing: border-box;
  }
 
@@ -42,6 +46,9 @@ body, html {
    border-radius: 12px;
    overflow: hidden;
    box-shadow: 0px 13px 10px -7px rgba(0, 0, 0,0.1);
+
+   /* border: solid red; */
+   box-sizing: border-box;
  }
 
  .card:hover {
@@ -51,22 +58,32 @@ body, html {
  
  .card__info {
    z-index: 0;
+   height: 12em;
    background-color: #fff;
    border-bottom-left-radius: 12px;
    border-bottom-right-radius: 12px;
    padding: 16px 24px 24px 24px;
+
+   /* border: solid yellow; */
+   box-sizing: border-box;
  }
  
  .card__by {
      font-size: 12px;
      font-family: 'Raleway', sans-serif;
      font-weight: 500;
+
+     /* border: solid green; */
+     box-sizing: border-box;
  }
  
  .card__link {
      font-weight: 600;
      text-decoration: none;
      color: #AD7D52;
+
+     /* border: solid blue; */
+     box-sizing: border-box;
  }
  
 
