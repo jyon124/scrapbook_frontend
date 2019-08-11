@@ -39,6 +39,9 @@ body, html {
  }
 
  .card {
+
+   margin-top: 5px;
+   margin-bottom: 5px;
    transition: all .4s;
    background-color: #fff;
    width: 100%;
