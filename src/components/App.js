@@ -6,8 +6,7 @@ import Signin from './Signin';
 import NewsList from './NewsList';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import NewsShow from './NewsShow';
-
-// import NewsShow from './NewsShow';
+import ScrapBooksContainer from '../containers/scrapbooksContainer'
 
 class App extends Component {
 
@@ -51,6 +50,9 @@ render(){
               return <NewsList {...routeProps} handleLogin={(user) => {this.handleLogin(user)}} />
             }} />
             <Route exact path="/newslist/:id" component={NewsShow} />
+            <Route exact path="/scrapbooks" render={(routeProps) => {
+              return <ScrapBooksContainer {...routeProps} handleLogin={(user) => {this.handleLogin(user)}} />
+            }} />
             </Switch>
           </div>
     </Router>

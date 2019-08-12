@@ -12,16 +12,15 @@ export default {
         return fetch('http://localhost:3001/api/v1/login', reqObj)
         .then(res => res.json())
     },
-    currentUser: (token) => {
+    profile: () => {
         const reqObj = {
             method: 'GET',
             headers: {
-                'Authorization': token
+                Authorization: `Bearer ${localStorage.getItem("user")}`
             }
         }
-        return fetch('http://localhost:3001/api/v1/current_user', reqObj)
+        return fetch('http://localhost:3001/api/v1/profile', reqObj)
         .then(res => res.json())
-        .then(data => console.log(data))
     },
     fetchNews: () => {
         let reqObj = {
@@ -41,6 +40,22 @@ export default {
             }
           }
         return fetch(`${API_URL}news/${id}`, reqObj)
+        .then(resp => resp.json())
+    },
+    findOrCreateScrapBook: (id) => {
+        let reqObj = {
+            method: 'POST',
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem("user")}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              scrapbook: {
+                  user_id: id
+              }
+            })
+        }
+        return fetch(`${API_URL}scrapbooks`, reqObj)
         .then(resp => resp.json())
     }
 }

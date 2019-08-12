@@ -12,7 +12,7 @@ const Navbar = props => {
               All News
             </Link>
             <br/>
-            <Link to="#" className="scrapbook">
+            <Link to="/scrapbooks" className="scrapbook">
               Scrapbook
             </Link>
             <div onClick={() => {props.handleLogout()}}>
