@@ -9,7 +9,7 @@ const Navbar = props => {
           localStorage.getItem('user') ? 
           <div>
             <Link to="/newslist" className="newslist">
-              News
+              All News
             </Link>
             <br/>
             <Link to="#" className="scrapbook">

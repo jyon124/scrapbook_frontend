@@ -32,5 +32,15 @@ export default {
           }
         return fetch(`${API_URL}news`, reqObj)
         .then(resp => resp.json())
+    },
+    fetchOneNews: (id) => {
+        let reqObj = {
+            method: 'GET',
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("user")}`
+            }
+          }
+        return fetch(`${API_URL}news/${id}`, reqObj)
+        .then(resp => resp.json())
     }
 }

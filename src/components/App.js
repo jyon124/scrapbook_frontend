@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
-import { Route, Switch } from 'react-router-dom';
+import '../App.css';
 import Navbar from './Navbar';
 import Login from './Login';
 import Signin from './Signin';
-import NewsList from './NewsList'
-import '../App.css';
+import NewsList from './NewsList';
+import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
+import NewsShow from './NewsShow';
+
+// import NewsShow from './NewsShow';
 
 class App extends Component {
 
@@ -33,29 +35,26 @@ class App extends Component {
 render(){
   return (
     <Router>
-      <Switch>
       <div>
         <Navbar 
           user={this.state.auth.user}
           handleLogout={() => this.handleLogout()}
         />
-        <div>
-          <div>
-            <Route path="/login" render={(routeProps) => {
+            <Switch>
+            <Route exact path="/login" render={(routeProps) => {
               return <Login {...routeProps} handleLogin={(user) => {this.handleLogin(user)}} />
             }} />
-            <Route path="/signin" render={(routeProps) => {
+            <Route exact path="/signin" render={(routeProps) => {
               return <Signin {...routeProps} handleLogin={(user) => {this.handleLogin(user)}} />
             }} />
-            <Route path="/newslist" render={(routeProps) => {
+            <Route exact path="/newslist" render={(routeProps) => {
               return <NewsList {...routeProps} handleLogin={(user) => {this.handleLogin(user)}} />
             }} />
+            <Route exact path="/newslist/:id" component={NewsShow} />
+            </Switch>
           </div>
-        </div>
-      </div>
-      </Switch>
     </Router>
-    );
+    )
   }
 }
 
