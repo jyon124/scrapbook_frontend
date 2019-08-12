@@ -33,7 +33,7 @@ export function fetchUser(){
   
           .then(scrapbook => {
               console.log(scrapbook, "Check Scrapbook Container Creation")
-              dispatch({ type: FETCH_SCRAPBOOK, scrapbook: scrapbook})
+              dispatch({ type: FETCH_SCRAPBOOK, scrapbookContainer: scrapbook})
           })
       }
   }
