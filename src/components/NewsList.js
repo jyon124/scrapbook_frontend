@@ -39,7 +39,8 @@ class NewsList extends React.Component {
 const mapStateToProps = (state) => {
     return {
         news: state.news,
-        loader: state.loader
+        loader: state.loader,
+        clippedNews: state.clippedNews
     }
 }
 

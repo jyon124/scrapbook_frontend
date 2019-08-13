@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Api from '../services/Api';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import {connect} from 'react-redux';
-import { showNews, fetchUser, fetchScrapbook } from '../actions';
+import { showNews, fetchUser, fetchScrapbook, postClip } from '../actions';
 
 
 
@@ -41,7 +41,12 @@ class NewsShow extends Component {
     }
 
     handleFavorite = (newsId, scrapbookContainerId) => {
-        console.log("news id =>",newsId, "scrapbook id =>",scrapbookContainerId)
+        const check = this.props.clippedNews.find(news => {return news.news_id === newsId})
+        if(!check){
+        this.props.clipNews(newsId, scrapbookContainerId)
+        } else {
+            console.log('Already Added')
+        }
     }
 
     render(){
@@ -53,7 +58,7 @@ class NewsShow extends Component {
                 <button onClick={() => this.handleFavorite(this.props.showNews.id, this.props.scrapbookContainer.id)}>Clip</button>
                 <h1>Title: {this.props.showNews.title}</h1>
                 <h2>Category: {this.props.showNews.category}</h2>
-                <h2>Author: {this.props.showNews.author}</h2>
+                {this.props.showNews.author === null ? null : <h2>Author: {this.props.showNews.author}</h2>}
                 <h3>Description: {this.props.showNews.description}</h3>
                 <p>{this.props.showNews.content}</p>
                 <h4>{this.props.showNews.publishedAt}</h4>
@@ -68,7 +73,8 @@ const mapStateToProps = (state) => {
     return {
       showNews: state.showNews,
       getUser: state.getUser,
-      scrapbookContainer: state.scrapbookContainer
+      scrapbookContainer: state.scrapbookContainer,
+      clippedNews: state.clippedNews
     }
   }
 
@@ -82,6 +88,9 @@ const mapDispatchToProps = dispatch => {
         },
         findScrapbook: (id) => {
             dispatch(fetchScrapbook(id))
+        },
+        clipNews: (newsId, scrapbookContainerId) => {
+            dispatch(postClip(newsId, scrapbookContainerId))
         }
     }
 }

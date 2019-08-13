@@ -57,5 +57,32 @@ export default {
         }
         return fetch(`${API_URL}scrapbooks`, reqObj)
         .then(resp => resp.json())
+    },
+    handleAddFavorite: (newsId, scrapbookContainerId) => {
+        let reqObj = {
+            method: 'POST',
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem("user")}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              scrapbooknews: {
+                  news_id: newsId,
+                  scrapbook_id: scrapbookContainerId
+              }
+            })
+        }
+        return fetch(`${API_URL}scrapbooknews`, reqObj)
+        .then(resp => resp.json())
+    },
+    handleAllScrapbooknews: (scrapbookId) => {
+        let reqObj = {
+            method: 'GET',
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("user")}`
+            }
+          }
+        return fetch(`${API_URL}scrapbooknews`, reqObj)
+        .then(resp => resp.json())
     }
 }

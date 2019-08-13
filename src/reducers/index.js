@@ -4,6 +4,9 @@ import loader from './loader';
 import showNews from './showNews'
 import getUser from './getUser'
 import scrapbookContainer from './scrapbookContainer'
+import clippedNews from './clipNews'
+import allScrapbooknews from './allScrapbooknews'
+
 
 
 export default combineReducers({
@@ -11,5 +14,7 @@ export default combineReducers({
     loader,
     showNews,
     getUser,
-    scrapbookContainer
+    scrapbookContainer,
+    clippedNews,
+    allScrapbooknews
 })
