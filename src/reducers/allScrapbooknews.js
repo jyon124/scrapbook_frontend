@@ -4,6 +4,8 @@ export default function allScrapbooknews(state = [], action){
             return action.allScrapbooknews
         case 'CLIP_NEWS':
                 return [...state, action.allScrapbooknews]
+        case 'CLEAR_ALL_STATE':
+                return state = []
         default:
             return state;
     }

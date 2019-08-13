@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchUser, fetchScrapbook, fetchAllScrapbooknewsAction, fetchNews } from '../actions'
+// import NewsCard from '../components/NewsCard'
+import ClippedNewsCard from '../components/ClippedNewsCard'
+import { fetchUser, fetchScrapbook, fetchAllScrapbooknewsAction, fetchNews, createClippedNewsTile } from '../actions'
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 
 class ScrapBooksContainers extends React.Component {
@@ -10,12 +12,8 @@ class ScrapBooksContainers extends React.Component {
         if(this.props.news.length < 1){
             this.props.fetchNews()
         }
-        // console.log(this.props.getUser.id)
-        // this.initializeScrapbook(this.props.getUser.id)
-        // this.getAllScrapbook(this.props.scrapbookContainer.id)
+        setTimeout(()=> this.findClippedNews(), 500);
     }
-
-
 
     getUserData = () => {
         if(this.props.getUser.length < 1){
@@ -32,26 +30,29 @@ class ScrapBooksContainers extends React.Component {
     getAllScrapbook = (scrapbookId) => {
         if(this.props.allScrapbooknews.length < 1){
         this.props.fetchAllScrapbooknews(scrapbookId)
-        // Need to modify this if statement so, user don't need to refresh to update tile.
-        // When refresh occur, its duplicate
-        //this.findClippedNews()
-        // setTimeout(()=> this.findClippedNews(), 100);
         }
     }
 
-    // findClippedNews = () => {
-    //     const newsIdArr = this.props.allScrapbooknews.map(news => {
-    //         return news.news_id
-    //     })
-    //     const allNews = this.props.news
+    findClippedNews = () => {
+        const newsIdArr = this.props.allScrapbooknews.map(news => {
+            return news.news_id
+        })
+        const allNews = this.props.news
+        const clippedNews = newsIdArr.map((id) => {
+            const newsObj = allNews.filter(news => news.id  === id)
+            return newsObj[0]
+        })
+       this.props.clippedNewsTileCreation(clippedNews)
+    }
 
-    //     const clippedNews = newsIdArr.map((id) => {
-    //         const newsObj = allNews.filter(news => news.id  === id)
-    //         return newsObj[0]
-    //     })
-
-    //     console.log(clippedNews)
-    // }
+    renderClippedNewsTile = () => {
+        return this.props.clippedNewsTile.map(news => {
+         return (
+            //  < NewsCard news={news} key={news.id} />
+            < ClippedNewsCard newsCard={news} key={news.id} />
+             )
+         })
+     }
  
     render(){
         return (
@@ -60,7 +61,7 @@ class ScrapBooksContainers extends React.Component {
                 {this.props.scrapbookContainer.id ? this.getAllScrapbook(this.props.scrapbookContainer.id) : null}
                 <h1>SCRAPBOOK CONTAINER</h1>
                 <section className="scrapbook-container">
-
+                    {this.props.clippedNewsTile.length > 0 ? this.renderClippedNewsTile() : null } 
                 </section>
             </div>
         )
@@ -73,7 +74,8 @@ const mapStateToProps = (state) => {
       getUser: state.getUser,
       scrapbookContainer: state.scrapbookContainer,
       showNews: state.showNews,
-      allScrapbooknews: state.allScrapbooknews
+      allScrapbooknews: state.allScrapbooknews,
+      clippedNewsTile: state.clippedNewsTile
     }
   }
 
@@ -90,6 +92,9 @@ const mapDispatchToProps = dispatch => {
         },
         fetchNews: () => {
             dispatch(fetchNews())
+        },
+        clippedNewsTileCreation: (clippedNews) => {
+            dispatch(createClippedNewsTile(clippedNews))
         }
     }
 }
