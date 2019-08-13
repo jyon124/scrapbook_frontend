@@ -16,7 +16,7 @@ class ScrapBooksContainers extends React.Component {
     }
 
     initializeScrapbook = (id) => {
-            this.props.findScrapbook(id)
+        this.props.findScrapbook(id)
     }
  
     render(){

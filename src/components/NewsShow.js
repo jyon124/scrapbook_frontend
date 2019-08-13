@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Api from '../services/Api';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import {connect} from 'react-redux'
-import { showNews, fetchUser } from '../actions'
+import { showNews, fetchUser, fetchScrapbook } from '../actions'
 
 
 
@@ -34,10 +34,14 @@ class NewsShow extends Component {
         this.getUserData()
     }
 
+    initializeScrapbook = (id) => {
+        this.props.findScrapbook(id)
+    }
 
     render(){
         return (
             <div>
+                {this.props.getUser.id ? this.initializeScrapbook(this.props.getUser.id) : null}
                 <img src={this.props.showNews.urlToImage} alt="news display" />
                 <button>Clip</button>
                 <h1>Title: {this.props.showNews.title}</h1>
@@ -67,6 +71,9 @@ const mapDispatchToProps = dispatch => {
         },
         getUserInfo: () => {
             dispatch(fetchUser())
+        },
+        findScrapbook: (id) => {
+            dispatch(fetchScrapbook(id))
         }
     }
 }
