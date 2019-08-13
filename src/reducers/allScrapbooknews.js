@@ -1,7 +1,9 @@
-export default function allScrapbooknews(state=[], action){
+export default function allScrapbooknews(state = [], action){
     switch(action.type){
         case 'FETCHALLSCRAPBOOKTILE':
-            return [...state, ...action.allScrapbooknews]
+            return action.allScrapbooknews
+        case 'CLIP_NEWS':
+                return [...state, action.allScrapbooknews]
         default:
             return state;
     }

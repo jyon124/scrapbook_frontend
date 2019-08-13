@@ -40,7 +40,7 @@ export function postClip(newsId, scrapbookContainerId){
     return function (dispatch){
         Api.handleAddFavorite(newsId, scrapbookContainerId)
         .then(clippedNews => {
-            dispatch({ type: CLIP_NEWS, clippedNews: clippedNews})
+            dispatch({ type: CLIP_NEWS, allScrapbooknews: clippedNews})
         })
     }
 }

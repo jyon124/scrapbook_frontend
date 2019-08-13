@@ -41,7 +41,7 @@ class NewsShow extends Component {
     }
 
     handleFavorite = (newsId, scrapbookContainerId) => {
-        const check = this.props.clippedNews.find(news => {return news.news_id === newsId})
+        const check = this.props.allScrapbooknews.find(news => {return news.news_id === newsId})
         if(!check){
         this.props.clipNews(newsId, scrapbookContainerId)
         } else {
@@ -74,7 +74,7 @@ const mapStateToProps = (state) => {
       showNews: state.showNews,
       getUser: state.getUser,
       scrapbookContainer: state.scrapbookContainer,
-      clippedNews: state.clippedNews
+      allScrapbooknews: state.allScrapbooknews
     }
   }
 

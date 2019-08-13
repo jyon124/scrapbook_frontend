@@ -1,13 +1,21 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchUser, fetchScrapbook, fetchAllScrapbooknewsAction } from '../actions'
+import { fetchUser, fetchScrapbook, fetchAllScrapbooknewsAction, fetchNews } from '../actions'
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 
 class ScrapBooksContainers extends React.Component {
 
     componentDidMount = () => {
         this.getUserData()
+        if(this.props.news.length < 1){
+            this.props.fetchNews()
+        }
+        // console.log(this.props.getUser.id)
+        // this.initializeScrapbook(this.props.getUser.id)
+        // this.getAllScrapbook(this.props.scrapbookContainer.id)
     }
+
+
 
     getUserData = () => {
         if(this.props.getUser.length < 1){
@@ -25,18 +33,25 @@ class ScrapBooksContainers extends React.Component {
         if(this.props.allScrapbooknews.length < 1){
         this.props.fetchAllScrapbooknews(scrapbookId)
         // Need to modify this if statement so, user don't need to refresh to update tile.
-        setTimeout(()=> this.findClippedNews(), 100);
+        // When refresh occur, its duplicate
+        //this.findClippedNews()
+        // setTimeout(()=> this.findClippedNews(), 100);
         }
     }
 
-    findClippedNews = () => {
-        console.log(this.props.allScrapbooknews)
-        const newsId = this.props.allScrapbooknews.map(news => {
-            return news.news_id
-        })
-        console.log(newsId)
-        // Before find the way to use includes, make all news dispatch call here
-    }
+    // findClippedNews = () => {
+    //     const newsIdArr = this.props.allScrapbooknews.map(news => {
+    //         return news.news_id
+    //     })
+    //     const allNews = this.props.news
+
+    //     const clippedNews = newsIdArr.map((id) => {
+    //         const newsObj = allNews.filter(news => news.id  === id)
+    //         return newsObj[0]
+    //     })
+
+    //     console.log(clippedNews)
+    // }
  
     render(){
         return (
@@ -58,7 +73,6 @@ const mapStateToProps = (state) => {
       getUser: state.getUser,
       scrapbookContainer: state.scrapbookContainer,
       showNews: state.showNews,
-      clippedNews: state.clippedNews,
       allScrapbooknews: state.allScrapbooknews
     }
   }
@@ -73,6 +87,9 @@ const mapDispatchToProps = dispatch => {
         },
         fetchAllScrapbooknews: (scrapbookId) => {
             dispatch(fetchAllScrapbooknewsAction(scrapbookId))
+        },
+        fetchNews: () => {
+            dispatch(fetchNews())
         }
     }
 }
