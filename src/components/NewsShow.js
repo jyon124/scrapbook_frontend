@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import Api from '../services/Api';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
-import {connect} from 'react-redux'
-import { showNews, fetchUser, fetchScrapbook } from '../actions'
+import {connect} from 'react-redux';
+import { showNews, fetchUser, fetchScrapbook } from '../actions';
 
 
 
@@ -35,7 +35,13 @@ class NewsShow extends Component {
     }
 
     initializeScrapbook = (id) => {
+        if(this.props.scrapbookContainer.length < 1){
         this.props.findScrapbook(id)
+        }
+    }
+
+    handleFavorite = (newsId, scrapbookContainerId) => {
+        console.log("news id =>",newsId, "scrapbook id =>",scrapbookContainerId)
     }
 
     render(){
@@ -43,7 +49,8 @@ class NewsShow extends Component {
             <div>
                 {this.props.getUser.id ? this.initializeScrapbook(this.props.getUser.id) : null}
                 <img src={this.props.showNews.urlToImage} alt="news display" />
-                <button>Clip</button>
+                <br/>
+                <button onClick={() => this.handleFavorite(this.props.showNews.id, this.props.scrapbookContainer.id)}>Clip</button>
                 <h1>Title: {this.props.showNews.title}</h1>
                 <h2>Category: {this.props.showNews.category}</h2>
                 <h2>Author: {this.props.showNews.author}</h2>
@@ -60,7 +67,8 @@ class NewsShow extends Component {
 const mapStateToProps = (state) => {
     return {
       showNews: state.showNews,
-      getUser: state.getUser
+      getUser: state.getUser,
+      scrapbookContainer: state.scrapbookContainer
     }
   }
 

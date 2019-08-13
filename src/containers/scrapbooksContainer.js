@@ -16,7 +16,9 @@ class ScrapBooksContainers extends React.Component {
     }
 
     initializeScrapbook = (id) => {
+        if(this.props.scrapbookContainer.length < 1){
         this.props.findScrapbook(id)
+       }
     }
  
     render(){
@@ -24,6 +26,9 @@ class ScrapBooksContainers extends React.Component {
             <div>
                 {this.props.getUser.id ? this.initializeScrapbook(this.props.getUser.id) : null}
                 <h1>SCRAPBOOK CONTAINER</h1>
+                <section className="scrapbook-container">
+
+                </section>
             </div>
         )
     }
@@ -31,7 +36,9 @@ class ScrapBooksContainers extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-      getUser: state.getUser
+      getUser: state.getUser,
+      scrapbookContainer: state.scrapbookContainer,
+      showNews: state.showNews
     }
   }
 

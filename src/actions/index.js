@@ -16,24 +16,23 @@ export function showNews(oneNews) {
       type: SHOW_NEWS,
       oneNews
     }
-  }
+}
 
 export function fetchUser(){
-      return function (dispatch){
-          Api.profile()
-          .then(user => {
-              dispatch({ type: FETCH_USER, getUser: user })
-          })
-      }
-  }
+    return function (dispatch){
+        Api.profile()
+        .then(user => {
+            dispatch({ type: FETCH_USER, getUser: user })
+        })
+    }
+}
 
-  export function fetchScrapbook(id){
-      return function(dispatch){
-          Api.findOrCreateScrapBook(id)
-  
-          .then(scrapbook => {
-              console.log(scrapbook, "Check Scrapbook Container Creation")
-              dispatch({ type: FETCH_SCRAPBOOK, scrapbookContainer: scrapbook})
-          })
-      }
-  }
+export function fetchScrapbook(id){
+    return function(dispatch){
+        Api.findOrCreateScrapBook(id)
+        .then(scrapbook => {
+            console.log(scrapbook, "Check Scrapbook Container Creation")
+            dispatch({ type: FETCH_SCRAPBOOK, scrapbookContainer: scrapbook})
+        })
+    }
+}
