@@ -48,6 +48,7 @@ class NewsShow extends Component {
         const check = this.props.allScrapbooknews.find(news => {return news.news_id === newsId})
         if(!check){
         this.props.clipNews(newsId, scrapbookContainerId)
+        alert('Successfully Saved');
         } else {
             alert('Already Saved');
         }

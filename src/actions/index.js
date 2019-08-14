@@ -71,6 +71,8 @@ export function clearAllState(){
 export function removeTile(tile){
     return function(dispatch){
         Api.handleRemoveTile(tile)
-        dispatch({ type: REMOVE_TILE, tileId: tile.id})
+        .then(resp => {
+            dispatch({ type: REMOVE_TILE, tileId: tile.id, tileNewsId: tile.news_id})
+        })
     }
 }

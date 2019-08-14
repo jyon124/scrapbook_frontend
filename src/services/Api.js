@@ -94,5 +94,17 @@ export default {
             }
         }
         return fetch(`${API_URL}scrapbooknews/${tile.id}`, reqObj)
+    },
+    handlePostReqNote: (bodyObj) => {
+        const reqObj = {
+            method: 'POST',
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem("user")}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(bodyObj)
+        }
+        return fetch('http://localhost:3001/notes', reqObj)
+        .then(res => res.json())
     }
 }

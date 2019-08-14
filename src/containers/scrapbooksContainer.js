@@ -5,6 +5,9 @@ import { fetchUser, fetchScrapbook, fetchAllScrapbooknewsAction, fetchNews, crea
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 
 class ScrapBooksContainers extends React.Component {
+    state = {
+        scrapbooknewsRendered: false
+    }
     
     componentDidMount = () => {
         if(!localStorage.getItem('user')){
@@ -31,8 +34,9 @@ class ScrapBooksContainers extends React.Component {
     }
 
     getAllScrapbook = (scrapbookId) => {
-        if(this.props.allScrapbooknews.length < 1){
+        if(this.props.allScrapbooknews.length < 1 && this.state.scrapbooknewsRendered === false){
         this.props.fetchAllScrapbooknews(scrapbookId)
+        this.state.scrapbooknewsRendered = true
         }
     }
 

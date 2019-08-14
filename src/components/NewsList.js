@@ -6,6 +6,9 @@ import NewsCard from './NewsCard'
 
 
 class NewsList extends React.Component {
+    state = {
+        scrapbooknewsRendered: false
+    }
 
     componentDidMount(){
         if(!localStorage.getItem('user')){
@@ -40,8 +43,10 @@ class NewsList extends React.Component {
     }
 
     getAllScrapbook = (scrapbookId) => {
-        if(this.props.allScrapbooknews.length < 1){
+        // another condition
+        if(this.props.allScrapbooknews.length < 1 && this.state.scrapbooknewsRendered === false){
         this.props.fetchAllScrapbooknews(scrapbookId)
+        this.state.scrapbooknewsRendered = true
         }
     }
 

@@ -7,6 +7,13 @@ import { showNews, fetchUser, fetchScrapbook, postClip, removeTile } from '../ac
 
 
 class NewsShow extends Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            content: ''
+        }
+    }
+
     fetchNews = (id) => {
         Api.fetchOneNews(id)
         .then(news => {
@@ -47,13 +54,32 @@ class NewsShow extends Component {
     handleUnfavorite = (newsId, scrapbookContainerId) => {
         const tile = this.props.allScrapbooknews.find(news => {return news.news_id === newsId})
         this.props.unSave(tile)
-        console.log(tile)
-        // this.props.findScrapbook(this.props.getUser.id)
-        // Store will be updated but unless refresh, still it won't change
         this.props.history.push('/scrapbooks')
-        // Need Refresh to check unsaved
     }
 
+    handleNotesChange(e){
+        this.setState({
+            content: e.target.value
+        })
+    }
+
+    handlePostNotes(e){
+        e.preventDefault();
+        const scrapbooknews = this.props.allScrapbooknews.find(news => {return news.news_id === this.props.showNews.id})
+        const bodyObj = {
+            content: this.state.content,
+            scrapbooknews_id: scrapbooknews.id
+        }
+        Api.handlePostReqNote(bodyObj)
+    }
+
+    handleRenderNotes = () => {
+        const scrapbooknews = this.props.allScrapbooknews.find(news => {return news.news_id === this.props.showNews.id})
+        return scrapbooknews.notes.map(note => {
+            return <li key={note.id}>{note.content}</li>
+        })
+    }
+    
 
     render(){
         return (
@@ -71,11 +97,23 @@ class NewsShow extends Component {
                 <button onClick={()=> window.open(`${this.props.showNews.url}`, "_blank")}>Link to this news</button>
                 <br/><br/><br/>
                 <hr/>
-                <form>
+                <form onSubmit={(e) => {this.handlePostNotes(e)}}>
                     <label>Notes: </label><br/>
-                    ​<textarea id="txtArea" rows="10" cols="70"></textarea>
-                    {/* <input type="textarea" /> */}
+                    ​<textarea id="txtArea" rows="10" cols="70" onChange={(e) => this.handleNotesChange(e)} value={this.state.content}></textarea>
+                    <br/>
+                    <input type="submit" value="Submit"/>
                 </form>
+                {
+                this.props.allScrapbooknews.find(news => {return news.news_id === this.props.showNews.id}) !== undefined ? 
+                <div>
+                    <ul>
+                        {this.handleRenderNotes()}
+                    </ul>
+                </div>
+                : 
+                console.log('boo')
+                }
+
                 <br/><br/><br/>
             </div>
         )
