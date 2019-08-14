@@ -7,11 +7,15 @@ import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 class ScrapBooksContainers extends React.Component {
 
     componentDidMount = () => {
+        if(!localStorage.getItem('user')){
+            this.props.history.push('/')
+        } else{
         this.getUserData()
         if(this.props.news.length < 1){
             this.props.fetchNews()
         }
         setTimeout(()=> this.findClippedNews(), 500);
+      }
     }
 
     getUserData = () => {

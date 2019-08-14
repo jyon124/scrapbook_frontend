@@ -30,8 +30,12 @@ class NewsShow extends Component {
     }
 
     componentDidMount(){
+        if(!localStorage.getItem('user')){
+            this.props.history.push('/')
+        } else{
         this.getNews()
         this.getUserData()
+        }
     }
 
     initializeScrapbook = (id) => {

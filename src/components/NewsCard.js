@@ -2,6 +2,11 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 
 class NewsCard extends React.Component {
+  componentDidMount(){
+    if(!localStorage.getItem('user')){
+      this.props.history.push('/')
+    } 
+  }
 
 render(){
     return(

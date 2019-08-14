@@ -4,6 +4,12 @@ import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 
 class ClippedNewsCard extends React.Component {
 
+  componentDidMount(){
+    if(!localStorage.getItem('user')){
+      this.props.history.push('/')
+    } 
+  }
+
 render(){
     return(
 <section className="newscards" key={this.props.newsCard.id}>
