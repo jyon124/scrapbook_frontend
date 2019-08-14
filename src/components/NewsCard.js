@@ -10,7 +10,7 @@ class NewsCard extends React.Component {
 
 render(){
     return(
-<section className="newscards" key={this.props.news.id}>
+<section className="newscards" key={this.props.id}>
   <article className="card">
     <img className="newsImg" src={this.props.news.urlToImage} alt="news" />
     <div className="card__info">

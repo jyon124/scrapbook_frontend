@@ -5,11 +5,11 @@ import { fetchUser, fetchScrapbook, fetchAllScrapbooknewsAction, fetchNews, crea
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 
 class ScrapBooksContainers extends React.Component {
-
+    
     componentDidMount = () => {
         if(!localStorage.getItem('user')){
             this.props.history.push('/')
-        } else{
+        } else {
         this.getUserData()
         if(this.props.news.length < 1){
             this.props.fetchNews()
@@ -42,17 +42,17 @@ class ScrapBooksContainers extends React.Component {
         })
         const allNews = this.props.news
         const clippedNews = newsIdArr.map((id) => {
-            const newsObj = allNews.filter(news => news.id  === id)
+        const newsObj = allNews.filter(news => news.id  === id)
             return newsObj[0]
         })
        this.props.clippedNewsTileCreation(clippedNews)
     }
 
     renderClippedNewsTile = () => {
-        return this.props.clippedNewsTile.map(news => {
-         return (
-            < ClippedNewsCard newsCard={news} key={news.id} />
-             )
+       return this.props.clippedNewsTile.map(news => {
+          return (
+                < ClippedNewsCard newsCard={news} key={news.id} />
+              )
          })
      }
  

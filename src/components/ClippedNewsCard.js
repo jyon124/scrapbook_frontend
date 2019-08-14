@@ -32,12 +32,7 @@ render(){
 
 const mapStateToProps = (state) => {
     return {
-      news: state.news,
-      getUser: state.getUser,
-      scrapbookContainer: state.scrapbookContainer,
-      showNews: state.showNews,
-      allScrapbooknews: state.allScrapbooknews,
-      clippedNewsTile: state.clippedNewsTile
+      getUser: state.getUser
     }
   }
 

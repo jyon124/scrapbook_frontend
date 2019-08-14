@@ -47,6 +47,9 @@ class NewsShow extends Component {
     handleUnfavorite = (newsId, scrapbookContainerId) => {
         const tile = this.props.allScrapbooknews.find(news => {return news.news_id === newsId})
         this.props.unSave(tile)
+        console.log(tile)
+        // this.props.findScrapbook(this.props.getUser.id)
+        // Store will be updated but unless refresh, still it won't change
         this.props.history.push('/scrapbooks')
         // Need Refresh to check unsaved
     }
@@ -64,8 +67,15 @@ class NewsShow extends Component {
                 {this.props.showNews.author === null ? null : <h2>Author: {this.props.showNews.author}</h2>}
                 <h3>Description: {this.props.showNews.description}</h3>
                 <p>{this.props.showNews.content}</p>
-                <h4>Published at: {this.props.showNews.publishedAt.split("T")[0].split("-").join(" ")}</h4>
+                <h4>Published at: {this.props.showNews.publishedAt ? this.props.showNews.publishedAt.split("T")[0].split("-").join(" ") : null}</h4>
                 <button onClick={()=> window.open(`${this.props.showNews.url}`, "_blank")}>Link to this news</button>
+                <br/><br/><br/>
+                <hr/>
+                <form>
+                    <label>Notes: </label><br/>
+                    ​<textarea id="txtArea" rows="10" cols="70"></textarea>
+                    {/* <input type="textarea" /> */}
+                </form>
                 <br/><br/><br/>
             </div>
         )

@@ -1,5 +1,6 @@
 import { FETCH_NEWS, SHOW_NEWS, FETCH_USER, FETCH_SCRAPBOOK, CLIP_NEWS, FETCHALLSCRAPBOOKTILE, CLIPPED_NEWS_TILE, CLEAR_ALL_STATE, REMOVE_TILE } from './types';
 import Api from '../services/Api.js'
+import { typeAlias } from '@babel/types';
 
 export function fetchNews(){
     return function (dispatch){
@@ -70,6 +71,6 @@ export function clearAllState(){
 export function removeTile(tile){
     return function(dispatch){
         Api.handleRemoveTile(tile)
-        dispatch({ type: REMOVE_TILE })
+        dispatch({ type: REMOVE_TILE, tileId: tile.id})
     }
 }
