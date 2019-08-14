@@ -49,13 +49,25 @@ class NewsShow extends Component {
         }
     }
 
+    handleSaveBtnState = () => {
+        return this.props.clippedNewsTile.filter(news => {
+            return news.id == this.props.showNews.id
+        })
+    }
+
     render(){
         return (
             <div>
+                {this.props.showNews.id ?
+            <div>
                 {this.props.getUser.id ? this.initializeScrapbook(this.props.getUser.id) : null}
-                <img src={this.props.showNews.urlToImage} alt="news display" />
+                <img src={this.props.showNews.urlToImage} alt="news display" width="800em" />
                 <br/>
-                <button onClick={() => this.handleFavorite(this.props.showNews.id, this.props.scrapbookContainer.id)}>Clip</button>
+                {this.handleSaveBtnState().length > 0 ? 
+                <div>Saved</div>
+                :
+                <button onClick={() => this.handleFavorite(this.props.showNews.id, this.props.scrapbookContainer.id)}>Save</button>
+                }
                 <h1>Title: {this.props.showNews.title}</h1>
                 <h2>Category: {this.props.showNews.category}</h2>
                 {this.props.showNews.author === null ? null : <h2>Author: {this.props.showNews.author}</h2>}
@@ -64,6 +76,10 @@ class NewsShow extends Component {
                 <h4>{this.props.showNews.publishedAt}</h4>
                 <button onClick={()=> window.open(`${this.props.showNews.url}`, "_blank")}>Link to this news</button>
                 <br/><br/><br/>
+            </div>
+            :
+            null
+                }
             </div>
         )
       }
@@ -74,7 +90,8 @@ const mapStateToProps = (state) => {
       showNews: state.showNews,
       getUser: state.getUser,
       scrapbookContainer: state.scrapbookContainer,
-      allScrapbooknews: state.allScrapbooknews
+      allScrapbooknews: state.allScrapbooknews,
+      clippedNewsTile: state.clippedNewsTile
     }
   }
 

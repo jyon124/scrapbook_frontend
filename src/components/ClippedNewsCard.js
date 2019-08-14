@@ -13,7 +13,6 @@ render(){
       <span className="card__category">{this.props.newsCard.category}</span>
       <h4 className="card__title">{this.props.newsCard.title}</h4>
        <span className="card__by">
-           {/* /scrapbooks/:id/scrapbooksnews/:id */}
          <Link to={`/scrapbooks/${this.props.getUser.id}/scrapbooknews/${this.props.newsCard.id}`} className="card__link" title="author">
              View Full Coverage
              </Link>
