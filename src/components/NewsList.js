@@ -43,7 +43,6 @@ class NewsList extends React.Component {
     }
 
     getAllScrapbook = (scrapbookId) => {
-        // another condition
         if(this.props.allScrapbooknews.length < 1 && this.state.scrapbooknewsRendered === false){
         this.props.fetchAllScrapbooknews(scrapbookId)
         this.state.scrapbooknewsRendered = true

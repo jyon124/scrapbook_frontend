@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import Api from '../services/Api';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import {connect} from 'react-redux';
-import { showNews, fetchUser, fetchScrapbook, postClip, removeTile } from '../actions';
-
+import { showNews, fetchUser, fetchScrapbook, postClip, removeTile, fetchAllScrapbooknewsAction, deleteNoteReq } from '../actions';
+import ReactDOM from 'react-dom';
 
 
 class NewsShow extends Component {
@@ -71,19 +71,46 @@ class NewsShow extends Component {
             scrapbooknews_id: scrapbooknews.id
         }
         Api.handlePostReqNote(bodyObj)
+        .then(note => {
+            this.handleRenderNewNote(note)
+        })
+        this.setState({content: ''})
+    }
+
+    handleRenderNewNote = (note) => {
+        const noteUl = document.getElementById('notes');
+        const li = document.createElement('li');
+        const btn = document.createElement('button');
+        btn.innerText = 'x';
+        li.innerText = note.content;
+        li.append(btn);
+        noteUl.append(li);
     }
 
     handleRenderNotes = () => {
         const scrapbooknews = this.props.allScrapbooknews.find(news => {return news.news_id === this.props.showNews.id})
+        if (scrapbooknews.notes !== undefined){
         return scrapbooknews.notes.map(note => {
-            return <li key={note.id}>{note.content}</li>
+            return <li key={note.id}>{note.content}<button onClick={(e) => this.handleDeleteNote(e, note.id)}>x</button></li>
         })
+       }
+    }
+
+    handleDeleteNote = (e, noteId) => {
+        this.props.deleteNote(noteId)
+        e.target.parentNode.remove();
+    }
+
+    getAllScrapbook = (scrapbookId) => {
+        if(this.props.allScrapbooknews.length < 1){
+        this.props.fetchAllScrapbooknews(scrapbookId)
+        }
     }
     
-
     render(){
         return (
             <div>
+                {this.props.scrapbookContainer.id ? this.getAllScrapbook(this.props.scrapbookContainer.id) : null}
                 {this.props.getUser.id ? this.initializeScrapbook(this.props.getUser.id) : null}
                 <img src={this.props.showNews.urlToImage} alt="news display" width="800em" />
                 <br/>
@@ -106,12 +133,12 @@ class NewsShow extends Component {
                 {
                 this.props.allScrapbooknews.find(news => {return news.news_id === this.props.showNews.id}) !== undefined ? 
                 <div>
-                    <ul>
+                    <ul id="notes">
                         {this.handleRenderNotes()}
                     </ul>
                 </div>
                 : 
-                console.log('boo')
+                console.log('No Notes')
                 }
 
                 <br/><br/><br/>
@@ -146,6 +173,12 @@ const mapStateToProps = (state) => {
         },
         unSave: (tile) => {
             dispatch(removeTile(tile))
+        },
+        fetchAllScrapbooknews: (scrapbookId) => {
+            dispatch(fetchAllScrapbooknewsAction(scrapbookId))
+        },
+        deleteNote: (noteId) => {
+            dispatch(deleteNoteReq(noteId))
         }
     }
 }

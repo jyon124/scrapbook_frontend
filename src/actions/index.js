@@ -1,4 +1,4 @@
-import { FETCH_NEWS, SHOW_NEWS, FETCH_USER, FETCH_SCRAPBOOK, CLIP_NEWS, FETCHALLSCRAPBOOKTILE, CLIPPED_NEWS_TILE, CLEAR_ALL_STATE, REMOVE_TILE } from './types';
+import { FETCH_NEWS, SHOW_NEWS, FETCH_USER, FETCH_SCRAPBOOK, CLIP_NEWS, FETCHALLSCRAPBOOKTILE, CLIPPED_NEWS_TILE, CLEAR_ALL_STATE, REMOVE_TILE, DELETE_NOTE } from './types';
 import Api from '../services/Api.js'
 import { typeAlias } from '@babel/types';
 
@@ -72,7 +72,16 @@ export function removeTile(tile){
     return function(dispatch){
         Api.handleRemoveTile(tile)
         .then(resp => {
-            dispatch({ type: REMOVE_TILE, tileId: tile.id, tileNewsId: tile.news_id})
+            dispatch({ type: REMOVE_TILE, tileId: tile.id, tileNewsId: tile.news_id })
+        })
+    }
+}
+
+export function deleteNoteReq(noteId){
+    return function(dispatch){
+        Api.handleDeleteNote(noteId)
+        .then(resp => {
+            dispatch({ type: DELETE_NOTE, noteId: noteId })
         })
     }
 }

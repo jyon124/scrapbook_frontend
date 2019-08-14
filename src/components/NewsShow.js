@@ -56,7 +56,7 @@ class NewsShow extends Component {
 
     handleSaveBtnState = () => {
         return this.props.clippedNewsTile.filter(news => {
-            return news.id == this.props.showNews.id
+            return news.id === this.props.showNews.id
         })
     }
 

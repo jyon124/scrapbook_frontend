@@ -67,8 +67,6 @@ render(){
   }
 }
 
-
-
 const mapDispatchToProps = (dispatch) => {
   return{
   clearState: () => {

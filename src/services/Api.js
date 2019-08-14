@@ -106,5 +106,15 @@ export default {
         }
         return fetch('http://localhost:3001/notes', reqObj)
         .then(res => res.json())
+    },
+    handleDeleteNote: (noteId) => {
+        const reqObj = {
+            method: 'DELETE',
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem("user")}`,
+                'Content-Type': 'application/json'
+            }
+        }
+        return fetch(`${API_URL}notes/${noteId}`, reqObj)
     }
 }
