@@ -1,16 +1,18 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
-import { fetchNews } from '../actions';
+import { fetchNews, fetchUser, fetchScrapbook, fetchAllScrapbooknewsAction, createClippedNewsTile } from '../actions';
 import NewsCard from './NewsCard'
 
 
 class NewsList extends React.Component {
 
     componentDidMount(){
+        this.getUserData()
         if(this.props.news.length < 1){
         this.props.fetchNews()
         }
+        setTimeout(()=> this.findClippedNews(), 500);
     }
 
     renderNews = () => {
@@ -21,13 +23,49 @@ class NewsList extends React.Component {
         })
     }
 
+    getUserData = () => {
+        if(this.props.getUser.length < 1){
+            this.props.getUserInfo()
+        }
+    }
+
+    initializeScrapbook = (userid) => {
+        if(this.props.scrapbookContainer.length < 1){
+        this.props.findScrapbook(userid)
+       }
+    }
+
+    getAllScrapbook = (scrapbookId) => {
+        if(this.props.allScrapbooknews.length < 1){
+        this.props.fetchAllScrapbooknews(scrapbookId)
+        }
+    }
+
+    findClippedNews = () => {
+        const newsIdArr = this.props.allScrapbooknews.map(news => {
+            return news.news_id
+        })
+        const allNews = this.props.news
+        const clippedNews = newsIdArr.map((id) => {
+            const newsObj = allNews.filter(news => news.id  === id)
+            return newsObj[0]
+        })
+       this.props.clippedNewsTileCreation(clippedNews)
+    }
+
     render(){
         return(
         <Switch>
             <Route path='/newslist' render={()=> {
                 return <div>
+                     {this.props.getUser.id ? this.initializeScrapbook(this.props.getUser.id) : null}
+                {this.props.scrapbookContainer.id ? this.getAllScrapbook(this.props.scrapbookContainer.id) : null}
                 <h1>NewsList</h1>
-                    {this.props.loader ? <h1>Loading...</h1> : this.renderNews()}
+                    {this.props.loader ? 
+                    <h1>Loading...</h1> 
+                    : 
+                    this.renderNews()
+                    }
                 </div>
             }}/>
         </Switch>
@@ -40,7 +78,12 @@ const mapStateToProps = (state) => {
     return {
         news: state.news,
         loader: state.loader,
-        clippedNews: state.clippedNews
+        clippedNews: state.clippedNews,
+        getUser: state.getUser,
+        scrapbookContainer: state.scrapbookContainer,
+        showNews: state.showNews,
+        allScrapbooknews: state.allScrapbooknews,
+        clippedNewsTile: state.clippedNewsTile
     }
 }
 
@@ -48,7 +91,22 @@ const mapDispatchToProps = (dispatch) => {
     return{
     fetchNews: () => {
         dispatch(fetchNews())
-      }
+    },
+    getUserInfo: () => {
+    dispatch(fetchUser())
+    },
+    findScrapbook: (userid) => {
+        dispatch(fetchScrapbook(userid))
+    },
+    fetchAllScrapbooknews: (scrapbookId) => {
+        dispatch(fetchAllScrapbooknewsAction(scrapbookId))
+    },
+    fetchNews: () => {
+        dispatch(fetchNews())
+    },
+    clippedNewsTileCreation: (clippedNews) => {
+        dispatch(createClippedNewsTile(clippedNews))
+    }
     }
 }
 

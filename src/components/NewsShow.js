@@ -45,7 +45,7 @@ class NewsShow extends Component {
         if(!check){
         this.props.clipNews(newsId, scrapbookContainerId)
         } else {
-            console.log('Already Added')
+            alert('Already Saved');
         }
     }
 
