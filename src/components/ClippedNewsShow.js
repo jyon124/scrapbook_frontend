@@ -64,7 +64,7 @@ class NewsShow extends Component {
                 {this.props.showNews.author === null ? null : <h2>Author: {this.props.showNews.author}</h2>}
                 <h3>Description: {this.props.showNews.description}</h3>
                 <p>{this.props.showNews.content}</p>
-                <h4>{this.props.showNews.publishedAt}</h4>
+                <h4>Published at: {this.props.showNews.publishedAt.split("T")[0].split("-").join(" ")}</h4>
                 <button onClick={()=> window.open(`${this.props.showNews.url}`, "_blank")}>Link to this news</button>
                 <br/><br/><br/>
             </div>
