@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-// import NewsCard from '../components/NewsCard'
 import ClippedNewsCard from '../components/ClippedNewsCard'
 import { fetchUser, fetchScrapbook, fetchAllScrapbooknewsAction, fetchNews, createClippedNewsTile } from '../actions'
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
@@ -48,7 +47,6 @@ class ScrapBooksContainers extends React.Component {
     renderClippedNewsTile = () => {
         return this.props.clippedNewsTile.map(news => {
          return (
-            //  < NewsCard news={news} key={news.id} />
             < ClippedNewsCard newsCard={news} key={news.id} />
              )
          })

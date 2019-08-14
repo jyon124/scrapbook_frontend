@@ -1,4 +1,4 @@
-import { FETCH_NEWS, SHOW_NEWS, FETCH_USER, FETCH_SCRAPBOOK, CLIP_NEWS, FETCHALLSCRAPBOOKTILE, CLIPPED_NEWS_TILE, CLEAR_ALL_STATE } from './types';
+import { FETCH_NEWS, SHOW_NEWS, FETCH_USER, FETCH_SCRAPBOOK, CLIP_NEWS, FETCHALLSCRAPBOOKTILE, CLIPPED_NEWS_TILE, CLEAR_ALL_STATE, REMOVE_TILE } from './types';
 import Api from '../services/Api.js'
 
 export function fetchNews(){
@@ -64,5 +64,12 @@ export function createClippedNewsTile(clippedNews){
 export function clearAllState(){
     return function (dispatch){
         dispatch({ type: CLEAR_ALL_STATE })
+    }
+}
+
+export function removeTile(tile){
+    return function(dispatch){
+        Api.handleRemoveTile(tile)
+        dispatch({ type: REMOVE_TILE })
     }
 }

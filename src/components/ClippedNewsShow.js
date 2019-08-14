@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Api from '../services/Api';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import {connect} from 'react-redux';
-import { showNews, fetchUser, fetchScrapbook, postClip } from '../actions';
+import { showNews, fetchUser, fetchScrapbook, postClip, removeTile } from '../actions';
 
 
 
@@ -41,13 +41,10 @@ class NewsShow extends Component {
     }
 
     handleUnfavorite = (newsId, scrapbookContainerId) => {
-        // const check = this.props.allScrapbooknews.find(news => {return news.news_id === newsId})
-        // if(!check){
-        // this.props.clipNews(newsId, scrapbookContainerId)
-        // } else {
-        //     console.log('Already Added')
-        // }
-        console.log('clicked!')
+        const tile = this.props.allScrapbooknews.find(news => {return news.news_id === newsId})
+        this.props.unSave(tile)
+        this.props.history.push('/scrapbooks')
+        // Need Refresh to check unsaved
     }
 
 
@@ -73,6 +70,7 @@ class NewsShow extends Component {
 
 const mapStateToProps = (state) => {
     return {
+      news: state.news,
       showNews: state.showNews,
       getUser: state.getUser,
       scrapbookContainer: state.scrapbookContainer,
@@ -93,6 +91,9 @@ const mapStateToProps = (state) => {
         },
         clipNews: (newsId, scrapbookContainerId) => {
             dispatch(postClip(newsId, scrapbookContainerId))
+        },
+        unSave: (tile) => {
+            dispatch(removeTile(tile))
         }
     }
 }

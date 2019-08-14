@@ -84,5 +84,15 @@ export default {
           }
         return fetch(`${API_URL}scrapbooknews`, reqObj)
         .then(resp => resp.json())
+    },
+    handleRemoveTile: (tile) => {
+        let reqObj = {
+            method: 'DELETE',
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem("user")}`,
+                'Content-Type': 'application/json'
+            }
+        }
+        return fetch(`${API_URL}scrapbooknews/${tile.id}`, reqObj)
     }
 }
