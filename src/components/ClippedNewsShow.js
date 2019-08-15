@@ -83,6 +83,7 @@ class NewsShow extends Component {
         li.className = 'single-note-content';
         const btn = document.createElement('button');
         btn.innerText = 'x';
+        btn.addEventListener('click', (e)=> this.handleDeleteNote(e, note.id));
         li.innerText = note.content;
         li.append(btn);
         noteUl.append(li);
