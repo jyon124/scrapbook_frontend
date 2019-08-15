@@ -114,14 +114,6 @@ body, html {
     height: 100%;
     padding: 0;
  }
- 
- .nav {
-  text-decoration: none;
- }
-
- .nav:hover{
-   background-color: aquamarine;
- }
 
  .nav:visited { 
    text-decoration: none; 
@@ -170,7 +162,7 @@ body, html {
 
  .card {
   width: 480px;
-  height: 170px;
+  height: 175px;
   box-shadow: 0 6px 10px 4px rgba(0,0,0,0.4);
   border-radius: 6px;
   overflow: hidden;
@@ -179,9 +171,10 @@ body, html {
 }
 
 .card h3 {
+  font-size: 1.1em;
   text-align: center;
-  margin-left: 9em;
-  margin-right: 1em;
+  margin-left: 10em;
+  margin-right: 2.3em;
 }
 
 .card p {
@@ -190,9 +183,11 @@ body, html {
   margin-left: 12em;
 }
 
-.card h4 {
-  margin-left: 12em;
-  color: green;
+.saveTag {
+  transform: scale(0.1);
+  position: absolute;
+  top: -15.2em;
+  left: 12.8em;
 }
 
 .card:hover {

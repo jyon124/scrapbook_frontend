@@ -3,32 +3,34 @@ import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 
 class NewsCard extends React.Component {
+    state = {
+    newsId: this.props.news.id,
+    foundIdArr: []
+  }
+
+
   componentDidMount(){
     if(!localStorage.getItem('user')){
       this.props.history.push('/')
     } else {
-      // setTimeout(()=> {this.handleSavedState(this.props.news.id)}, 3000)
+      setTimeout(()=> {this.handleSavedState()}, 3000)
+    }
+ 
+  }
+
+  handleSavedState = () => {
+    if(this.state.newsId){
+      const found = this.props.clippedNewsTile.find(tile => {
+       return tile.id == this.state.newsId
+      });
+    return found
     }
   }
 
-  // handleSavedState = (newsId) => {
-  //     this.props.clippedNewsTile.find(function(tile){
-  //       // console.log(tile.id, newsId, tile.id == newsId)
-  //       return tile.id == newsId
-  //     })
-  // }
-
-  // to turn on green or red light on card
-  // this.props.news are objects so, it has to iterate.
 
 render(){
     return(
     <div className="center">
-        {/* {this.handleSavedState(this.props.news.id) == true ? 
-          <div>o</div>
-          : 
-          <div>x</div>
-        } */}
       <div className="card">
           <img className="additional" alt="news" src={this.props.news.urlToImage} />
           <div className="more-info">
@@ -41,9 +43,11 @@ render(){
           <Link to={`/newslist/${this.props.news.id}`} className="more" title="author">
             View Full Coverage
           </Link>
-
-          <h4>✓</h4>
-          
+          {this.handleSavedState() ? 
+          <img className="saveTag" src="https://cdn1.iconfinder.com/data/icons/instagram-ui-glyph/48/Sed-05-512.png" />
+          :
+          null
+          }
         </div>
       </div>
     </div>
