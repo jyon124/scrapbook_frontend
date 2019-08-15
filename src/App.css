@@ -63,7 +63,7 @@ a:hover {
 #menuToggle input:checked ~ span {
   opacity: 1;
   transform: rotate(45deg) translate(-2px, -1px);
-  background: #232323;
+  background: red;
 }
 
 #menuToggle input:checked ~ span:nth-last-child(3){
@@ -76,6 +76,7 @@ a:hover {
 }
 
 #menu {
+  border-radius: 10%;
   position: absolute;
   width: 80px;
   margin: -100px 0 0 -50px;
@@ -100,10 +101,14 @@ a:hover {
 
 /* end */
 
+/* login & Sign up */
+
 .form-container {
   margin-top: 15em;
   text-align: center;
 }
+
+/* end */
 
 /* NewsLists */
 
@@ -152,8 +157,11 @@ body, html {
  }
 
  .wrapper {
+   margin-bottom: 20em;
    margin-left: 12em;
    margin-right: 12em;
+   height: 28em;
+   overflow: scroll;
  }
  
  .center {
@@ -178,7 +186,7 @@ body, html {
 }
 
 .card p {
-  color: skyblue;
+  color: #4D3724;
   font-weight: 600;
   margin-left: 12em;
 }
@@ -186,8 +194,8 @@ body, html {
 .saveTag {
   transform: scale(0.1);
   position: absolute;
-  top: -15.2em;
-  left: 12.8em;
+  top: -15.3em;
+  left: 13.1em;
 }
 
 .card:hover {

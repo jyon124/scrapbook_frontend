@@ -39,7 +39,7 @@ render(){
           </div>
         <div className="general">
           <h3>{this.props.news.title}</h3>
-          <p>{this.props.news.category}</p>
+          <p>{this.props.news.category.charAt(0).toUpperCase() + this.props.news.category.slice(1)}</p>
           <Link to={`/newslist/${this.props.news.id}`} className="more" title="author">
             View Full Coverage
           </Link>
