@@ -54,7 +54,7 @@ export default class Signin extends React.Component {
     return(
         <div className="form-container">
           <form onSubmit={(e) => this.handleSubmit(e)}>
-            <h1>Signin</h1>
+            <h1>Signup</h1>
             <div>
               <label htmlFor="username">Username: </label>
               <input onChange={(e) => this.handleUsernameChange(e)} value={this.state.username} type="text" name="username" placeholder="username" />

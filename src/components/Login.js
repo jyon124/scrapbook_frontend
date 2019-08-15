@@ -45,7 +45,7 @@ class Login extends React.Component {
 
     render(){
         return (
-        <div>
+        <div className="form-container">
             <h1>Login</h1>
             {this.state.error ? <h4>Invalid username or Password</h4> : null}
             <form onSubmit={(e) => {this.handleLogin(e)}}>
