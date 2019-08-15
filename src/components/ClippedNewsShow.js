@@ -10,7 +10,8 @@ class NewsShow extends Component {
     constructor(props){
         super(props);
         this.state = {
-            content: ''
+            content: '',
+            selectedSentence: ''
         }
     }
 
@@ -108,6 +109,16 @@ class NewsShow extends Component {
         this.props.fetchAllScrapbooknews(scrapbookId)
         }
     }
+
+    ////// HIGHLIGHT FUNCTION BELOW ///////
+
+    getSelection(){
+        window.getSelection()
+        console.log(window.getSelection().toString());
+        this.setState({
+            selectedSentence: window.getSelection().toString()
+        })
+    }
     
     render(){
         return (
@@ -122,7 +133,10 @@ class NewsShow extends Component {
                 <h2>Category: {this.props.showNews.category}</h2>
                 {this.props.showNews.author === null ? null : <h2>Author: {this.props.showNews.author}</h2>}
                 <h3>Description: {this.props.showNews.description}</h3>
-                <p>{this.props.showNews.content}</p>
+
+                <h4 style={{'color':'red'}}>{this.state.selectedSentence}</h4>
+                <p onMouseUp={() => this.getSelection()}>{this.props.showNews.content}</p>
+                
                 <h4>Published at: {this.props.showNews.publishedAt ? this.props.showNews.publishedAt.split("T")[0].split("-").join(" ") : null}</h4>
                 <button onClick={()=> window.open(`${this.props.showNews.url}`, "_blank")}>Link to this news</button>
                 </div>
@@ -134,11 +148,9 @@ class NewsShow extends Component {
                 </form>
                 {
                 this.props.allScrapbooknews.find(news => {return news.news_id === this.props.showNews.id}) !== undefined ? 
-                // <div>
                     <ul id="notes" className="note">
                         {this.handleRenderNotes()}
                     </ul>
-                // </div>
                 : 
                 console.log('No Notes')
                 }
