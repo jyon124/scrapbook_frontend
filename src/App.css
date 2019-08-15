@@ -25,6 +25,7 @@ a:hover {
 }
 
 #menuToggle input{
+  margin-left: 2em;
   display: block;
   width: 20px;
   height: 32px;
@@ -38,6 +39,7 @@ a:hover {
 }
 
 #menuToggle span {
+  margin-left: 2em;
   display: block;
   width: 33px;
   height: 4px;
@@ -78,7 +80,7 @@ a:hover {
 #menu {
   border-radius: 10%;
   position: absolute;
-  width: 70px;
+  width: 80px;
   margin: -100px 0 0 -50px;
   padding: 50px;
   padding-top: 125px;
