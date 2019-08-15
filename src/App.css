@@ -184,6 +184,17 @@ body, html {
   margin-right: 1em;
 }
 
+.card p {
+  color: skyblue;
+  font-weight: 600;
+  margin-left: 12em;
+}
+
+.card h4 {
+  margin-left: 12em;
+  color: green;
+}
+
 .card:hover {
   color: #FF7538;
 }
@@ -223,3 +234,31 @@ body, html {
 }
 
 /* end */
+
+/* News Display */
+
+.news-display {
+  margin-left: 20em;
+  margin-right: 15em;
+  text-align: left;
+}
+
+/* end */
+
+
+/* temporary */
+
+button {
+  font-weight: 600;
+  padding: 10px;
+  border-radius: 8%;
+  border: solid 2px black;
+}
+
+button:hover{
+  color: white;
+  background-color: black;
+  transition-duration: 0.5s;
+}
+
+/* temporary */

@@ -109,7 +109,7 @@ class NewsShow extends Component {
     
     render(){
         return (
-            <div>
+            <div className="news-display">
                 {this.props.scrapbookContainer.id ? this.getAllScrapbook(this.props.scrapbookContainer.id) : null}
                 {this.props.getUser.id ? this.initializeScrapbook(this.props.getUser.id) : null}
                 <img src={this.props.showNews.urlToImage} alt="news display" width="800em" />

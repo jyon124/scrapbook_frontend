@@ -62,7 +62,7 @@ class NewsShow extends Component {
 
     render(){
         return (
-            <div>
+            <div className="news-display">
                 {this.props.showNews.id ?
             <div>
                 {this.props.getUser.id ? this.initializeScrapbook(this.props.getUser.id) : null}
