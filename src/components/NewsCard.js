@@ -10,20 +10,22 @@ class NewsCard extends React.Component {
 
 render(){
     return(
-<section className="newscards" key={this.props.id}>
-  <article className="card">
-    <img className="newsImg" src={this.props.news.urlToImage} alt="news" />
-    <div className="card__info">
-      <span className="card__category">{this.props.news.category}</span>
-      <h4 className="card__title">{this.props.news.title}</h4>
-       <span className="card__by">
-         <Link to={`/newslist/${this.props.news.id}`} className="card__link" title="author">
-             View Full Coverage
-             </Link>
-      </span>
+    <div className="center">
+      <div className="card">
+          <img className="additional" alt="news" src={this.props.news.urlToImage} />
+          <div className="more-info">
+            <div className="coords">
+            </div>
+          </div>
+        <div className="general">
+          <h3>{this.props.news.title}</h3>
+          <p>{this.props.news.category}</p>
+          <Link to={`/newslist/${this.props.news.id}`} className="more" title="author">
+            View Full Coverage
+          </Link>
+        </div>
+      </div>
     </div>
-  </article>
-</section>
     )
   }
 }

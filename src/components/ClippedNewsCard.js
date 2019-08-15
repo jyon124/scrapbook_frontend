@@ -12,23 +12,27 @@ class ClippedNewsCard extends React.Component {
 
 render(){
     return(
-<section className="newscards" key={this.props.newsCard.id}>
-  <article className="card">
-    <img className="newsImg" src={this.props.newsCard.urlToImage} alt="news" />
-    <div className="card__info">
-      <span className="card__category">{this.props.newsCard.category}</span>
-      <h4 className="card__title">{this.props.newsCard.title}</h4>
-       <span className="card__by">
-         <Link to={`/scrapbooks/${this.props.getUser.id}/scrapbooknews/${this.props.newsCard.id}`} className="card__link" title="author">
-             View Full Coverage
-             </Link>
-      </span>
-    </div>
-  </article>
-</section>
+      <div className="center" key={this.props.newsCard.id}>
+        <div className="card">
+            <img className="additional" alt="news" src={this.props.newsCard.urlToImage} />
+            <div className="more-info">
+              <div className="coords">
+              </div>
+            </div>
+          <div className="general">
+            <h3>{this.props.newsCard.title}</h3>
+            <p>{this.props.newsCard.category}</p>
+            <Link to={`/scrapbooks/${this.props.getUser.id}/scrapbooknews/${this.props.newsCard.id}`} className="more" title="author">
+              View Full Coverage
+            </Link>
+          </div>
+        </div>
+      </div>
     )
   }
 }
+
+
 
 const mapStateToProps = (state) => {
     return {

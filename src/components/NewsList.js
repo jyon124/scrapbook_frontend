@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import { fetchNews, fetchUser, fetchScrapbook, fetchAllScrapbooknewsAction, createClippedNewsTile } from '../actions';
 import NewsCard from './NewsCard'
+import headerImg from '../header_news_img.png';
+
 
 
 class NewsList extends React.Component {
@@ -65,14 +67,20 @@ class NewsList extends React.Component {
         return(
         <Switch>
             <Route path='/newslist' render={()=> {
-                return <div>
+                return <div className="newslist-container">
+                <div className="head-img-container">
+                    <img className="head-img-banner" src={headerImg} />
+                 </div>
                      {this.props.getUser.id ? this.initializeScrapbook(this.props.getUser.id) : null}
                 {this.props.scrapbookContainer.id ? this.getAllScrapbook(this.props.scrapbookContainer.id) : null}
-                <h1>NewsList</h1>
+                <h1 className="title">News</h1>
+                <div className="underline"></div>
                     {this.props.loader ? 
                     <h1>Loading...</h1> 
-                    : 
-                    this.renderNews()
+                    :
+                    <div className="wrapper"> 
+                        {this.renderNews()}
+                    </div>
                     }
                 </div>
             }}/>

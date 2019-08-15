@@ -1,3 +1,104 @@
+/* Hamburger Nav */
+
+input[type="checkbox"] {
+  zoom: 1.5;
+}
+
+a {
+  text-decoration: none;
+  color: #232323;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: tomato;
+}
+
+#menuToggle {
+  display: block;
+  position: relative;
+  top: 50px;
+  left: 30px; 
+  z-index: 1;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+#menuToggle input{
+  display: block;
+  width: 20px;
+  height: 32px;
+  position: absolute;
+  top: -7px;
+  left: -5px;
+  cursor: pointer;
+  opacity: 0;
+  z-index: 2;
+  -webkit-touch-callout: none;
+}
+
+#menuToggle span {
+  display: block;
+  width: 33px;
+  height: 4px;
+  margin-bottom: 5px;
+  position: relative;
+  background: black;
+  border-radius: 3px;
+  z-index: 1;
+  transform-origin: 4px 0px;
+  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+              background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+              opacity 0.55s ease;
+}
+
+#menuToggle span:first-child {
+  transform-origin: 0% 0%;
+}
+
+#menuToggle span:nth-last-child(2) {
+  transform-origin: 0% 100%;
+}
+
+#menuToggle input:checked ~ span {
+  opacity: 1;
+  transform: rotate(45deg) translate(-2px, -1px);
+  background: #232323;
+}
+
+#menuToggle input:checked ~ span:nth-last-child(3){
+  opacity: 0;
+  transform: rotate(0deg) scale(0.2, 0.2);
+}
+
+#menuToggle input:checked ~ span:nth-last-child(2){
+  transform: rotate(-45deg) translate(0, -1px);
+}
+
+#menu {
+  position: absolute;
+  width: 80px;
+  margin: -100px 0 0 -50px;
+  padding: 50px;
+  padding-top: 125px;
+  background: #ededed;
+  list-style-type: none;
+  -webkit-font-smoothing: antialiased;
+  transform-origin: 0% 0%;
+  transform: translate(-100%, 0);
+  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+}
+
+#menu li {
+  padding: 10px 0;
+  font-size: 22px;
+}
+
+#menuToggle input:checked ~ ul {
+  transform: none;
+}
+
+/* end */
 
 /* NewsLists */
 
@@ -9,85 +110,111 @@ body, html {
     padding: 0;
  }
  
+ .nav {
+  text-decoration: none;
+ }
+
+ .nav:hover{
+   background-color: aquamarine;
+ }
+
+ .nav:visited { 
+   text-decoration: none; 
+   color: black;
+  }
+
+  .head-img-banner {
+    margin-left: 14.8em;
+    width: auto;
+    height: 24em;
+    filter: grayscale(80%);
+    filter: blur(2px);
+  }
+
+ .header {
+   padding: 1em 1em;
+   background-color: white;
+  }
+
  body {
-   background-color: #D2DBDD;
    -webkit-align-items: center;
    justify-content: center;
    align-items: center;
  }
 
- .newsImg {
-    display: block;
-     width: stretch;
-     height: 11em;;
+ .title {
+   text-align: center;
+ }
 
-     /* border: solid rgb(36, 29, 16); */
-     box-sizing: border-box;
+ .underline {
+    border-bottom: 2px solid lightgrey;
+    border-bottom-width: thin;
+    margin-top: -1.5em;
+    margin-left: 24em;
+    margin-right: 24em;
+ }
+
+ .wrapper {
+   margin-left: 12em;
+   margin-right: 12em;
  }
  
- .newscards {
-    
-     display: inline-block;
-     justify-content: center;
-     -webkit-justify-content: center;
-     max-width: 39.5em;
-     padding-left: 200px;
-     padding-right: 200px;
-
-     /* border: solid black; */
-     box-sizing: border-box;
+ .center {
+   display: inline-block;
  }
 
  .card {
+  width: 480px;
+  height: 170px;
+  box-shadow: 0 6px 10px 4px rgba(0,0,0,0.4);
+  border-radius: 6px;
+  overflow: hidden;
+  position: relative;
+  margin: 1.5rem;
+}
 
-   margin-top: 5px;
-   margin-bottom: 5px;
-   transition: all .4s;
-   background-color: #fff;
-   width: 100%;
-   position: relative;
-   border-radius: 12px;
-   overflow: hidden;
-   box-shadow: 0px 13px 10px -7px rgba(0, 0, 0,0.1);
+.card h3 {
+  text-align: center;
+  margin-left: 9em;
+  margin-right: 1em;
+}
 
-   /* border: solid red; */
-   box-sizing: border-box;
- }
+.card:hover {
+  color: #FF7538;
+}
 
- .card:hover {
-   box-shadow: 0px 30px 18px -8px rgba(0, 0, 0,0.1);
-   transform: scale(1.02, 1.02);
- }
- 
- .card__info {
-   z-index: 0;
-   height: 12em;
-   background-color: #fff;
-   border-bottom-left-radius: 12px;
-   border-bottom-right-radius: 12px;
-   padding: 16px 24px 24px 24px;
+.card .additional {
+  position: absolute;
+  width: 150px;
+  height: 100%;
+  background: linear-gradient(#dE685E, #EE786E);
+  transition: width 0.4s;
+  overflow: hidden;
+  z-index: 2;
+}
 
-   /* border: solid yellow; */
-   box-sizing: border-box;
- }
- 
- .card__by {
-     font-size: 12px;
-     font-family: 'Raleway', sans-serif;
-     font-weight: 500;
 
-     /* border: solid green; */
-     box-sizing: border-box;
- }
- 
- .card__link {
-     font-weight: 600;
-     text-decoration: none;
-     color: #AD7D52;
+.card:hover .additional {
+  width: 35%;
+  border-radius: 0 5px 5px 0;
+}
 
-     /* border: solid blue; */
-     box-sizing: border-box;
- }
- 
+.card .additional .user-card {
+  width: 150px;
+  height: 100%;
+  position: relative;
+  float: left;
+}
+
+.card .general .more {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  font-size: 0.9em;
+  font-weight: 600;
+  text-decoration: none;
+  color: #AD7D52;
+  box-sizing: border-box;
+}
 
 /* end */

@@ -3,27 +3,33 @@ import { Link, withRouter } from 'react-router-dom';
 
 const Navbar = props => {
   return (
-    <div>
-      <div>
+    <div className="header"> 
+      <div className="nav-bar-container">
         {
           localStorage.getItem('user') ? 
-          <div>
-            <Link to="/newslist" className="newslist">
-              All News
-            </Link>
-            <br/>
-            <Link to="/scrapbooks/" className="scrapbook">
-              Scrapbook
-            </Link>
-              <br/>
-              <Link to="/login" onClick={() => {props.handleLogout()}}>Log out</Link>
-          </div>
+
+
+            <nav role="navigation">
+              <div id="menuToggle">
+                <input type="checkbox" />
+                <span></span>
+                <span></span>
+                <span></span>
+                <ul id="menu">
+                  <Link to="/newslist"><li>News</li></Link>
+                  <Link to="/scrapbooks/"><li>Scrapbook</li></Link>
+                  <Link to="/login" onClick={() => {props.handleLogout()}}><li>Log out</li></Link>
+                </ul>
+              </div>
+            </nav>
+
+
           :
           <div>
-            <Link to="/login" className="item">
+            <Link to="/login" className="nav">
               <div className="ui primary button">Login</div>
             </Link>
-            <Link to="/signin" className="item">
+            <Link to="/signin" className="nav">
               <div className="ui primary button">Signin</div>
             </Link>
           </div>
@@ -34,3 +40,17 @@ const Navbar = props => {
 };
 
 export default withRouter(Navbar);
+
+{/* <nav role="navigation">
+  <div id="menuToggle">
+    <input type="checkbox" />
+    <span></span>
+    <span></span>
+    <span></span>
+    <ul id="menu">
+       <Link to="/newslist"><li>News</li></Link>
+       <Link to="/scrapbooks/"><li>Scrapbook</li></Link>
+       <Link to="/login" onClick={() => {props.handleLogout()}}><li>Log out</li></Link>
+    </ul>
+  </div>
+</nav> */}

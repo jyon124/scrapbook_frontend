@@ -65,9 +65,16 @@ class ScrapBooksContainers extends React.Component {
             <div>
                 {this.props.getUser.id ? this.initializeScrapbook(this.props.getUser.id) : null}
                 {this.props.scrapbookContainer.id ? this.getAllScrapbook(this.props.scrapbookContainer.id) : null}
-                <h1>SCRAPBOOK CONTAINER</h1>
-                <section className="scrapbook-container">
-                    {this.props.clippedNewsTile.length > 0 ? this.renderClippedNewsTile() : null } 
+                <h1 className="title">SCRAPBOOK CONTAINER</h1>
+                <div className="underline"></div>
+                <section className="newslist-container">
+                    {this.props.clippedNewsTile.length > 0 ? 
+                        <div className="wrapper"> 
+                        {this.renderClippedNewsTile()}
+                        </div>
+                        : 
+                        null 
+                        } 
                 </section>
             </div>
         )
