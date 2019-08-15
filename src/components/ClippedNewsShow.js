@@ -128,7 +128,7 @@ class NewsShow extends Component {
                 </div>
                 <form className="notes-form" onSubmit={(e) => {this.handlePostNotes(e)}}>
                     <label>Notes: </label><br/>
-                    ​<textarea id="txtArea" rows="10" cols="50" onChange={(e) => this.handleNotesChange(e)} value={this.state.content}></textarea>
+                    ​<textarea id="txtArea" rows="10" cols="58" onChange={(e) => this.handleNotesChange(e)} value={this.state.content}></textarea>
                     <br/>
                     <input type="submit" value="Submit"/>
                 </form>
