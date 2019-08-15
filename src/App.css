@@ -63,7 +63,7 @@ a:hover {
 #menuToggle input:checked ~ span {
   opacity: 1;
   transform: rotate(45deg) translate(-2px, -1px);
-  background: red;
+  background: #A60013;
 }
 
 #menuToggle input:checked ~ span:nth-last-child(3){
@@ -78,7 +78,7 @@ a:hover {
 #menu {
   border-radius: 10%;
   position: absolute;
-  width: 80px;
+  width: 70px;
   margin: -100px 0 0 -50px;
   padding: 50px;
   padding-top: 125px;
@@ -182,14 +182,14 @@ body, html {
 .card h3 {
   font-size: 1.1em;
   text-align: center;
-  margin-left: 10em;
+  margin-left: 12em;
   margin-right: 2.3em;
 }
 
 .card p {
   color: #4D3724;
   font-weight: 600;
-  margin-left: 12em;
+  margin-left: 14em;
 }
 
 .saveTag {
@@ -205,17 +205,19 @@ body, html {
 
 .card .additional {
   position: absolute;
-  width: 150px;
+  width: 185px;
   height: 100%;
   background: linear-gradient(#dE685E, #EE786E);
   transition: width 0.4s;
+  /* transition: filter 0.4s; */
   overflow: hidden;
   z-index: 2;
 }
 
 
 .card:hover .additional {
-  width: 35%;
+  width: 42%;
+  /* filter: contrast(30%); */
   border-radius: 0 5px 5px 0;
 }
 
