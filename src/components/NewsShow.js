@@ -49,6 +49,7 @@ class NewsShow extends Component {
         if(!check){
         this.props.clipNews(newsId, scrapbookContainerId)
         alert('Successfully Saved');
+            this.props.history.push('/newslist');
         } else {
             alert('Already Saved');
         }
@@ -77,7 +78,7 @@ class NewsShow extends Component {
                 <h2>Category: {this.props.showNews.category}</h2>
                 {this.props.showNews.author === null ? null : <h2>Author: {this.props.showNews.author}</h2>}
                 <h3>Description: {this.props.showNews.description}</h3>
-                <p>{this.props.showNews.content}</p>
+                <p className="news-content">{this.props.showNews.content}</p>
                 <h4>Published at: {this.props.showNews.publishedAt ? this.props.showNews.publishedAt.split("T")[0].split("-").join(" ") : null}</h4>
                 <button onClick={()=> window.open(`${this.props.showNews.url}`, "_blank")}>Link to this news</button>
                 <br/><br/><br/>

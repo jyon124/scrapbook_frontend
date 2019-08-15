@@ -157,7 +157,8 @@ body, html {
  }
 
  .wrapper {
-   margin-bottom: 20em;
+  margin-top: 1.5em;
+   margin-bottom: 5em;
    margin-left: 12em;
    margin-right: 12em;
    height: 28em;
@@ -246,6 +247,28 @@ body, html {
   text-align: left;
 }
 
+.scrapbooknews-display {
+  box-sizing: border-box;
+  border-right: 2px solid lightgrey;
+  border-right-width: thin;
+  /* border-right: black solid; */
+  margin-left: 12em;
+  margin-right: 38em;
+  text-align: left;
+  width: 43em;
+  height: 80em;
+  margin-bottom: -200em;
+}
+
+.scrapbooknews-img {
+  width: 40em;
+}
+
+.news-content {
+  margin-left: 1em;
+  margin-right: 2em;
+}
+
 /* end */
 
 
@@ -265,3 +288,42 @@ button:hover{
 }
 
 /* temporary */
+
+/* Notes */
+
+  .notes-form {
+    list-style: none;
+    margin-left: 2em;
+    position: relative;
+    top: -62em;
+    left: 30px; 
+    width: 28em;
+    left: 45.5em;
+    box-sizing: border-box;
+  }
+
+  .note {
+    height: 48em;
+    list-style: none;
+    margin-left: 2em;
+    position: relative;
+    top: -62em;
+    left: 30px; 
+    width: 23.2em;
+    left: 43em;
+    overflow: scroll;
+  }
+
+  .single-note-content {
+    background-color: #fff;
+    border-radius: 3%;
+    padding: 3em;
+    margin-top: 2em;
+    margin-left: 0;
+    margin-right: 3em;
+    box-sizing: border-box;
+    border: solid 1px grey;
+    border-width: thin;
+  }
+
+/* end */

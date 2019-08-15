@@ -8,7 +8,6 @@ class NewsCard extends React.Component {
     foundIdArr: []
   }
 
-
   componentDidMount(){
     if(!localStorage.getItem('user')){
       this.props.history.push('/')

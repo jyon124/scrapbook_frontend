@@ -80,6 +80,7 @@ class NewsShow extends Component {
     handleRenderNewNote = (note) => {
         const noteUl = document.getElementById('notes');
         const li = document.createElement('li');
+        li.className = 'single-note-content';
         const btn = document.createElement('button');
         btn.innerText = 'x';
         li.innerText = note.content;
@@ -91,7 +92,7 @@ class NewsShow extends Component {
         const scrapbooknews = this.props.allScrapbooknews.find(news => {return news.news_id === this.props.showNews.id})
         if (scrapbooknews.notes !== undefined){
         return scrapbooknews.notes.map(note => {
-            return <li key={note.id}>{note.content}<button onClick={(e) => this.handleDeleteNote(e, note.id)}>x</button></li>
+            return <li key={note.id} className="single-note-content">{note.content}<button onClick={(e) => this.handleDeleteNote(e, note.id)}>x</button></li>
         })
        }
     }
@@ -109,12 +110,13 @@ class NewsShow extends Component {
     
     render(){
         return (
-            <div className="news-display">
+            <div className="scrapbooknews-display">
                 {this.props.scrapbookContainer.id ? this.getAllScrapbook(this.props.scrapbookContainer.id) : null}
                 {this.props.getUser.id ? this.initializeScrapbook(this.props.getUser.id) : null}
-                <img src={this.props.showNews.urlToImage} alt="news display" width="800em" />
+                <img className="scrapbooknews-img" src={this.props.showNews.urlToImage} alt="news display" />
                 <br/>
                 <button onClick={() => this.handleUnfavorite(this.props.showNews.id, this.props.scrapbookContainer.id)}>UnSave</button>
+                <div className="news-content">
                 <h1>Title: {this.props.showNews.title}</h1>
                 <h2>Category: {this.props.showNews.category}</h2>
                 {this.props.showNews.author === null ? null : <h2>Author: {this.props.showNews.author}</h2>}
@@ -122,26 +124,24 @@ class NewsShow extends Component {
                 <p>{this.props.showNews.content}</p>
                 <h4>Published at: {this.props.showNews.publishedAt ? this.props.showNews.publishedAt.split("T")[0].split("-").join(" ") : null}</h4>
                 <button onClick={()=> window.open(`${this.props.showNews.url}`, "_blank")}>Link to this news</button>
-                <br/><br/><br/>
-                <hr/>
-                <form onSubmit={(e) => {this.handlePostNotes(e)}}>
+                </div>
+                <form className="notes-form" onSubmit={(e) => {this.handlePostNotes(e)}}>
                     <label>Notes: </label><br/>
-                    ​<textarea id="txtArea" rows="10" cols="70" onChange={(e) => this.handleNotesChange(e)} value={this.state.content}></textarea>
+                    ​<textarea id="txtArea" rows="10" cols="50" onChange={(e) => this.handleNotesChange(e)} value={this.state.content}></textarea>
                     <br/>
                     <input type="submit" value="Submit"/>
                 </form>
                 {
                 this.props.allScrapbooknews.find(news => {return news.news_id === this.props.showNews.id}) !== undefined ? 
-                <div>
-                    <ul id="notes">
+                // <div>
+                    <ul id="notes" className="note">
                         {this.handleRenderNotes()}
                     </ul>
-                </div>
+                // </div>
                 : 
                 console.log('No Notes')
                 }
 
-                <br/><br/><br/>
             </div>
         )
       }

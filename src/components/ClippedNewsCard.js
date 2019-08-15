@@ -21,7 +21,7 @@ render(){
             </div>
           <div className="general">
             <h3>{this.props.newsCard.title}</h3>
-            <p>{this.props.newsCard.category}</p>
+            <p>{this.props.newsCard.category.charAt(0).toUpperCase() + this.props.newsCard.category.slice(1)}</p>
             <Link to={`/scrapbooks/${this.props.getUser.id}/scrapbooknews/${this.props.newsCard.id}`} className="more" title="author">
               View Full Coverage
             </Link>
