@@ -127,7 +127,7 @@ class NewsShow extends Component {
 
     handleSaveHighlight = (e, content) => {
         e.preventDefault();
-        if(!this.state.selectedSentence.length < 3){
+        if(this.state.selectedSentence.length < 3){
             alert('Highlighted sentence has to be longer than three characters.')
         } else if(!this.state.selectedSentence && !this.state.color || this.state.color === 'none'){
             alert('Please Select the sentences and color')
@@ -160,15 +160,54 @@ class NewsShow extends Component {
         })
     }
 
-    handleRenderHighlights = () => {
+    handleRenderHighlights = (content) => {
         const scrapbooknews = this.props.allScrapbooknews.find(news => {return news.news_id === this.props.showNews.id})
-        if (scrapbooknews.highlights !== undefined){
+        console.log("### Scrapbooknews => ",scrapbooknews)
+        if (scrapbooknews.highlights.length > 0){
         return scrapbooknews.highlights.map(highlight => {
-            console.log('@@@@@ rendering highlights @@@@@',highlight)
-            // Need to take care of finding specific sentences from 
-            // this.props.showNews.content and change the color.
+            this.handleApplySpan(highlight, content);
         })
+       } else {
+           return scrapbooknews.news.content
        }
+    }
+
+    handleApplySpan(highlight, content){
+        let highlightSplit = highlight.sentence.split('');
+        let contentSplit = content.split('');
+        if (highlightSplit.length >= 3) {
+            let start = 0
+            let finish = 0;
+            for (let i = 0, j = 0; i < contentSplit.length; i++) {
+              let desired = highlightSplit[j];
+              let current = contentSplit[i];
+              if (current !== desired) {
+                let j = 0;
+                let start = 0; 
+              }
+              if (j === highlightSplit.length-1) {
+                finish = i;
+                console.log('=======', highlight.color)
+                contentSplit.splice(start-1, 0, `<span style="color: red">`)
+                contentSplit.splice(i+1, 0, '</span>')
+                let joinedContent = contentSplit.join('')
+                console.log("@@@@ its joined Content @@@@ =>",joinedContent)
+                let p = document.querySelector('.content');
+                console.log("@@@@ its P @@@@ =>",p)
+                if (p === null){
+                    return content;
+                } else {
+                return setTimeout(()=> {p.innerHTML = `${joinedContent}`}, 300);
+                }
+              }
+              if (current === desired) {
+                if (start === 0) start = i;
+                j++;
+              }
+            }
+            return [start, finish];
+          }
+          return false;
     }
     
     render(){
@@ -187,12 +226,11 @@ class NewsShow extends Component {
 
                 {
                 this.props.allScrapbooknews.find(news => {return news.news_id === this.props.showNews.id}) !== undefined ? 
-                <p onMouseUp={() => this.getSelection()}>
-                    {this.props.showNews.content}
-                    {this.handleRenderHighlights()}
+                <p className="content" onMouseUp={() => this.getSelection()}>
+                    {this.handleRenderHighlights(this.props.showNews.content)}
                 </p>
                 :
-                <p onMouseUp={() => this.getSelection()}>{this.props.showNews.content}</p>
+                <p className="content" onMouseUp={() => this.getSelection()}>{this.props.showNews.content}</p>
                 }
 
                 <h4>Published at: {this.props.showNews.publishedAt ? this.props.showNews.publishedAt.split("T")[0].split("-").join(" ") : null}</h4>
@@ -206,8 +244,7 @@ class NewsShow extends Component {
                     <label htmlFor="highlight">Highlight: </label>
                     <select onChange={(e) => this.colorChange(e)} value={this.state.color}>
                         <option value="none">-------</option>
-                        <option value="blue">Blue</option>
-                        <option defaultValue="decScore">Red</option>
+                        <option defaultValue="red">Red</option>
                     </select>
                         <br/>
                     <input type="submit" value="Save Selected Highlight" />
