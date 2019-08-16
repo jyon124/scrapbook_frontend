@@ -11,7 +11,17 @@ class NewsShow extends Component {
         super(props);
         this.state = {
             content: '',
-            selectedSentence: ''
+            selectedSentence: '',
+            color: ''
+        }
+    }
+
+    componentDidMount(){
+        if(!localStorage.getItem('user')){
+            this.props.history.push('/')
+        } else{
+        this.getNews()
+        this.getUserData()
         }
     }
 
@@ -34,15 +44,6 @@ class NewsShow extends Component {
     getUserData = () => {
         if(this.props.getUser.length < 1){
             this.props.getUserInfo()
-        }
-    }
-
-    componentDidMount(){
-        if(!localStorage.getItem('user')){
-            this.props.history.push('/')
-        } else{
-        this.getNews()
-        this.getUserData()
         }
     }
 
@@ -112,12 +113,62 @@ class NewsShow extends Component {
 
     ////// HIGHLIGHT FUNCTION BELOW ///////
 
-    getSelection(){
-        window.getSelection()
-        console.log(window.getSelection().toString());
+    colorChange = (e) => {
+        this.setState({
+            color: e.target.value
+        })
+    }
+
+    getSelection(content){
         this.setState({
             selectedSentence: window.getSelection().toString()
         })
+    }
+
+    handleSaveHighlight = (e, content) => {
+        e.preventDefault();
+        if(!this.state.selectedSentence.length < 3){
+            alert('Highlighted sentence has to be longer than three characters.')
+        } else if(!this.state.selectedSentence && !this.state.color || this.state.color === 'none'){
+            alert('Please Select the sentences and color')
+        } else if (!this.state.color || this.state.color === 'none'){
+            alert('Please Select the color')
+        } else if (!this.state.selectedSentence){
+            alert('Please Select the sentences')
+        } else {
+        console.log('**Selected**',this.state.selectedSentence, '==========',this.state.color,'===========')
+        // console.log('##Content##', content)
+        this.handlePostHighlights(e);
+        }
+    }
+
+    handlePostHighlights(e){
+        e.preventDefault();
+        const scrapbooknews = this.props.allScrapbooknews.find(news => {return news.news_id === this.props.showNews.id})
+        const bodyObj = {
+            sentence: this.state.selectedSentence,
+            scrapbooknews_id: scrapbooknews.id,
+            color: this.state.color
+        }
+        Api.handlePostReqHighlight(bodyObj)
+        .then(highlighted => {
+            console.log(highlighted)
+        })
+        this.setState({
+            sentence: '',
+            color: ''
+        })
+    }
+
+    handleRenderHighlights = () => {
+        const scrapbooknews = this.props.allScrapbooknews.find(news => {return news.news_id === this.props.showNews.id})
+        if (scrapbooknews.highlights !== undefined){
+        return scrapbooknews.highlights.map(highlight => {
+            console.log('@@@@@ rendering highlights @@@@@',highlight)
+            // Need to take care of finding specific sentences from 
+            // this.props.showNews.content and change the color.
+        })
+       }
     }
     
     render(){
@@ -134,12 +185,43 @@ class NewsShow extends Component {
                 {this.props.showNews.author === null ? null : <h2>Author: {this.props.showNews.author}</h2>}
                 <h3>Description: {this.props.showNews.description}</h3>
 
-                <h4 style={{'color':'red'}}>{this.state.selectedSentence}</h4>
+                {
+                this.props.allScrapbooknews.find(news => {return news.news_id === this.props.showNews.id}) !== undefined ? 
+                <p onMouseUp={() => this.getSelection()}>
+                    {this.props.showNews.content}
+                    {this.handleRenderHighlights()}
+                </p>
+                :
                 <p onMouseUp={() => this.getSelection()}>{this.props.showNews.content}</p>
-                
+                }
+
                 <h4>Published at: {this.props.showNews.publishedAt ? this.props.showNews.publishedAt.split("T")[0].split("-").join(" ") : null}</h4>
                 <button onClick={()=> window.open(`${this.props.showNews.url}`, "_blank")}>Link to this news</button>
+                <br/>
+                <br/>
+
+                <hr/>
+
+                <form onSubmit={(e) => this.handleSaveHighlight(e, this.props.showNews.content)}>
+                    <label htmlFor="highlight">Highlight: </label>
+                    <select onChange={(e) => this.colorChange(e)} value={this.state.color}>
+                        <option value="none">-------</option>
+                        <option value="blue">Blue</option>
+                        <option defaultValue="decScore">Red</option>
+                    </select>
+                        <br/>
+                    <input type="submit" value="Save Selected Highlight" />
+                </form>
+                <h2>Selected Sentence: </h2>
+                <h4 style={{'color':`${this.state.color}`}}>{this.state.selectedSentence}</h4>
+
+
+                <br/>
+
                 </div>
+    
+                <br/>
+
                 <form className="notes-form" onSubmit={(e) => {this.handlePostNotes(e)}}>
                     <label>Notes: </label><br/>
                     ​<textarea id="txtArea" rows="10" cols="58" onChange={(e) => this.handleNotesChange(e)} value={this.state.content}></textarea>
@@ -152,9 +234,8 @@ class NewsShow extends Component {
                         {this.handleRenderNotes()}
                     </ul>
                 : 
-                console.log('No Notes')
+                null
                 }
-
             </div>
         )
       }

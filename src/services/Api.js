@@ -104,7 +104,7 @@ export default {
             },
             body: JSON.stringify(bodyObj)
         }
-        return fetch('http://localhost:3001/notes', reqObj)
+        return fetch(`${API_URL}notes`, reqObj)
         .then(res => res.json())
     },
     handleDeleteNote: (noteId) => {
@@ -116,5 +116,17 @@ export default {
             }
         }
         return fetch(`${API_URL}notes/${noteId}`, reqObj)
+    },
+    handlePostReqHighlight: (bodyObj) => {
+        const reqObj = {
+            method: 'POST',
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem("user")}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(bodyObj)
+        }
+        return fetch(`${API_URL}highlights`, reqObj)
+        .then(res => res.json())
     }
 }
