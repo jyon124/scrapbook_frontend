@@ -136,8 +136,6 @@ class NewsShow extends Component {
         } else if (!this.state.selectedSentence){
             alert('Please Select the sentences')
         } else {
-        console.log('**Selected**',this.state.selectedSentence, '==========',this.state.color,'===========')
-        // console.log('##Content##', content)
         this.handlePostHighlights(e);
         }
     }
@@ -166,6 +164,11 @@ class NewsShow extends Component {
        }
     }
 
+    // Second Time or Initially applied Highlight in sentence.
+    // If Saved sentence render faster than this function, it starts counting <span> as well so, 
+    // highlight wrong spot.
+
+    // and if user continuously apply highlight, it automatically remove first one and apply only last one.
     handleApplySpan(highlight, content){
         let highlightSplit = highlight.sentence.split('');
         let contentSplit = content.split('');
@@ -181,13 +184,15 @@ class NewsShow extends Component {
           }
           if (highlightSplit.length === j){
             last = i+2;
-            start = last - highlightSplit.length-1;
+            start = last - highlightSplit.length-2;
             contentSplit.splice(start, 0, `<span style="color: red">`)
             contentSplit.splice(last, 0, '</span>')
             let joinedContent = contentSplit.join('')
             let p = document.querySelector('.content');
             console.log(joinedContent)
-            return setTimeout(()=> {p.innerHTML = `${joinedContent}`}, 300);
+            if(p !== null){
+                return setTimeout(()=> {p.innerHTML = `${joinedContent}`}, 300);
+            }
           }
         }
     }
