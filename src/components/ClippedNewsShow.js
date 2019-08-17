@@ -151,22 +151,16 @@ class NewsShow extends Component {
             color: this.state.color
         }
         Api.handlePostReqHighlight(bodyObj)
-        .then(highlighted => {
-            console.log(highlighted)
-        })
-        this.setState({
-            sentence: '',
-            color: ''
-        })
+        .then(highlighted => {console.log(highlighted)})
+        this.props.history.push('/scrapbooks')
     }
 
     handleRenderHighlights = (content) => {
         const scrapbooknews = this.props.allScrapbooknews.find(news => {return news.news_id === this.props.showNews.id})
-        console.log("### Scrapbooknews => ",scrapbooknews)
         if (scrapbooknews.highlights.length > 0){
         return scrapbooknews.highlights.map(highlight => {
             this.handleApplySpan(highlight, content);
-        })
+            })
        } else {
            return scrapbooknews.news.content
        }
@@ -175,44 +169,41 @@ class NewsShow extends Component {
     handleApplySpan(highlight, content){
         let highlightSplit = highlight.sentence.split('');
         let contentSplit = content.split('');
-        if (highlightSplit.length >= 3) {
-            let start = 0
-            let finish = 0;
-            for (let i = 0, j = 0; i < contentSplit.length; i++) {
-              let desired = highlightSplit[j];
-              let current = contentSplit[i];
-              if (current !== desired) {
-                let j = 0;
-                let start = 0; 
-              }
-              if (j === highlightSplit.length-1) {
-                finish = i;
-                console.log('=======', highlight.color)
-                contentSplit.splice(start-1, 0, `<span style="color: red">`)
-                contentSplit.splice(i+1, 0, '</span>')
-                let joinedContent = contentSplit.join('')
-                console.log("@@@@ its joined Content @@@@ =>",joinedContent)
-                let p = document.querySelector('.content');
-                console.log("@@@@ its P @@@@ =>",p)
-                if (p === null){
-                    return content;
-                } else {
-                return setTimeout(()=> {p.innerHTML = `${joinedContent}`}, 300);
-                }
-              }
-              if (current === desired) {
-                if (start === 0) start = i;
-                j++;
-              }
-            }
-            return [start, finish];
+        let start = 0;
+        let last = 0;
+        for (let i = 0, j = 0; i < contentSplit.length-1; i++){
+          if (highlightSplit[j] === content[i]){
+            j++;
+            start = i;
+          } else {
+            let j = 0;
+            start = 0;
           }
-          return false;
+          if (highlightSplit.length === j){
+            last = i+2;
+            start = last - highlightSplit.length-1;
+            contentSplit.splice(start, 0, `<span style="color: red">`)
+            contentSplit.splice(last, 0, '</span>')
+            let joinedContent = contentSplit.join('')
+            let p = document.querySelector('.content');
+            console.log(joinedContent)
+            return setTimeout(()=> {p.innerHTML = `${joinedContent}`}, 300);
+          }
+        }
+    }
+
+    contentExists = () => {
+        const check = document.querySelector('.content');
+        if (check !== null){
+           const checkInner = check.innerText;
+           return checkInner
+        }
     }
     
     render(){
         return (
             <div className="scrapbooknews-display">
+                {/* {this.contentExists() ? this.contentExists() : false} */}
                 {this.props.scrapbookContainer.id ? this.getAllScrapbook(this.props.scrapbookContainer.id) : null}
                 {this.props.getUser.id ? this.initializeScrapbook(this.props.getUser.id) : null}
                 <img className="scrapbooknews-img" src={this.props.showNews.urlToImage} alt="news display" />
@@ -230,7 +221,9 @@ class NewsShow extends Component {
                     {this.handleRenderHighlights(this.props.showNews.content)}
                 </p>
                 :
-                <p className="content" onMouseUp={() => this.getSelection()}>{this.props.showNews.content}</p>
+                <p className="content" onMouseUp={() => this.getSelection()}>
+                    {this.props.showNews.content}
+                </p>
                 }
 
                 <h4>Published at: {this.props.showNews.publishedAt ? this.props.showNews.publishedAt.split("T")[0].split("-").join(" ") : null}</h4>
