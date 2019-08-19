@@ -64,30 +64,50 @@ class NewsShow extends Component {
 
     render(){
         return (
-            <div className="news-display">
+            <div className="showNews-container">
                 {this.props.showNews.id ?
-            <div>
-                {this.props.getUser.id ? this.initializeScrapbook(this.props.getUser.id) : null}
-                <img src={this.props.showNews.urlToImage} alt="news display" width="800em" />
-                <br/>
-                {this.handleSaveBtnState().length > 0 ? 
-                <div>Saved</div>
-                :
-                <button onClick={() => this.handleFavorite(this.props.showNews.id, this.props.scrapbookContainer.id)}>Save</button>
-                }
-                <h1>Title: {this.props.showNews.title}</h1>
-                <h2>Category: {this.props.showNews.category}</h2>
-                {this.props.showNews.author === null ? null : <h2>Author: {this.props.showNews.author}</h2>}
-                <h3>Description: {this.props.showNews.description}</h3>
-                <p className="news-content">{this.props.showNews.content}</p>
-                <h4>Published at: {this.props.showNews.publishedAt ? this.props.showNews.publishedAt.split("T")[0].split("-").join(" ") : null}</h4>
-                <button onClick={()=> window.open(`${this.props.showNews.url}`, "_blank")}>Link to this news</button>
-                <br/><br/><br/>
+            <div className="newspaper">
+            <div className="head">
+                <div className="headerobjectswrapper">
+                    {this.props.getUser.id ? this.initializeScrapbook(this.props.getUser.id) : null}
+                    <header>{this.props.showNews.category.charAt(0).toUpperCase() + this.props.showNews.category.slice(1)} Times</header>
+                </div>
+                <div className="subhead">{this.props.showNews.publishedAt ? this.props.showNews.publishedAt.split("T")[0].split("-").join(" ") : null}</div>
+            </div>
+            <div className="content">
+                <div className="collumns">
+                    <div className="collumn">
+                        <div className="head"><span className="headline hl3">{this.props.showNews.title}</span>
+                            <p>
+                               <span className="headline hl4">
+                                    {this.props.showNews.author === null ? null : <span className="author">{this.props.showNews.author}</span>}
+                               </span>
+                            </p>
+                        </div>
+                        <figure className="figure">
+                           <img className="media" src={this.props.showNews.urlToImage} alt="news display" />
+                        </figure>
+                        <p>
+                           <i>{this.props.showNews.description}</i>
+                        </p>
+                        <p className="news-content">
+                           {this.props.showNews.content}
+                        </p>
+                    </div>
+                </div>
+            </div>
+            {
+            this.handleSaveBtnState().length > 0 ? 
+            <button className="saved-btn">Saved</button>
+            :
+            <button className="save-btn" onClick={() => this.handleFavorite(this.props.showNews.id, this.props.scrapbookContainer.id)}>Save</button>
+            }
+            <button className="link-btn" onClick={()=> window.open(`${this.props.showNews.url}`, "_blank")}>Link to this news</button>
             </div>
             :
-            null
-                }
-            </div>
+             null
+            }
+        </div>
         )
       }
     }

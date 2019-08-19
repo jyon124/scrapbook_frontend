@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
 import '../App.css';
 import { connect } from 'react-redux';
+import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import Navbar from './Navbar';
+import Table from './Table';
 import Login from './Login';
 import Signin from './Signin';
 import NewsList from './NewsList';
-import { clearAllState } from '../actions'
-import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import NewsShow from './NewsShow';
 import ClippedNewsShow from './ClippedNewsShow';
 import ScrapBooksContainer from '../containers/scrapbooksContainer'
+import { clearAllState } from '../actions'
 
 class App extends Component {
 
@@ -44,6 +45,9 @@ render(){
           handleLogout={() => this.handleLogout()}
         />
             <Switch>
+            <Route exact path="/table" render={(routeProps) => {
+              return <Table {...routeProps} handleLogin={(user) => {this.handleLogin(user)}} />
+            }} />
             <Route exact path="/login" render={(routeProps) => {
               return <Login {...routeProps} handleLogin={(user) => {this.handleLogin(user)}} />
             }} />

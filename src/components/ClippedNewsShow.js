@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import {connect} from 'react-redux';
 import { showNews, fetchUser, fetchScrapbook, postClip, removeTile, fetchAllScrapbooknewsAction, deleteNoteReq } from '../actions';
 import ReactDOM from 'react-dom';
+import { fail } from 'assert';
 
 
 class NewsShow extends Component {
@@ -12,7 +13,8 @@ class NewsShow extends Component {
         this.state = {
             content: '',
             selectedSentence: '',
-            color: ''
+            color: '',
+            joinedContent: ""
         }
     }
 
@@ -155,21 +157,21 @@ class NewsShow extends Component {
 
     handleRenderHighlights = (content) => {
         const scrapbooknews = this.props.allScrapbooknews.find(news => {return news.news_id === this.props.showNews.id})
+        let myContent = content
         if (scrapbooknews.highlights.length > 0){
-        return scrapbooknews.highlights.map(highlight => {
-            this.handleApplySpan(highlight, content);
-            })
+        scrapbooknews.highlights.forEach(highlight => {
+           myContent = this.handleApplySpan(highlight, myContent);
+        })
+        let p = document.querySelector('.please');
+        setTimeout(()=> {p.innerHTML = `${myContent}`}, 300);
        } else {
            return scrapbooknews.news.content
        }
     }
 
-    // Second Time or Initially applied Highlight in sentence.
-    // If Saved sentence render faster than this function, it starts counting <span> as well so, 
-    // highlight wrong spot.
-
-    // and if user continuously apply highlight, it automatically remove first one and apply only last one.
     handleApplySpan(highlight, content){
+        
+        let failCount = 0;
         let highlightSplit = highlight.sentence.split('');
         let contentSplit = content.split('');
         let start = 0;
@@ -185,30 +187,23 @@ class NewsShow extends Component {
           if (highlightSplit.length === j){
             last = i+2;
             start = last - highlightSplit.length-2;
-            contentSplit.splice(start, 0, `<span style="color: red">`)
-            contentSplit.splice(last, 0, '</span>')
-            let joinedContent = contentSplit.join('')
-            let p = document.querySelector('.content');
-            console.log(joinedContent)
+            let p = document.querySelector('.please');
             if(p !== null){
-                return setTimeout(()=> {p.innerHTML = `${joinedContent}`}, 300);
+                contentSplit.splice(start, 0, `<span style="color: red">`)
+                contentSplit.splice(last, 0, '</span>')
+                content = contentSplit.join('')
+                return content
+            } else {
+                failCount += 1;
+                console.log('p finding fail count:', failCount, p)
             }
           }
-        }
-    }
-
-    contentExists = () => {
-        const check = document.querySelector('.content');
-        if (check !== null){
-           const checkInner = check.innerText;
-           return checkInner
         }
     }
     
     render(){
         return (
             <div className="scrapbooknews-display">
-                {/* {this.contentExists() ? this.contentExists() : false} */}
                 {this.props.scrapbookContainer.id ? this.getAllScrapbook(this.props.scrapbookContainer.id) : null}
                 {this.props.getUser.id ? this.initializeScrapbook(this.props.getUser.id) : null}
                 <img className="scrapbooknews-img" src={this.props.showNews.urlToImage} alt="news display" />
@@ -219,14 +214,14 @@ class NewsShow extends Component {
                 <h2>Category: {this.props.showNews.category}</h2>
                 {this.props.showNews.author === null ? null : <h2>Author: {this.props.showNews.author}</h2>}
                 <h3>Description: {this.props.showNews.description}</h3>
-
+                
                 {
                 this.props.allScrapbooknews.find(news => {return news.news_id === this.props.showNews.id}) !== undefined ? 
-                <p className="content" onMouseUp={() => this.getSelection()}>
+                <p className="please" onMouseUp={() => this.getSelection()}>
                     {this.handleRenderHighlights(this.props.showNews.content)}
                 </p>
                 :
-                <p className="content" onMouseUp={() => this.getSelection()}>
+                <p className="please" onMouseUp={() => this.getSelection()}>
                     {this.props.showNews.content}
                 </p>
                 }

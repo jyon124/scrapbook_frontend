@@ -14,6 +14,7 @@ const Navbar = props => {
                 <span></span>
                 <span></span>
                 <ul id="menu">
+                  <Link to="/table"><li>Table</li></Link>
                   <Link to="/newslist"><li>News</li></Link>
                   <Link to="/scrapbooks/"><li>Scrapbook</li></Link>
                   <Link to="/login" onClick={() => {props.handleLogout()}}><li>Log out</li></Link>
