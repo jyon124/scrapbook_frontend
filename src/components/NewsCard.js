@@ -31,7 +31,7 @@ render(){
     return(
       <div className="my-2 mx-auto p-relative bg-white shadow-1 blue-hover card">
 
-        <img src={this.props.news.urlToImage} alt="Man with backpack" className="d-block w-full" />
+        <img src={this.props.news.urlToImage} alt="news" className="d-block w-full" />
       <div className="px-2 py-2">
         <p className="mb-0 small font-weight-medium text-uppercase mb-1 text-muted lts-2px">
           {this.props.news.category.charAt(0).toUpperCase() + this.props.news.category.slice(1)}

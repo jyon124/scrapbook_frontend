@@ -84,20 +84,22 @@ class NewsShow extends Component {
     handleRenderNewNote = (note) => {
         const noteUl = document.getElementById('notes');
         const li = document.createElement('li');
-        li.className = 'single-note-content';
+        li.className = 'single-note';
         const btn = document.createElement('button');
-        btn.innerText = 'x';
+        btn.className = 'delete-note'
+        btn.innerText = '✄';
         btn.addEventListener('click', (e)=> this.handleDeleteNote(e, note.id));
         li.innerText = note.content;
         li.append(btn);
         noteUl.append(li);
     }
+    
 
     handleRenderNotes = () => {
         const scrapbooknews = this.props.allScrapbooknews.find(news => {return news.news_id === this.props.showNews.id})
         if (scrapbooknews.notes !== undefined){
         return scrapbooknews.notes.map(note => {
-            return <li key={note.id} className="single-note-content">{note.content}<button onClick={(e) => this.handleDeleteNote(e, note.id)}>x</button></li>
+            return <li key={note.id} className="single-note"><button className='delete-note' onClick={(e) => this.handleDeleteNote(e, note.id)}>✄</button>{note.content}</li>
         })
        }
     }
@@ -129,14 +131,12 @@ class NewsShow extends Component {
 
     handleSaveHighlight = (e, content) => {
         e.preventDefault();
-        if(this.state.selectedSentence.length < 3){
-            alert('Highlighted sentence has to be longer than three characters.')
-        } else if(!this.state.selectedSentence && !this.state.color || this.state.color === 'none'){
-            alert('Please Select the sentences and color')
-        } else if (!this.state.color || this.state.color === 'none'){
-            alert('Please Select the color')
-        } else if (!this.state.selectedSentence){
-            alert('Please Select the sentences')
+        if(!this.state.selectedSentence){
+            alert('Please select sentences.');
+        } else if(this.state.selectedSentence.length < 3){
+            alert('Please select sentences longer than 3 characters.');
+        } else if (!this.state.color) {
+            alert('Please select the color.');
         } else {
         this.handlePostHighlights(e);
         }
@@ -157,20 +157,22 @@ class NewsShow extends Component {
 
     handleRenderHighlights = (content) => {
         const scrapbooknews = this.props.allScrapbooknews.find(news => {return news.news_id === this.props.showNews.id})
-        let myContent = content
+        let myContent = content;
         if (scrapbooknews.highlights.length > 0){
         scrapbooknews.highlights.forEach(highlight => {
            myContent = this.handleApplySpan(highlight, myContent);
         })
         let p = document.querySelector('.please');
-        setTimeout(()=> {p.innerHTML = `${myContent}`}, 300);
+        if(p){
+        setTimeout(()=> {p.innerHTML = `${myContent}`}, 200);
+        }
        } else {
            return scrapbooknews.news.content
        }
     }
 
     handleApplySpan(highlight, content){
-        
+        if(content){
         let failCount = 0;
         let highlightSplit = highlight.sentence.split('');
         let contentSplit = content.split('');
@@ -189,7 +191,7 @@ class NewsShow extends Component {
             start = last - highlightSplit.length-2;
             let p = document.querySelector('.please');
             if(p !== null){
-                contentSplit.splice(start, 0, `<span style="color: red">`)
+                contentSplit.splice(start, 0, `<span style="background-color: rgba(222,255,0,0.75)">`)
                 contentSplit.splice(last, 0, '</span>')
                 content = contentSplit.join('')
                 return content
@@ -200,72 +202,85 @@ class NewsShow extends Component {
           }
         }
     }
+    }
+
     
     render(){
         return (
             <div className="scrapbooknews-display">
+                <div id="book-wrapper">
                 {this.props.scrapbookContainer.id ? this.getAllScrapbook(this.props.scrapbookContainer.id) : null}
                 {this.props.getUser.id ? this.initializeScrapbook(this.props.getUser.id) : null}
-                <img className="scrapbooknews-img" src={this.props.showNews.urlToImage} alt="news display" />
-                <br/>
-                <button onClick={() => this.handleUnfavorite(this.props.showNews.id, this.props.scrapbookContainer.id)}>UnSave</button>
-                <div className="news-content">
-                <h1>Title: {this.props.showNews.title}</h1>
-                <h2>Category: {this.props.showNews.category}</h2>
-                {this.props.showNews.author === null ? null : <h2>Author: {this.props.showNews.author}</h2>}
-                <h3>Description: {this.props.showNews.description}</h3>
-                
-                {
-                this.props.allScrapbooknews.find(news => {return news.news_id === this.props.showNews.id}) !== undefined ? 
-                <p className="please" onMouseUp={() => this.getSelection()}>
-                    {this.handleRenderHighlights(this.props.showNews.content)}
-                </p>
-                :
-                <p className="please" onMouseUp={() => this.getSelection()}>
-                    {this.props.showNews.content}
-                </p>
-                }
+                    <div id="container">
+                        <section className="open-book">
 
-                <h4>Published at: {this.props.showNews.publishedAt ? this.props.showNews.publishedAt.split("T")[0].split("-").join(" ") : null}</h4>
-                <button onClick={()=> window.open(`${this.props.showNews.url}`, "_blank")}>Link to this news</button>
-                <br/>
-                <br/>
+                            <header>
+                            <h1>{this.props.showNews.category}</h1>
+                            <h6>{this.props.getUser.name}</h6>
+                            </header>
 
-                <hr/>
+                            <article>
+                            <h2 className="chapter-title">{this.props.showNews.title}</h2>
+                            <img className="scrapbooknews-img" src={this.props.showNews.urlToImage} alt="news display" /><br/>
+                            <button onClick={() => this.handleUnfavorite(this.props.showNews.id, this.props.scrapbookContainer.id)}>UnSave</button><br/><br/>
 
-                <form onSubmit={(e) => this.handleSaveHighlight(e, this.props.showNews.content)}>
-                    <label htmlFor="highlight">Highlight: </label>
-                    <select onChange={(e) => this.colorChange(e)} value={this.state.color}>
-                        <option value="none">-------</option>
-                        <option defaultValue="red">Red</option>
-                    </select>
-                        <br/>
-                    <input type="submit" value="Save Selected Highlight" />
-                </form>
-                <h2>Selected Sentence: </h2>
-                <h4 style={{'color':`${this.state.color}`}}>{this.state.selectedSentence}</h4>
+                            {
+                            this.props.allScrapbooknews.find(news => {return news.news_id === this.props.showNews.id}) !== undefined ? 
+                            <p className="please" onMouseUp={() => this.getSelection()}>
+                            {this.handleRenderHighlights(this.props.showNews.content)}
+                            </p>
+                            :
+                            <p className="please" onMouseUp={() => this.getSelection()}>
+                            {this.props.showNews.content}
+                            </p>
+                            }
 
+                            {this.props.showNews.author === null ? null : <h2>by {this.props.showNews.author}</h2>}
 
-                <br/>
+                            <dl>
+                            <dd>
+                            <em>Selected Sentence:</em><br/>
+                            <form onSubmit={(e) => this.handleSaveHighlight(e, this.props.showNews.content)}>
+                            <label htmlFor="highlight">Highlight: </label>
+                            <select onChange={(e) => this.colorChange(e)} value={this.state.color}>
+                            <option defaultValue="none">-------</option>
+                            <option value="yellow">Yellow</option>
+                            </select>
+                            <br/>
+                            <input type="submit" value="Save Selected Highlight" />
+                            </form>
+                            <h4 style={{'backgroundColor':`${this.state.color}`}}>{this.state.selectedSentence}</h4>
+                            </dd>
+                            </dl>
+                            </article>
 
+                            <footer>
+                            <ol id="page-numbers">
+                            <li>1</li>
+                            <li>2</li>
+                            </ol>
+                            </footer>
+
+                        </section>
+                    </div>
                 </div>
-    
-                <br/>
-
+                
+                <div className="note-container">
                 <form className="notes-form" onSubmit={(e) => {this.handlePostNotes(e)}}>
                     <label>Notes: </label><br/>
-                    ​<textarea id="txtArea" rows="10" cols="58" onChange={(e) => this.handleNotesChange(e)} value={this.state.content}></textarea>
+                    ​<textarea id="txtArea" rows="10" cols="40" onChange={(e) => this.handleNotesChange(e)} value={this.state.content}></textarea>
                     <br/>
                     <input type="submit" value="Submit"/>
                 </form>
                 {
                 this.props.allScrapbooknews.find(news => {return news.news_id === this.props.showNews.id}) !== undefined ? 
-                    <ul id="notes" className="note">
+                    <ul id="notes" className="notes">
                         {this.handleRenderNotes()}
                     </ul>
                 : 
                 null
                 }
+                </div>
             </div>
         )
       }
