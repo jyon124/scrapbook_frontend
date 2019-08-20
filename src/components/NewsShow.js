@@ -67,35 +67,37 @@ class NewsShow extends Component {
             <div className="showNews-container">
                 {this.props.showNews.id ?
             <div className="newspaper">
+            <figure className="figure">
+                <img className="media" src={this.props.showNews.urlToImage} alt="news display" />
+            </figure>
             <div className="head">
                 <div className="headerobjectswrapper">
                     {this.props.getUser.id ? this.initializeScrapbook(this.props.getUser.id) : null}
-                    <header>{this.props.showNews.category.charAt(0).toUpperCase() + this.props.showNews.category.slice(1)} Times</header>
+                    <span className="headline news-title">{this.props.showNews.title}</span>
+                    <header className="showNews-category">{this.props.showNews.category.toUpperCase()}</header>
                 </div>
-                <div className="subhead">{this.props.showNews.publishedAt ? this.props.showNews.publishedAt.split("T")[0].split("-").join(" ") : null}</div>
             </div>
             <div className="content">
                 <div className="collumns">
                     <div className="collumn">
-                        <div className="head"><span className="headline hl3">{this.props.showNews.title}</span>
-                            <p>
+                        <div className="head">
+                            <div>
                                <span className="headline hl4">
-                                    {this.props.showNews.author === null ? null : <span className="author">{this.props.showNews.author}</span>}
+                                    {this.props.showNews.author === null ? null : <span className="author">by {this.props.showNews.author}</span>}
                                </span>
-                            </p>
+                               <div className="subhead">{this.props.showNews.publishedAt ? this.props.showNews.publishedAt.split("T")[0].split("-").join(" ") : null}</div>
+                               <div className="underline-newsShow"></div>
+                            </div>
                         </div>
-                        <figure className="figure">
-                           <img className="media" src={this.props.showNews.urlToImage} alt="news display" />
-                        </figure>
-                        <p>
-                           <i>{this.props.showNews.description}</i>
-                        </p>
                         <p className="news-content">
-                           {this.props.showNews.content}
+                           <span className="initial-letter">{this.props.showNews.content.charAt()}</span>
+                           {this.props.showNews.content.split('').slice(1)} 
                         </p>
                     </div>
                 </div>
             </div>
+
+            <div className="btn-container">
             {
             this.handleSaveBtnState().length > 0 ? 
             <button className="saved-btn">Saved</button>
@@ -103,6 +105,8 @@ class NewsShow extends Component {
             <button className="save-btn" onClick={() => this.handleFavorite(this.props.showNews.id, this.props.scrapbookContainer.id)}>Save</button>
             }
             <button className="link-btn" onClick={()=> window.open(`${this.props.showNews.url}`, "_blank")}>Link to this news</button>
+            </div>
+
             </div>
             :
              null

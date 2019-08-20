@@ -38,8 +38,8 @@ class Login extends React.Component {
                 })
             } else {
                 this.props.handleLogin(data)
-                // this.props.history.push('/newslist')
-                this.props.history.push('/table')
+                this.props.history.push('/newslist')
+                // this.props.history.push('/table')
             }
         })
     }

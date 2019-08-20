@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<!-- saved from url=(0033)http://localhost:3000/newslist/11 -->
+<html lang="en" class="gr__localhost"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <link rel="stylesheet" type="text/css" href="./React App_files/file.css">
+
+    <link rel="manifest" href="http://localhost:3000/manifest.json">
+    <title>React App</title>
+  <style type="text/css">body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}</style><style type="text/css">.nav-bar-container {
+  position: absolute;
+  overflow: hidden;
+}
+
+.nav-bar-container a {
+  /* background-color: darkgrey; */
+  /*  */
+  list-style: none;
+  float: left;
+  /* color: #f2f2f2; */
+  color: lightskyblue;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.nav-bar-container a:hover {
+  border-radius: 8%;
+  /* background-color: #ddd; */
+  color: #FF6347;
+}
+
+.head-img-banner {
+  width: 90em;
+}
+
+/* news card */
+
+body::before,
+body::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+body * {
+  box-sizing: inherit;
+}
+p, h1 {
+  margin: 0; padding: 0;
+}
+
+ body, .text-light-black {
+   color: rgba(0,0,0,0.6);
+}
+.text-black {
+  color: rgba(0,0,0,0.9);
+}
+.text-muted {
+  color: rgba(0, 0, 0, 0.3);
+}
+
+.text-uppercase {
+  font-size: 12px;
+  text-transform: uppercase;
+}
+.ff-serif {
+  font-family: 'Lora', serif;
+}
+
+.font-weight-normal {
+  font-weight: normal;
+}
+.font-weight-medium {
+  font-weight: 500;
+}
+
+.lts-1px {
+   letter-spacing: 1px;
+}
+.lts-2px {
+  letter-spacing: 2px;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.text-center {
+  text-align: center;
+}
+.text-left {
+  text-align: left;
+}
+.text-right {
+  text-align: right;
+}
+
+.d-block {
+  display: block;
+}
+.d-inline-block {
+  display: inline-block;
+}
+
+.p-relative {
+  position: relative;
+}
+.p-absolute {
+  position: absolute
+}
+
+.bg-white {
+  background-color: #fff;
+}
+
+.small {
+  font-size: 0.75rem;
+}
+.card-heading {
+  font-size: 1.4rem;
+  font-family: "Montserrat";
+  font-weight: 700;
+}
+.styled-link {
+  text-decoration: none;
+  outline: none;
+  color: #2196fe;
+  transition: all 0.25s ease-in; 
+}
+.styled-link:hover,
+.styled-link:focus,
+.styled-link:active {
+  color: #536dfe;
+}
+.shadow-1 {
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,0.15);
+}
+.blue-hover {
+  transition: all 0.25s ease-in;
+  border-bottom: 5px solid transparent;
+}
+.blue-hover:hover {
+  transform: translateY(-5px);
+  border: none;
+  border-bottom: 5px solid #2196fe;
+}
+
+.clearfix::before,
+.clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.float-left {
+  float: left;
+}
+
+.float-right{
+  float: right;
+}
+
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+.ml-auto {
+  margin-left: auto;
+}
+.mr-auto {
+  margin-right: auto;
+}
+.mx-0 {
+  margin-left: 0;
+  margin-right: 0;
+}
+.mx-1 {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+.mx-2 {
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+.mx-3 {
+  margin-left: 3rem;
+  margin-right: 3rem;
+}
+
+.my-0 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.my-1 {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+.my-2 {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+.my-3 {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+
+.mt-0 {
+  margin-top: 0;
+}
+.mt-1 {
+  margin-top: 1rem;
+}
+.mt-2 {
+  margin-top: 2rem;
+}
+.mt-3 {
+  margin-top: 3rem;
+}
+
+.mb-0 {
+  margin-bottom: 0;
+}
+.mb-1 {
+  margin-bottom: 1rem;
+}
+.mb-2 {
+  margin-bottom: 2rem;
+}
+.mb-3 {
+  margin-bottom: 3rem;
+}
+
+.ml-0 {
+  margin-left: 0;
+}
+.ml-1 {
+  margin-left: 1rem;
+}
+.ml-2 {
+  margin-left: 2rem;
+}
+.ml-3 {
+  margin-left: 3rem;
+}
+
+.px-0 {
+  padding-left: 0;
+  padding-right: 0;
+}
+.px-1 {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+.px-2 {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+.px-3 {
+  padding-left: 3rem;
+  padding-right: 3rem;
+}
+
+.py-0 {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.py-1 {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+.py-2 {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+.py-3 {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+.pt-0 {
+  padding-top: 0;
+}
+.pt-1 {
+  padding-top: 1rem;
+}
+.pt-2 {
+  padding-top: 2rem;
+}
+.pt-3 {
+  padding-top: 3rem;
+}
+
+.card {
+  -webkit-column-break-inside: avoid;
+	-moz-column-break-inside: avoid;
+  box-sizing: border-box;
+  height: auto;
+  margin: 1em 1em 1em 1em;
+  display: inline-block;
+  width: 300px;
+  overflow: hidden; 
+  border-radius: 1px;
+}
+
+.border-bottom-coverage {
+  border-bottom: lightgrey 1px solid;
+  margin-right: 10em;
+}
+
+.wrapper {
+  -webkit-column-count: 4;
+	-webkit-column-gap: 1px;
+	-webkit-column-fill: auto;
+	-moz-column-count: 4;
+	-moz-column-gap: 1px;
+	-moz-column-fill: auto;
+	column-count: 4;
+	grid-column-gap: 1px;
+	column-gap: 1px;
+	column-fill: auto;
+
+  margin-left: 3em;
+}
+
+.saveTag {
+  float: right;
+  position: absolute;
+  bottom: 0em;
+  left: 2.1em;  
+  transform: scale(0.15);
+}
+
+/* end */
+
+/* News Show */
+
+.showNews-container {
+  letter-spacing: 0.1px;
+  /* padding-left: 2em; */
+  padding-top: 6em;
+  padding-bottom: 3em;
+  margin-left: 17em;
+  margin-right: 17em;
+  box-sizing: border-box;
+  /* border: black 4px solid; */
+}
+
+.media {
+  height: auto;
+  width: 50.6em;
+}
+
+.initial-letter {
+  font-size: 35px;
+  font-weight: 700;
+  line-height: 70px;
+}
+
+.underline-newsShow {
+  border-bottom: lightslategrey 1px solid;
+  margin-left: 3em;
+  margin-right: 7em;
+  margin-top: 1em;
+}
+
+.news-content, .headline, .subhead {
+  margin-top: 15px;
+  margin-left: 3em;
+  margin-right: 3em;
+}
+
+.showNews-category {
+  float: right;
+  margin-top: 2em;
+  margin-right: 10em;
+}
+
+.news-title {
+  color: black;
+  margin-left: 1.8em;
+  font-size: 25px;
+  font-weight: 900;
+}
+
+
+.btn-container {
+  margin-top: 3em;
+  margin-left: 1.6em;
+}
+
+.save-btn, .link-btn {
+  font-size: 0.9em;
+
+  color: #8D8D8D;
+  font-weight: 900;
+  padding: 14px;
+  border: none;
+  border-radius: 4%;
+  margin-left: 1.5em;
+  background-color: #F0F0F0;
+  transition-duration: 0.5s;
+}
+
+.save-btn:hover, .link-btn:hover {
+  color: white;
+  font-weight: 900;
+  padding: 14px;
+  border: none;
+  border-radius: 4%;
+  margin-left: 1.5em;
+  background-color: lightskyblue;
+  transition-duration: 0.5s;
+}
+
+.saved-btn {
+  font-size: 0.9em;
+  font-weight: 900;
+  padding: 14px;
+  border: none;
+  background-color: lightskyblue;
+  color: white;
+  border-radius: 4%;
+  margin-left: 1.5em;
+}
+
+/* end */</style><script charset="utf-8" src="./React App_files/main.bc165e100e2e447c1fb8.hot-update.js"></script><script charset="utf-8" src="./React App_files/main.b76f7980c8255fce056e.hot-update.js"></script><script charset="utf-8" src="./React App_files/main.917cb6e1a578bf9133d4.hot-update.js"></script><script charset="utf-8" src="./React App_files/main.d26c543b2715e2cd98ce.hot-update.js"></script><script charset="utf-8" src="./React App_files/main.c5fed2ced66da4ceab5d.hot-update.js"></script><script charset="utf-8" src="./React App_files/main.54231cd9670b0bc02cd8.hot-update.js"></script><script charset="utf-8" src="./React App_files/main.f337d553e9161992b976.hot-update.js"></script><script charset="utf-8" src="./React App_files/main.910693c45bc1ab3c553a.hot-update.js"></script><script charset="utf-8" src="./React App_files/main.8b304ecd77dc5a0c18db.hot-update.js"></script><script charset="utf-8" src="./React App_files/main.a57bdb5beeb20c07ed56.hot-update.js"></script><script charset="utf-8" src="./React App_files/main.c41c8ee1372d5ec2d88e.hot-update.js"></script><script charset="utf-8" src="./React App_files/main.84873c9ab3f32d390b73.hot-update.js"></script><script charset="utf-8" src="./React App_files/main.6be6dd04d52d69590261.hot-update.js"></script><script charset="utf-8" src="./React App_files/main.d8c4b3e5653bb315eaea.hot-update.js"></script><script charset="utf-8" src="./React App_files/main.2b207ee61b451538d828.hot-update.js"></script><script charset="utf-8" src="./React App_files/main.17df3c74dc28205008a4.hot-update.js"></script><script charset="utf-8" src="./React App_files/main.3b04b9cb1edadb4bd607.hot-update.js"></script><script charset="utf-8" src="./React App_files/main.d11ae6d0a4fb64b84eec.hot-update.js"></script><script charset="utf-8" src="./React App_files/main.5549340cefe6079a3149.hot-update.js"></script><script charset="utf-8" src="./React App_files/main.a061cd90e2d4d0698191.hot-update.js"></script><script charset="utf-8" src="./React App_files/main.9bdee4fd4322dd9ebf89.hot-update.js"></script><script charset="utf-8" src="./React App_files/main.a024df0787bf5c05853c.hot-update.js"></script><script charset="utf-8" src="./React App_files/main.053d9af6efee8b4e82cc.hot-update.js"></script><script charset="utf-8" src="./React App_files/main.2d315eff3f38d9b29a9f.hot-update.js"></script><script charset="utf-8" src="./React App_files/main.42c960b106c646103d43.hot-update.js"></script><script charset="utf-8" src="./React App_files/main.282f1d6691fd2ff2dd57.hot-update.js"></script><script charset="utf-8" src="./React App_files/main.4705271b6d05385494c2.hot-update.js"></script><script charset="utf-8" src="./React App_files/main.d3cb7c1dd5b1bc25d95f.hot-update.js"></script><script charset="utf-8" src="./React App_files/main.8a1e03d3cb0d4e874e4a.hot-update.js"></script><script charset="utf-8" src="./React App_files/main.7d3fdf2cf79a38847e33.hot-update.js"></script><script charset="utf-8" src="./React App_files/main.c47e811e327ce2449caf.hot-update.js"></script></head>
+  <body data-gr-c-s-loaded="true" cz-shortcut-listen="true">
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"><div><div class="header"><div class="nav-bar-container"><nav role="navigation"><div id="menuToggle"><ul id="menu"><a class="nav-column" href="http://localhost:3000/newslist"><li>News</li></a><a class="nav-column" href="http://localhost:3000/scrapbooks/"><li>Scrapbook</li></a><a class="nav-column" href="http://localhost:3000/login"><li>Log out</li></a></ul></div></nav></div></div><div class="showNews-container"><div class="newspaper"><figure class="figure"><img class="media" src="./React App_files/Phishing__.jpg" alt="news display"></figure><div class="head"><div class="headerobjectswrapper" style="
+    padding-bottom: 20px;
+"><span class="headline news-title">New Trojan Records Your Screen When on Sex Related Sites</span><header class="showNews-category">Bitcoin</header></div></div><div class="content"><div class="collumns"><div class="collumn"><div class="head"><div><span class="headline hl4"><span class="author">by Lawrence Abrams</span></span><div class="subhead">2019 08 08</div><div class="underline-newsShow"></div></div></div><p class="news-content"><span class="initial-letter">A</span> new Spambot Trojan targeting French people has been discovered that records a victim's screen when they are using sites related to sex, pornography, and known pornographic sites.
+        We have all heard about the fake sextortion email scams that tell recipients that they have installed software that records them while you are on adult web sites. After a year of these emails being sent out, many people have come to recognize them as a scam.
+        In a new report by released today by ESET, a new Spambot is about to make things confusing. That is because it has been discovered to record your screen while you are on porn sites or pages with keywords related to sex. A new Spambot Trojan targeting French people has been discovered 
+        that records a victim's screen when they are using sites related to sex, pornography, and known pornographic sites.
+        We have all heard about the fake sextortion email scams that tell recipients that they have installed software that records them while you are on adult web sites. After a year of these emails being sent out, many people have come to recognize them as a scam.
+        In a new report by released today by ESET, a new Spambot is about to make things confusing. That is because it has been discovered to record your screen while you are on porn sites or pages with keywords related to sex. In May 2019, ESET researchers observed a spike in ESET telemetry 
+        data regarding malware targeting France, ESET said in a new report. After further investigations, we identified malware 
+        that distributes various types of spam. One of them is leading to a survey that redirects to a dodgy smartphone promotion while the other is a sextortion campaign. The spam targets the users of Orange S.A., a French ISP. We notified them before the release of this publication.
+        The Varenyky spambot Trojan is distributed through malspam emails that pretend to be invoices or bills. These emails are worded to try and convince the user to open malicious Word attachments. When a user opens the attachment and enables its content, a Word macro will check to see if the 
+        language configured in Windows is French (fr-FR), and if not, will not install any malware.
+        On the other hand, if the computer is configured to that language, it will download the spambot and execute it.  The downloaded malware also has a language check, but this time it is looking only for the English or Russian language, and if detected, will terminate the malware with the following error. 
+        If the malware passes the language checks, it will now be configured to start automatically on the victim's computer.
+        Once running, the Trojan will connect back to it's command &amp; control server over Tor to get instructions on what spam to send.  These spam emails target customers of the French ISP Orange telecommunications company and contain links that redirect recipients to scam sites like the ones below. 
+        It will also routinely connect to the malware's command &amp; control servers over Tor where it will get commands to execute or other programs to download. According to the ESET researchers, they have seen this Trojan having the ability to execute batch files, executables, and PowerShell commands. 
+        Some variants will also download NirSoft’s legitimate WebBrowserPassView and Mail PassView tools in order to steal browser and email account passwords, which are then sent back to the C2. At one time the Trojan included the feature to monitor your web browser for browser window titles related 
+        to sex such as sexe, xxx, or webcam, or pornhub, as well as words related to bitcoin and hitler. If it detected you were browsing a web page whose title contained one of the above words, it would use a downloaded FFmpeg executable to record your screen. The recorded videos would then be sent 
+        back to its command &amp; control server via a downloaded Tor client.
+        It is not known if these videos were being created for the attacker's curiosity or if there were plans on using it for sextortion emails against the victims.
+        These videos could have been used for convincing sexual blackmail; a practice called sextortion. It’s unknown if these videos were recorded out of curiosity by the author(s) of the spambot or with an intention to monetize them through sextortion.
+        Although the Varenyky Trojan had the ability to record these videos, ESET has seen no indication that they have been used in an actual sextortion campaign against the victim or others.</p></div></div></div><div class="btn-container"><button class="save-btn">Save</button><button class="link-btn">Link to this news</button></div></div></div></div></div>
+  <script src="./React App_files/bundle.js"></script><script src="./React App_files/1.chunk.js"></script><script src="./React App_files/main.chunk.js"></script><script src="./React App_files/main.ecf983c33cb09a2c689f.hot-update.js"></script>
+
+</body><span class="gr__tooltip"><span class="gr__tooltip-content"></span><i class="gr__tooltip-logo"></i><span class="gr__triangle"></span></span></html>

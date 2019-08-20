@@ -9,30 +9,21 @@ const Navbar = props => {
           localStorage.getItem('user') ? 
             <nav role="navigation">
               <div id="menuToggle">
-                <input type="checkbox" />
-                <span></span>
-                <span></span>
-                <span></span>
                 <ul id="menu">
-                  <Link to="/table"><li>Table</li></Link>
-                  <Link to="/newslist"><li>News</li></Link>
-                  <Link to="/scrapbooks/"><li>Scrapbook</li></Link>
-                  <Link to="/login" onClick={() => {props.handleLogout()}}><li>Log out</li></Link>
+                  <Link to="/newslist" className="nav-column"><li>News</li></Link>
+                  <Link to="/scrapbooks/" className="nav-column"><li>Scrapbook</li></Link>
+                  <Link to="/login" className="nav-column" onClick={() => {props.handleLogout()}}><li>Log out</li></Link>
                 </ul>
               </div>
             </nav>
           :
           <nav role="navigation">
             <div id="menuToggle">
-              <input type="checkbox" />
-              <span></span>
-              <span></span>
-              <span></span>
               <ul id="menu">
-                <Link to="/login" className="nav">
+                <Link to="/login" className="nav-enter">
                   <li>Login</li>
                 </Link>
-                <Link to="/signin" className="nav">
+                <Link to="/signin" className="nav-enter">
                   <li>Signup</li>
                 </Link>
               </ul>

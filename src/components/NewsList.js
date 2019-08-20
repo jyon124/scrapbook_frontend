@@ -69,11 +69,11 @@ class NewsList extends React.Component {
             <Route path='/newslist' render={()=> {
                 return <div className="newslist-container">
                 <div className="head-img-container">
-                    <img className="head-img-banner" src={headerImg} />
+                    <img className="head-img-banner" src="http://cdn.jevelin.shufflehound.com/wp-content/uploads/sites/11/2016/11/Blog_title_image.jpg" />
                  </div>
                      {this.props.getUser.id ? this.initializeScrapbook(this.props.getUser.id) : null}
                 {this.props.scrapbookContainer.id ? this.getAllScrapbook(this.props.scrapbookContainer.id) : null}
-                <h1 className="title">News</h1>
+                {/* <h1 className="title">News</h1> */}
                 <div className="underline"></div>
                     {this.props.loader ? 
                     <h1>Loading...</h1> 
