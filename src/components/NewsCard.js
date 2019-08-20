@@ -43,17 +43,16 @@ render(){
           {this.props.news.description}
         </p>
         <div className="border-bottom-coverage">
-
+        {
+        this.handleSavedState() ? 
+        <div className="saveTag">❤️</div>
+        :
+        <div className="saveTag">♡</div>
+        }
         </div>
       </div>
         <Link to={`/newslist/${this.props.news.id}`} className="text-uppercase d-inline-block font-weight-medium lts-2px ml-2 mb-2 text-center styled-link">
           View Full Coverage
-          {
-        this.handleSavedState() ? 
-        <img className="saveTag" src="https://cdn1.iconfinder.com/data/icons/instagram-ui-glyph/48/Sed-05-512.png" />
-        :
-        null
-        }
         </Link>
       </div>
     )

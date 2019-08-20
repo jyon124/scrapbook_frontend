@@ -87,19 +87,44 @@ class NewsShow extends Component {
         li.className = 'single-note';
         const btn = document.createElement('button');
         btn.className = 'delete-note'
-        btn.innerText = '✄';
+        btn.innerText = '📍';
         btn.addEventListener('click', (e)=> this.handleDeleteNote(e, note.id));
         li.innerText = note.content;
         li.append(btn);
         noteUl.append(li);
     }
-    
+
+    handleDisplayNote = (e, note) => {
+        if (e.target.parentNode.style.overflow === "visible"){
+            e.target.parentNode.style.overflow = "hidden";
+            e.target.parentNode.style.height = "160px";
+            e.target.innerText = "[・・・]"
+        }else {
+        e.target.parentNode.style.overflow = "visible";
+        e.target.parentNode.style.height = "auto";
+        e.target.innerText = "↻"
+        }
+    }
+
+    // ✄ delete btn 
+    handleShowMore = (note) => {
+        if (note.content.length > 120){
+            return <div key={note.id} className="single-note"><button className='delete-note' onClick={(e) => this.handleDeleteNote(e, note.id)}>📍</button>
+              <button className="display-btn" onClick={(e) => this.handleDisplayNote(e, note)}>
+                [・・・]
+              </button>
+                {note.content}
+            </div>
+        } else {
+            return <li key={note.id} className="single-note"><button className='delete-note' onClick={(e) => this.handleDeleteNote(e, note.id)}>📍</button>{note.content}</li>
+        }
+    }
 
     handleRenderNotes = () => {
         const scrapbooknews = this.props.allScrapbooknews.find(news => {return news.news_id === this.props.showNews.id})
         if (scrapbooknews.notes !== undefined){
         return scrapbooknews.notes.map(note => {
-            return <li key={note.id} className="single-note"><button className='delete-note' onClick={(e) => this.handleDeleteNote(e, note.id)}>✄</button>{note.content}</li>
+            return this.handleShowMore(note)
         })
        }
     }
@@ -235,7 +260,7 @@ class NewsShow extends Component {
                             </p>
                             }
 
-                            {this.props.showNews.author === null ? null : <h2>by {this.props.showNews.author}</h2>}
+                            {this.props.showNews.author === null ? null : <h2 className="author">by {this.props.showNews.author}</h2>}
 
                             <dl>
                             <dd>
