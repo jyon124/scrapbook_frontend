@@ -10,7 +10,7 @@ import NewsCard from './NewsCard'
 class NewsList extends React.Component {
     state = {
         scrapbooknewsRendered: false,
-        selectedOption: ""
+        selectedOption: "All"
     }
 
     componentDidMount(){
@@ -26,7 +26,7 @@ class NewsList extends React.Component {
     }
 
     renderNews = () => {
-        if (this.state.selectedOption === "" || this.state.selectedOption === "All"){
+        if (this.state.selectedOption === "All"){
        return this.props.news.map(news => {
         return (
             < NewsCard news={news} key={news.id} />
@@ -78,18 +78,18 @@ class NewsList extends React.Component {
             selectedOption: e.target.value
         })
     }
-
     render(){
         return(
         <Switch>
             <Route path='/newslist' render={()=> {
                 return <div className="newslist-container">
                 <div className="head-img-container">
-                    <img className="head-img-banner" src="http://cdn.jevelin.shufflehound.com/wp-content/uploads/sites/11/2016/11/Blog_title_image.jpg" />
+                    <img className="head-img-banner" src="http://www.al-rashedgroup.com/sites/default/files/2018-11/BANNER%20TOP%20IMG%20news_0.jpg" />
+                    {/* <img className="head-img-banner" src="https://www.afpllc.com/wp-content/uploads/2018/11/news-events-header.jpg" /> */}
+                    {/* <img className="head-img-banner" src="http://cdn.jevelin.shufflehound.com/wp-content/uploads/sites/11/2016/11/Blog_title_image.jpg" /> */}
                  </div>
                      {this.props.getUser.id ? this.initializeScrapbook(this.props.getUser.id) : null}
                 {this.props.scrapbookContainer.id ? this.getAllScrapbook(this.props.scrapbookContainer.id) : null}
-                {/* <h1 className="title">News</h1> */}
                 <div className="underline"></div>
                     {this.props.loader ? 
                     <h1>Loading...</h1> 

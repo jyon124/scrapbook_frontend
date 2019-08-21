@@ -12,22 +12,24 @@ class ClippedNewsCard extends React.Component {
 
 render(){
     return(
-      <div className="center" key={this.props.newsCard.id}>
-        <div className="card">
-            <img className="additional" alt="news" src={this.props.newsCard.urlToImage} />
-            <div className="more-info">
-              <div className="coords">
+        <div className="book-container" key={this.props.newsCard.id}>
+          <Link to={`/scrapbooks/${this.props.getUser.id}/scrapbooknews/${this.props.newsCard.id}`} className="link-saved" title="view">
+            <div className="book">
+              <div className="book-front">
+                <div className="book-cover">
+                {/* <img className="book-image" alt="news" src={this.props.newsCard.urlToImage} /> */}
+                <p className="book-author">{this.props.newsCard.title}</p>
+                </div>
+              </div>
+              <div className="left-side">
+                <h2>
+                  <span>{this.props.newsCard.category.charAt(0).toUpperCase() + this.props.newsCard.category.slice(1)}</span>
+                  <span>{this.props.newsCard.publishedAt}</span>
+                </h2>
               </div>
             </div>
-          <div className="general">
-            <h3>{this.props.newsCard.title}</h3>
-            <p>{this.props.newsCard.category.charAt(0).toUpperCase() + this.props.newsCard.category.slice(1)}</p>
-            <Link to={`/scrapbooks/${this.props.getUser.id}/scrapbooknews/${this.props.newsCard.id}`} className="more" title="author">
-              View Full Coverage
-            </Link>
-          </div>
+          </Link>
         </div>
-      </div>
     )
   }
 }
