@@ -128,5 +128,15 @@ export default {
         }
         return fetch(`${API_URL}highlights`, reqObj)
         .then(res => res.json())
-    }
+    },
+    handleDeleteHighlightReq: (id) => {
+        const reqObj = {
+            method: 'DELETE',
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem("user")}`,
+                'Content-Type': 'application/json'
+            }
+        }
+        return fetch(`${API_URL}highlights/${id}`, reqObj)
+    },
 }

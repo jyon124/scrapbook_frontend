@@ -222,13 +222,26 @@ class NewsShow extends Component {
                 return content
             } else {
                 failCount += 1;
-                console.log('p finding fail count:', failCount, p)
+                // console.log('p finding fail count:', failCount, p)
             }
           }
         }
-    }
+      }
     }
 
+    renderHighlightTag = () => {
+        const scrapbooknews = this.props.allScrapbooknews.find(news => {return news.news_id === this.props.showNews.id});
+        return scrapbooknews.highlights.map(highlight => {
+            console.log(highlight)
+            const tag = highlight.sentence.split(' ').splice(0, 3).join('');
+            return <li key={highlight.id}>{tag}...<button className="del-btn-highlight" onClick={(e) => this.handleDeleteHighlight(e, highlight)}>✄</button><br/></li>
+        })
+    }
+
+    handleDeleteHighlight = (e, highlight) => {
+        Api.handleDeleteHighlightReq(highlight.id)
+        e.target.parentNode.remove();
+    }
     
     render(){
         return (
@@ -240,8 +253,8 @@ class NewsShow extends Component {
                         <section className="open-book">
 
                             <header>
-                            <h1>{this.props.showNews.category}</h1>
-                            <h6>{this.props.getUser.name}</h6>
+                                <h1>{this.props.showNews.category}</h1>
+                                <h6>{this.props.getUser.name}</h6>
                             </header>
 
                             <article>
@@ -252,7 +265,7 @@ class NewsShow extends Component {
                             {
                             this.props.allScrapbooknews.find(news => {return news.news_id === this.props.showNews.id}) !== undefined ? 
                             <p className="please" onMouseUp={() => this.getSelection()}>
-                            {this.handleRenderHighlights(this.props.showNews.content)}
+                                {this.handleRenderHighlights(this.props.showNews.content)}
                             </p>
                             :
                             <p className="please" onMouseUp={() => this.getSelection()}>
@@ -264,7 +277,7 @@ class NewsShow extends Component {
 
                             <dl>
                                 <dd>
-                                <em>Selected Sentence:</em><br/>
+                                <em className="selected-title">Selected Sentence:</em><br/>
                                 <form onSubmit={(e) => this.handleSaveHighlight(e, this.props.showNews.content)}>
                                     <label htmlFor="highlight">Highlight: </label>
                                     <select onChange={(e) => this.colorChange(e)} value={this.state.color}>
@@ -272,9 +285,21 @@ class NewsShow extends Component {
                                         <option value="greenyellow">Greenyellow</option>
                                     </select>
                                     <br/>
-                                    <input type="submit" value="Save Selected Highlight" />
+                                    <input className="submit-highlight-btn" type="submit" value="Save Selected Highlight" />
                                 </form>
                                 <h4 style={{'backgroundColor':`${this.state.color}`}}>{this.state.selectedSentence}</h4>
+                                </dd>
+
+                                <dd className="highlight-menu-container">
+                                    <em className="selected-title">Highlighted Sentence:</em>
+                                    {
+                                    this.props.allScrapbooknews.find(news => {return news.news_id === this.props.showNews.id}) !== undefined ? 
+                                    <div className="highlight-tag-container">
+                                        {this.renderHighlightTag()}
+                                    </div>
+                                    :
+                                    null
+                                    }
                                 </dd>
                             </dl>
                             </article>
@@ -291,25 +316,28 @@ class NewsShow extends Component {
                 </div>
                 
                 <div className="note-container">
-                <form className="notes-form" onSubmit={(e) => {this.handlePostNotes(e)}}>
-                    <label className="note-label">Take a notes: </label><br/>
-                    ​<textarea className="note-input-feild" id="txtArea" rows="10" cols="31" onChange={(e) => this.handleNotesChange(e)} value={this.state.content}></textarea>
-                    <br/>
-                    <input className="submit-note" type="submit" value="Submit"/>
-                </form>
-                {
-                this.props.allScrapbooknews.find(news => {return news.news_id === this.props.showNews.id}) !== undefined ? 
-                <ul id="notes" className="notes">
-                    {this.handleRenderNotes()}
-                </ul>
-                : 
-                null
-                }
+                    <form className="notes-form" onSubmit={(e) => {this.handlePostNotes(e)}}>
+                        <label className="note-label">Take a notes: </label><br/>
+                        ​<textarea className="note-input-feild" id="txtArea" rows="10" cols="31" onChange={(e) => this.handleNotesChange(e)} value={this.state.content}></textarea>
+                        <br/>
+                        <input className="submit-note" type="submit" value="Submit"/>
+                    </form>
+                    {
+                    this.props.allScrapbooknews.find(news => {return news.news_id === this.props.showNews.id}) !== undefined ? 
+                    <ul id="notes" className="notes">
+                        {this.handleRenderNotes()}
+                    </ul>
+                    : 
+                    null
+                    }
                 </div>
+
             </div>
         )
       }
     }
+
+
 
 const mapStateToProps = (state) => {
     return {
