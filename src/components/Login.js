@@ -1,5 +1,7 @@
 import React from 'react';
 import Api from '../services/Api.js'
+import { Link, withRouter } from 'react-router-dom';
+
 
 class Login extends React.Component {
     constructor(props){
@@ -39,26 +41,31 @@ class Login extends React.Component {
             } else {
                 this.props.handleLogin(data)
                 this.props.history.push('/newslist')
-                // this.props.history.push('/table')
             }
         })
     }
 
     render(){
         return (
-        <div className="form-container">
-            <h1>Login</h1>
-            {this.state.error ? <h4>Invalid username or Password</h4> : null}
-            <form onSubmit={(e) => {this.handleLogin(e)}}>
-                <label>Username: </label>
-                <input onChange={(e) => this.handleUsernameChange(e)} value={this.state.username} />
-                <br/>
-                <label>Password: </label>
-                <input onChange={(e) => this.handlePasswordChange(e)} value={this.state.password} type="password" />
-                <br/>
-                <input type='submit' value='Login' />
-            </form>
-        </div>
+        <form onSubmit={(e) => {this.handleLogin(e)}}>
+            <div className="login-body"></div>
+            <div className="grad"></div>
+            <div className="login-header">
+            <div>Scrap<span>Book</span></div>
+            </div>
+            <br/>
+            <div className="login">
+                {this.state.error ? <h4>Invalid username or Password</h4> : null}
+                <input onChange={(e) => this.handleUsernameChange(e)} value={this.state.username} type="text" placeholder="username" name="user"/><br/>
+                <input onChange={(e) => this.handlePasswordChange(e)} value={this.state.password} type="password" placeholder="password" name="password"/><br/>
+                <input type='submit' value="Login"/>
+                <Link to="/signin" className="nav-enter">
+                    <div className="member-link">not a member yet?</div>
+                </Link>
+            </div>
+        </form>
+
+
         )
     }
 }

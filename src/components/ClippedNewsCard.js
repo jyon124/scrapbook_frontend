@@ -17,7 +17,7 @@ render(){
             <div className="book">
               <div className="book-front">
                 <div className="book-cover">
-                {/* <img className="book-image" alt="news" src={this.props.newsCard.urlToImage} /> */}
+                <img className="book-image" alt="news" src={this.props.newsCard.urlToImage} />
                 <p className="book-author">{this.props.newsCard.title}</p>
                 </div>
               </div>

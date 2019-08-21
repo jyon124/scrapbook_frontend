@@ -69,7 +69,7 @@ class ScrapBooksContainers extends React.Component {
                     {/* <img className="head-img-banner-saved" src="https://images.pexels.com/photos/399161/pexels-photo-399161.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" /> */}
                     <img className="head-img-banner" src="http://cdn.jevelin.shufflehound.com/wp-content/uploads/sites/11/2016/11/Blog_title_image.jpg" />
                 </div>
-                <h1 className="title">SCRAPBOOK CONTAINER</h1>
+                <h1 className="title">SCRAPBOOKS</h1>
                 <div className="underline"></div>
                 <section className="newslist-container">
                     {this.props.clippedNewsTile.length > 0 ? 

@@ -269,7 +269,7 @@ class NewsShow extends Component {
                                     <label htmlFor="highlight">Highlight: </label>
                                     <select onChange={(e) => this.colorChange(e)} value={this.state.color}>
                                         <option defaultValue="none">-------</option>
-                                        <option value="yellow">Yellow</option>
+                                        <option value="greenyellow">Greenyellow</option>
                                     </select>
                                     <br/>
                                     <input type="submit" value="Save Selected Highlight" />

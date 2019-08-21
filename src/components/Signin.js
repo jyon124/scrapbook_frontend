@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link, withRouter } from 'react-router-dom';
 const USERS = 'http://localhost:3001/api/v1/users';
 
 
@@ -50,25 +51,26 @@ export default class Signin extends React.Component {
     this.props.history.push('/login');
   }
 
+
   render(){
     return(
-        <div className="form-container">
-          <form onSubmit={(e) => this.handleSubmit(e)}>
-            <h1>Signup</h1>
-            <div>
-              <label htmlFor="username">Username: </label>
-              <input onChange={(e) => this.handleUsernameChange(e)} value={this.state.username} type="text" name="username" placeholder="username" />
-              <br/>
-              <label htmlFor="username">Password: </label>
-              <input onChange={(e) => this.handlePasswordChange(e)} value={this.state.password} type="password" name="password" placeholder="password" />
-              <br/>
-              <label htmlFor="username">Name: </label>
-              <input onChange={(e) => this.handleNameChange(e)} value={this.state.name} type="text" name="name" placeholder="name" />
-            </div>
-            <br />
-            <input className="sign-in-btn" type="submit" value="Signin" />
-          </form>
+      <form onSubmit={(e) => this.handleSubmit(e)}>
+        <div className="login-body"></div>
+        <div className="grad"></div>
+        <div className="login-header">
+        <div>Scrap<span>Book</span></div>
         </div>
+        <br/>
+        <div className="login">
+          <input onChange={(e) => this.handleNameChange(e)} value={this.state.name} type="text" name="name" placeholder="name" /><br/><br/>
+          <input onChange={(e) => this.handleUsernameChange(e)} value={this.state.username} type="text" name="username" placeholder="username" /><br/>
+          <input onChange={(e) => this.handlePasswordChange(e)} value={this.state.password} type="password" name="password" placeholder="password" /><br/>
+          <input className="sign-in-btn" type="submit" value="Sign up" />
+          <Link to="/login" className="nav-enter">
+            <div className="member-link">already a member?</div>
+          </Link>
+        </div>
+      </form>
     )
   }
 }
