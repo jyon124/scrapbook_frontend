@@ -10,7 +10,7 @@ import NewsCard from './NewsCard'
 class NewsList extends React.Component {
     state = {
         scrapbooknewsRendered: false,
-        selectedOption: "All"
+        selectedOption: ""
     }
 
     componentDidMount(){
@@ -25,13 +25,21 @@ class NewsList extends React.Component {
       }
     }
 
-    // Based on state filter the news
     renderNews = () => {
+        if (this.state.selectedOption === "" || this.state.selectedOption === "All"){
        return this.props.news.map(news => {
         return (
             < NewsCard news={news} key={news.id} />
             )
         })
+        } else {
+            const filtered = this.props.news.filter(news => news.category === this.state.selectedOption);
+            return filtered.map(news => {
+                return (
+                    < NewsCard news={news} key={news.id} />
+                )
+            })
+        }
     }
 
     getUserData = () => {
@@ -87,9 +95,9 @@ class NewsList extends React.Component {
                     <h1>Loading...</h1> 
                     :
                     <div>
-                        <form>
+                        <form className="radio-checkbox-container">
                         <div className="radio">
-                        <label>
+                        <label className="radio-label">
                             <input type="radio" value="All" 
                             checked={this.state.selectedOption === 'All'} 
                             onChange={(e) => this.handleOptionChange(e)} />
@@ -97,7 +105,7 @@ class NewsList extends React.Component {
                         </label>
                         </div>
                         <div className="radio">
-                        <label>
+                        <label className="radio-label">
                             <input type="radio" value="Apple" 
                             checked={this.state.selectedOption === 'Apple'} 
                             onChange={(e) => this.handleOptionChange(e)} />
@@ -105,7 +113,7 @@ class NewsList extends React.Component {
                         </label>
                         </div>
                         <div className="radio">
-                        <label>
+                        <label className="radio-label">
                             <input type="radio" value="TechCrunch" 
                             checked={this.state.selectedOption === 'TechCrunch'} 
                             onChange={(e) => this.handleOptionChange(e)} />
@@ -113,17 +121,17 @@ class NewsList extends React.Component {
                         </label>
                         </div>
                         <div className="radio">
-                        <label>
-                            <input type="radio" value="Bitcoin" 
-                            checked={this.state.selectedOption === 'Bitcoin'} 
+                        <label className="radio-label">
+                            <input type="radio" value="bitcoin" 
+                            checked={this.state.selectedOption === 'bitcoin'} 
                             onChange={(e) => this.handleOptionChange(e)} />
                             Bitcoin
                         </label>
                         </div>
                         <div className="radio">
-                        <label>
-                            <input type="radio" value="TopBusinessHeadlines" 
-                            checked={this.state.selectedOption === 'TopBusinessHeadlines'} 
+                        <label className="radio-label">
+                            <input type="radio" value="Top business headlines" 
+                            checked={this.state.selectedOption === 'Top business headlines'} 
                             onChange={(e) => this.handleOptionChange(e)} />
                             Top Business Headlines
                         </label>

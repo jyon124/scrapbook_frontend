@@ -844,6 +844,7 @@ p, h1 {
 }
 
 .notes-form {
+  right: 0.2em;
   padding-bottom: 0.5em;
   padding-top: 0.5em;
   box-shadow: 4px 4px 2px;
@@ -870,6 +871,19 @@ p, h1 {
 .note-label {
   font-weight: 600;
 }
+
+.radio-checkbox-container {
+  box-sizing: border-box;
+  border: solid 1px white;
+  margin: 20px;
+}
+
+.radio-label {
+  margin-right: 1em;
+  float: left;
+  vertical-align: middle;
+}
+
 
 /* .single-note:before {
 		content: ""; 

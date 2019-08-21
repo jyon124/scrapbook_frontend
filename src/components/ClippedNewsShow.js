@@ -263,27 +263,27 @@ class NewsShow extends Component {
                             {this.props.showNews.author === null ? null : <h2 className="author">by {this.props.showNews.author}</h2>}
 
                             <dl>
-                            <dd>
-                            <em>Selected Sentence:</em><br/>
-                            <form onSubmit={(e) => this.handleSaveHighlight(e, this.props.showNews.content)}>
-                            <label htmlFor="highlight">Highlight: </label>
-                            <select onChange={(e) => this.colorChange(e)} value={this.state.color}>
-                            <option defaultValue="none">-------</option>
-                            <option value="yellow">Yellow</option>
-                            </select>
-                            <br/>
-                            <input type="submit" value="Save Selected Highlight" />
-                            </form>
-                            <h4 style={{'backgroundColor':`${this.state.color}`}}>{this.state.selectedSentence}</h4>
-                            </dd>
+                                <dd>
+                                <em>Selected Sentence:</em><br/>
+                                <form onSubmit={(e) => this.handleSaveHighlight(e, this.props.showNews.content)}>
+                                    <label htmlFor="highlight">Highlight: </label>
+                                    <select onChange={(e) => this.colorChange(e)} value={this.state.color}>
+                                        <option defaultValue="none">-------</option>
+                                        <option value="yellow">Yellow</option>
+                                    </select>
+                                    <br/>
+                                    <input type="submit" value="Save Selected Highlight" />
+                                </form>
+                                <h4 style={{'backgroundColor':`${this.state.color}`}}>{this.state.selectedSentence}</h4>
+                                </dd>
                             </dl>
                             </article>
 
                             <footer>
-                            <ol id="page-numbers">
-                            <li>1</li>
-                            <li>2</li>
-                            </ol>
+                                <ol id="page-numbers">
+                                    <li>1</li>
+                                    <li>2</li>
+                                </ol>
                             </footer>
 
                         </section>
@@ -299,9 +299,9 @@ class NewsShow extends Component {
                 </form>
                 {
                 this.props.allScrapbooknews.find(news => {return news.news_id === this.props.showNews.id}) !== undefined ? 
-                    <ul id="notes" className="notes">
-                        {this.handleRenderNotes()}
-                    </ul>
+                <ul id="notes" className="notes">
+                    {this.handleRenderNotes()}
+                </ul>
                 : 
                 null
                 }
