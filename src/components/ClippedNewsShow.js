@@ -143,9 +143,15 @@ class NewsShow extends Component {
     ////// HIGHLIGHT FUNCTION BELOW ///////
 
     colorChange = (e) => {
+        if(e.target.value === '-------'){
+            this.setState({
+                color: 'white'
+            })
+        } else {
         this.setState({
             color: e.target.value
         })
+      }
     }
 
     getSelection(content){
@@ -232,7 +238,6 @@ class NewsShow extends Component {
     renderHighlightTag = () => {
         const scrapbooknews = this.props.allScrapbooknews.find(news => {return news.news_id === this.props.showNews.id});
         return scrapbooknews.highlights.map(highlight => {
-            console.log(highlight)
             const tag = highlight.sentence.split(' ').splice(0, 3).join('');
             return <li key={highlight.id}>{tag}...<button className="del-btn-highlight" onClick={(e) => this.handleDeleteHighlight(e, highlight)}>✄</button><br/></li>
         })
@@ -279,7 +284,7 @@ class NewsShow extends Component {
                                 <dd>
                                 <em className="selected-title">Selected Sentence:</em><br/>
                                 <form onSubmit={(e) => this.handleSaveHighlight(e, this.props.showNews.content)}>
-                                    <label htmlFor="highlight">Highlight: </label>
+                                    <label htmlFor="highlight">color: </label>
                                     <select onChange={(e) => this.colorChange(e)} value={this.state.color}>
                                         <option defaultValue="none">-------</option>
                                         <option value="greenyellow">Greenyellow</option>
