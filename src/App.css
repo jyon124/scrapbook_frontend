@@ -778,6 +778,14 @@ p, h1 {
 
 }
 
+.unsave-btn {
+  left: 1.2em;
+  border: none;
+  font-size: 25px;
+  color: red;
+}
+
+
 /* end */
 
 /* Note */
@@ -812,7 +820,6 @@ p, h1 {
 }
 
 .single-note {
-
   box-sizing: border-box;
   overflow: hidden;
   text-overflow: ellipsis !important;
@@ -826,10 +833,42 @@ p, h1 {
   padding: 20px 15px 15px 15px;
   border-bottom: solid 10px #F7E999;
 
-  -webkit-transform: rotate(2deg);
-  transform: rotate(2deg);
-  -moz-transform: rotate(2deg);
-  -o-transform: rotate(2deg);
+  -webkit-transform: rotate(0.5deg);
+  transform: rotate(0.5deg);
+  -moz-transform: rotate(0.5deg);
+  -o-transform: rotate(0.5deg);
+}
+
+.notes {
+  margin-top: 13em;
+}
+
+.notes-form {
+  padding-bottom: 0.5em;
+  padding-top: 0.5em;
+  box-shadow: 4px 4px 2px;
+  margin-left: 2.6em;
+  background-color: #F7E999;
+  position: absolute;
+  padding-left: 1em;
+  box-sizing: border-box;
+  padding-right: 1em;
+}
+
+.submit-note {
+  border: none;
+  float: right;
+  background-color: #F7E999;
+  border-bottom: black 1px solid;
+}
+
+.note-input-feild {
+  border: 0px solid;
+  background-color: #F7E999;
+}
+
+.note-label {
+  font-weight: 600;
 }
 
 /* .single-note:before {

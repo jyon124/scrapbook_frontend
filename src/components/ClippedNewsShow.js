@@ -247,7 +247,7 @@ class NewsShow extends Component {
                             <article>
                             <h2 className="chapter-title">{this.props.showNews.title}</h2>
                             <img className="scrapbooknews-img" src={this.props.showNews.urlToImage} alt="news display" /><br/>
-                            <button onClick={() => this.handleUnfavorite(this.props.showNews.id, this.props.scrapbookContainer.id)}>UnSave</button><br/><br/>
+                            <button className="unsave-btn" onClick={() => this.handleUnfavorite(this.props.showNews.id, this.props.scrapbookContainer.id)}>✄</button><br/><br/>
 
                             {
                             this.props.allScrapbooknews.find(news => {return news.news_id === this.props.showNews.id}) !== undefined ? 
@@ -292,10 +292,10 @@ class NewsShow extends Component {
                 
                 <div className="note-container">
                 <form className="notes-form" onSubmit={(e) => {this.handlePostNotes(e)}}>
-                    <label>Notes: </label><br/>
-                    ​<textarea id="txtArea" rows="10" cols="40" onChange={(e) => this.handleNotesChange(e)} value={this.state.content}></textarea>
+                    <label className="note-label">Take a notes: </label><br/>
+                    ​<textarea className="note-input-feild" id="txtArea" rows="10" cols="31" onChange={(e) => this.handleNotesChange(e)} value={this.state.content}></textarea>
                     <br/>
-                    <input type="submit" value="Submit"/>
+                    <input className="submit-note" type="submit" value="Submit"/>
                 </form>
                 {
                 this.props.allScrapbooknews.find(news => {return news.news_id === this.props.showNews.id}) !== undefined ? 

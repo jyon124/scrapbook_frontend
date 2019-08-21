@@ -3,13 +3,14 @@ import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import { fetchNews, fetchUser, fetchScrapbook, fetchAllScrapbooknewsAction, createClippedNewsTile } from '../actions';
 import NewsCard from './NewsCard'
-import headerImg from '../header_news_img.png';
+// import headerImg from '../header_news_img.png';
 
 
 
 class NewsList extends React.Component {
     state = {
-        scrapbooknewsRendered: false
+        scrapbooknewsRendered: false,
+        selectedOption: "All"
     }
 
     componentDidMount(){
@@ -24,6 +25,7 @@ class NewsList extends React.Component {
       }
     }
 
+    // Based on state filter the news
     renderNews = () => {
        return this.props.news.map(news => {
         return (
@@ -63,6 +65,12 @@ class NewsList extends React.Component {
        this.props.clippedNewsTileCreation(clippedNews)
     }
 
+    handleOptionChange = (e) => {
+        this.setState({
+            selectedOption: e.target.value
+        })
+    }
+
     render(){
         return(
         <Switch>
@@ -78,8 +86,53 @@ class NewsList extends React.Component {
                     {this.props.loader ? 
                     <h1>Loading...</h1> 
                     :
+                    <div>
+                        <form>
+                        <div className="radio">
+                        <label>
+                            <input type="radio" value="All" 
+                            checked={this.state.selectedOption === 'All'} 
+                            onChange={(e) => this.handleOptionChange(e)} />
+                            All
+                        </label>
+                        </div>
+                        <div className="radio">
+                        <label>
+                            <input type="radio" value="Apple" 
+                            checked={this.state.selectedOption === 'Apple'} 
+                            onChange={(e) => this.handleOptionChange(e)} />
+                            Apple
+                        </label>
+                        </div>
+                        <div className="radio">
+                        <label>
+                            <input type="radio" value="TechCrunch" 
+                            checked={this.state.selectedOption === 'TechCrunch'} 
+                            onChange={(e) => this.handleOptionChange(e)} />
+                            Tech Crunch
+                        </label>
+                        </div>
+                        <div className="radio">
+                        <label>
+                            <input type="radio" value="Bitcoin" 
+                            checked={this.state.selectedOption === 'Bitcoin'} 
+                            onChange={(e) => this.handleOptionChange(e)} />
+                            Bitcoin
+                        </label>
+                        </div>
+                        <div className="radio">
+                        <label>
+                            <input type="radio" value="TopBusinessHeadlines" 
+                            checked={this.state.selectedOption === 'TopBusinessHeadlines'} 
+                            onChange={(e) => this.handleOptionChange(e)} />
+                            Top Business Headlines
+                        </label>
+                        </div>
+                    </form>
+
                     <div className="wrapper"> 
                         {this.renderNews()}
+                    </div>
                     </div>
                     }
                 </div>
