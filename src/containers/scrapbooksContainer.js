@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import ClippedNewsCard from '../components/ClippedNewsCard'
 import { fetchUser, fetchScrapbook, fetchAllScrapbooknewsAction, fetchNews, createClippedNewsTile } from '../actions'
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
+import scrapbookHeader from '../scrapbook-header.jpeg';
 
 class ScrapBooksContainers extends React.Component {
     state = {
@@ -66,8 +67,9 @@ class ScrapBooksContainers extends React.Component {
                 {this.props.getUser.id ? this.initializeScrapbook(this.props.getUser.id) : null}
                 {this.props.scrapbookContainer.id ? this.getAllScrapbook(this.props.scrapbookContainer.id) : null}
                 <div className="head-img-container">
+                    <img className="head-img-banner-saved" src={scrapbookHeader} />
                     {/* <img className="head-img-banner-saved" src="https://images.pexels.com/photos/399161/pexels-photo-399161.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" /> */}
-                    <img className="head-img-banner" src="http://cdn.jevelin.shufflehound.com/wp-content/uploads/sites/11/2016/11/Blog_title_image.jpg" />
+                    {/* <img className="head-img-banner" src="http://cdn.jevelin.shufflehound.com/wp-content/uploads/sites/11/2016/11/Blog_title_image.jpg" /> */}
                 </div>
                 <h1 className="title">SCRAPBOOKS</h1>
                 <div className="underline"></div>

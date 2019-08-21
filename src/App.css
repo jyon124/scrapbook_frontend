@@ -25,24 +25,25 @@
   text-decoration: none;
   font-size: 22px;
   font-weight: 600;
+  transition-duration: 0.5s;
 }
 
 .nav-bar-container a:hover {
   border-radius: 8%;
-  /* background-color: #ddd; */
+  background-color: #fff;
   /* color: #FF6347; */
   color: lightskyblue;
+  /* border-bottom: #2196fe; */
 }
 
 .head-img-banner {
   width: 90em;
-  /* filter: grayscale(10); */
 }
 
 .head-img-banner-saved {
   width: 90em;
-  /* height: 50em; */
-  /* filter: grayscale(10); */
+  height: auto;
+  margin-top: -20em;
 }
 
 /* news card */
