@@ -387,6 +387,8 @@ p, h1 {
   margin-top: 15px;
   margin-left: 3em;
   margin-right: 3em;
+  word-spacing: 2px;
+  line-height: 25px;
 }
 
 .showNews-category {
