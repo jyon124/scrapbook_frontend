@@ -15,7 +15,7 @@ class NewsList extends React.Component {
 
     componentDidMount(){
         if(!localStorage.getItem('user')){
-            this.props.history.push('/')
+            this.props.history.push('/login')
         } else{
         this.getUserData()
         if(this.props.news.length < 1){

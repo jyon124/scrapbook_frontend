@@ -13,14 +13,13 @@ class NewsShow extends Component {
         this.state = {
             content: '',
             selectedSentence: '',
-            color: '',
-            joinedContent: ""
-        }
+            color: ''
+            }
     }
 
     componentDidMount(){
         if(!localStorage.getItem('user')){
-            this.props.history.push('/')
+            this.props.history.push('/login')
         } else{
         this.getNews()
         this.getUserData()
@@ -219,7 +218,7 @@ class NewsShow extends Component {
           }
           if (highlightSplit.length === j){
             last = i+2;
-            start = last - highlightSplit.length-2;
+            start = last-j-1;
             let p = document.querySelector('.please');
             if(p !== null){
                 contentSplit.splice(start, 0, `<span style="background-color: rgba(222,255,0,0.75)">`)

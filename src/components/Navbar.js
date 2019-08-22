@@ -24,7 +24,7 @@ const Navbar = props => {
                   <li>Login</li>
                 </Link>
                 <Link to="/signin" className="nav-enter">
-                  <li>Signup</li>
+                  <li>Sign up</li>
                 </Link>
               </ul>
             </div>
