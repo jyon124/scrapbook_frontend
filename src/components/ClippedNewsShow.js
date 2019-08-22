@@ -237,7 +237,7 @@ class NewsShow extends Component {
     renderHighlightTag = () => {
         const scrapbooknews = this.props.allScrapbooknews.find(news => {return news.news_id === this.props.showNews.id});
         return scrapbooknews.highlights.map(highlight => {
-            const tag = highlight.sentence.split(' ').splice(0, 3).join('');
+            const tag = highlight.sentence.split(' ').splice(0, 3).join(' ');
             return <li key={highlight.id}>{tag}...<button className="del-btn-highlight" onClick={(e) => this.handleDeleteHighlight(e, highlight)}>✄</button><br/></li>
         })
     }

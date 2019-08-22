@@ -820,13 +820,14 @@ p, h1 {
 }
 
 .delete-note {
-  position:relative;
-  top: -1em;
-  left:-0.5em;
+  position: absolute;;
+  top: -0.3em;
+  left:-0.1em;
   float:left;
 
+  transform: scale(0.9);
+  border-radius: 30%;
   border: none;
-  color: red;
   background-color: #F7E999;
   font-size: 16px;
 }
