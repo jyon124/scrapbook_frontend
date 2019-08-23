@@ -238,7 +238,8 @@ class NewsShow extends Component {
         const scrapbooknews = this.props.allScrapbooknews.find(news => {return news.news_id === this.props.showNews.id});
         return scrapbooknews.highlights.map(highlight => {
             const tag = highlight.sentence.split(' ').splice(0, 3).join(' ');
-            return <li key={highlight.id}>{tag}...<button className="del-btn-highlight" onClick={(e) => this.handleDeleteHighlight(e, highlight)}>✄</button><br/></li>
+            // return <li key={highlight.id}>{tag}...<button className="del-btn-highlight" onClick={(e) => this.handleDeleteHighlight(e, highlight)}>✄</button><br/></li>
+            return <li key={highlight.id}>{tag}...<button className="del-btn-highlight" onClick={(e) => this.handleDeleteHighlight(e, highlight)}><img className="eraser" src="https://png.pngtree.com/svg/20150903/eraser_1320087.png"/></button><br/></li>
         })
     }
 
@@ -264,8 +265,8 @@ class NewsShow extends Component {
                             <article>
                             <h2 className="chapter-title">{this.props.showNews.title}</h2>
                             <img className="scrapbooknews-img" src={this.props.showNews.urlToImage} alt="news display" /><br/>
-                            <button className="unsave-btn" onClick={() => this.handleUnfavorite(this.props.showNews.id, this.props.scrapbookContainer.id)}>✄</button><br/><br/>
-
+                            {/* <button className="unsave-btn" onClick={() => this.handleUnfavorite(this.props.showNews.id, this.props.scrapbookContainer.id)}>✄</button><br/><br/> */}
+                            <button className="unsave-btn" onClick={() => this.handleUnfavorite(this.props.showNews.id, this.props.scrapbookContainer.id)}><img className="delete-saved-show-btn" src="https://png.pngtree.com/svg/20161124/delete_26855.png" /></button><br/><br/>
                             {
                             this.props.allScrapbooknews.find(news => {return news.news_id === this.props.showNews.id}) !== undefined ? 
                             <p className="please" onMouseUp={() => this.getSelection()}>

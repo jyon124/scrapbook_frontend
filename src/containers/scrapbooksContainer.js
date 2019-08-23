@@ -68,8 +68,6 @@ class ScrapBooksContainers extends React.Component {
                 {this.props.scrapbookContainer.id ? this.getAllScrapbook(this.props.scrapbookContainer.id) : null}
                 <div className="head-img-container">
                     <img className="head-img-banner-saved" src={scrapbookHeader} />
-                    {/* <img className="head-img-banner-saved" src="https://cmkt-image-prd.global.ssl.fastly.net/0.1.0/ps/5017538/3642/1214/m1/fpnw/wm1/g3idtxcoup7hwmlf6gvog6qpykocfhqo2snh1jml9czs3d5wxdwqejxzehqcbkp0-.jpg?1536352650&s=28dd0864b616ef6708c30d1ec798e4be" /> */}
-                    {/* <img className="head-img-banner" src="http://cdn.jevelin.shufflehound.com/wp-content/uploads/sites/11/2016/11/Blog_title_image.jpg" /> */}
                 </div>
                 <h1 className="title">SCRAPBOOKS</h1>
                 <div className="underline"></div>

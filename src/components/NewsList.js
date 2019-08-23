@@ -85,17 +85,27 @@ class NewsList extends React.Component {
                 return <div className="newslist-container">
                 <div className="head-img-container">
                      <img className="head-img-banner" src={headerImg} />
-                    {/* <img className="head-img-banner" src="http://www.al-rashedgroup.com/sites/default/files/2018-11/BANNER%20TOP%20IMG%20news_0.jpg" /> */}
-                    {/* <img className="head-img-banner" src="https://www.afpllc.com/wp-content/uploads/2018/11/news-events-header.jpg" /> */}
-                    {/* <img className="head-img-banner" src="http://cdn.jevelin.shufflehound.com/wp-content/uploads/sites/11/2016/11/Blog_title_image.jpg" /> */}
                  </div>
                      {this.props.getUser.id ? this.initializeScrapbook(this.props.getUser.id) : null}
                 {this.props.scrapbookContainer.id ? this.getAllScrapbook(this.props.scrapbookContainer.id) : null}
                 <div className="underline"></div>
                     {this.props.loader ? 
                     <div>
-                    <h1 className="loading-sentence">Loading...</h1> 
-                    <div className="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+                        <h1 className="loading-sentence">Loading...</h1> 
+                        <div className="lds-spinner">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
                     </div>
                     :
                     <div>
