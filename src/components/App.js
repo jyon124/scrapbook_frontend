@@ -44,7 +44,7 @@ render(){
           handleLogout={() => this.handleLogout()}
         />
             <Switch>
-            <Route path="/" render={(routeProps) => {
+            <Route exact path="/" render={(routeProps) => {
               return <Login {...routeProps} handleLogin={(user) => {this.handleLogin(user)}} />
             }} />
             <Route exact path="/login" render={(routeProps) => {
