@@ -80,7 +80,7 @@ class ScrapBooksContainers extends React.Component {
                         <div>
                             {
                             this.props.clippedNewsTile.length === 0 ?
-                            <h2>You haven't saved any post yet.</h2>
+                            <h2 className="no-post">You haven't saved any post yet.</h2>
                             :
                             <div>
                                 <h1 className="loading-sentence">Loading...</h1> 

@@ -1017,6 +1017,11 @@ p, h1 {
 
 /* Scrapbook News Tile */
 
+.no-post {
+  text-align: center;
+  margin-top: 4em;
+}
+
 .book-image {
   /* border: solid 2px brown; */
   border-radius: 3%;
@@ -1343,7 +1348,7 @@ a {
 }
 
 .member-link {
-  margin-left: 3.4em;
+  margin-left: 1.9em;
   color: white;
   margin-top: 1em;
 }
