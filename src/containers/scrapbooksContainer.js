@@ -74,25 +74,32 @@ class ScrapBooksContainers extends React.Component {
                 <section className="newslist-container">
                     {this.props.clippedNewsTile.length > 0 ? 
                         <div className="saved-tile"> 
-                        {this.renderClippedNewsTile()}
+                            {this.renderClippedNewsTile()}
                         </div>
                         : 
                         <div>
-                            <h1 className="loading-sentence">Loading...</h1> 
-                            <div className="lds-spinner">
-                                <div></div>
-                                <div></div>
-                                <div></div>
-                                <div></div>
-                                <div></div>
-                                <div></div>
-                                <div></div>
-                                <div></div>
-                                <div></div>
-                                <div></div>
-                                <div></div>
-                                <div></div>
+                            {
+                            this.props.clippedNewsTile.length === 0 ?
+                            <h2>You haven't saved any post yet.</h2>
+                            :
+                            <div>
+                                <h1 className="loading-sentence">Loading...</h1> 
+                                <div className="lds-spinner">
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                </div>
                             </div>
+                            }
                         </div>
                         } 
                 </section>
