@@ -64,7 +64,7 @@ export default class Signin extends React.Component {
   }
 
   pushToLogin = () => {
-    setTimeout(() => { this.props.history.push('/login') }, 3000);
+    setTimeout(() => { this.props.history.push('/login') }, 1000);
   }
 
 

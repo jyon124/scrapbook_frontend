@@ -17,18 +17,19 @@ const Navbar = props => {
               </div>
             </nav>
           :
-          <nav role="navigation">
-            <div id="menuToggle">
-              <ul id="menu">
-                <Link to="/login" className="nav-enter">
-                  <li>Login</li>
-                </Link>
-                <Link to="/signin" className="nav-enter">
-                  <li>Sign up</li>
-                </Link>
-              </ul>
-            </div>
-          </nav>
+          null
+          // <nav role="navigation">
+          //   <div id="menuToggle">
+          //     <ul id="menu">
+          //       <Link to="/login" className="nav-enter">
+          //         <li>Login</li>
+          //       </Link>
+          //       <Link to="/signin" className="nav-enter">
+          //         <li>Sign up</li>
+          //       </Link>
+          //     </ul>
+          //   </div>
+          // </nav>
         }
       </div>
     </div>
