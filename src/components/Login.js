@@ -55,7 +55,14 @@ class Login extends React.Component {
             </div>
             <br/>
             <div className="login">
-                {this.state.error ? <h4 className="error-message">Invalid username or Password</h4> : null}
+                {
+                this.state.error ? 
+                <div className="error-container">
+                    <h4 className="error-message">Invalid username or Password</h4>
+                </div> 
+                : 
+                null
+                }
                 <input onChange={(e) => this.handleUsernameChange(e)} value={this.state.username} type="text" placeholder="username" name="user"/><br/>
                 <input onChange={(e) => this.handlePasswordChange(e)} value={this.state.password} type="password" placeholder="password" name="password"/><br/>
                 <input type='submit' value="Login"/>

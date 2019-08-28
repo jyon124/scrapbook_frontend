@@ -1,5 +1,27 @@
+.error-container {
+  box-sizing: border-box;
+}
+
 .error-message {
-  color: red;
+  top: -5em;
+  position: absolute;
+  border: 1px solid;
+  padding: 12px;
+  color: #D8000C;
+	background-color: #FFBABA;
+}
+
+.success-container {
+  box-sizing: border-box;
+}
+
+.success-message {
+  top: -5em;
+  position: absolute;
+  border: 1px solid;
+  padding: 12px;
+  color: #4F8A10;
+  background-color: #DFF2BF;
 }
 
 /* Loading Css */

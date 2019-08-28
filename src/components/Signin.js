@@ -10,7 +10,9 @@ export default class Signin extends React.Component {
     this.state={
       username: '',
       password: '',
-      name: ''
+      name: '',
+      error: false,
+      success: false
     }
   }
 
@@ -48,8 +50,21 @@ export default class Signin extends React.Component {
     }
     fetch(USERS, reqObj)
     .then(resp => resp.json())
-    .then(data => console.log(data))
-    this.props.history.push('/login');
+    .then(data => {
+      if(data.error){
+        this.setState({
+          error: true
+        })
+      } else {
+        this.setState({
+          success: true
+        })
+      }
+    })
+  }
+
+  pushToLogin = () => {
+    setTimeout(() => { this.props.history.push('/login') }, 3000);
   }
 
 
@@ -63,6 +78,23 @@ export default class Signin extends React.Component {
         </div>
         <br/>
         <div className="login">
+          {
+          this.state.error ? 
+          <div className="error-container">
+              <h4 className="error-message">Failed to create account.</h4>
+          </div> 
+          : 
+          null
+          }
+          {
+          this.state.success ? 
+          <div className="success-container">
+            <h4 className="success-message">You have Successfully Signed Up!</h4>
+            {this.pushToLogin()}
+          </div>
+          :
+          null
+          }
           <input onChange={(e) => this.handleNameChange(e)} value={this.state.name} type="text" name="name" placeholder="name" /><br/><br/>
           <input onChange={(e) => this.handleUsernameChange(e)} value={this.state.username} type="text" name="username" placeholder="username" /><br/>
           <input onChange={(e) => this.handlePasswordChange(e)} value={this.state.password} type="password" name="password" placeholder="password" /><br/>
