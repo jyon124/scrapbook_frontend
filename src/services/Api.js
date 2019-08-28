@@ -142,4 +142,17 @@ export default {
         }
         return fetch(`${API_URL}highlights/${id}`, reqObj)
     },
+    increaseView: (news) => {
+        const reqObj = {
+            method: 'PATCH',
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem("user")}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                viewCount: news.viewCount + 1
+            })
+        }
+        return fetch(`${API_URL}news/${news.id}`, reqObj)
+    }
 }

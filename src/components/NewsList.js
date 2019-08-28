@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import { fetchNews, fetchUser, fetchScrapbook, fetchAllScrapbooknewsAction, createClippedNewsTile } from '../actions';
-import NewsCard from './NewsCard'
+import NewsCard from './NewsCard';
 import headerImg from '../main-news-header.png';
 
 

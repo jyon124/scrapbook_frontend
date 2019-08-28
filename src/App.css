@@ -141,6 +141,10 @@
 
 /* news card */
 
+.view-count {
+  text-align: right;
+}
+
 body::before,
 body::after {
   content: "";
