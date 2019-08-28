@@ -109,7 +109,23 @@ class NewsShow extends Component {
 
             </div>
             :
-             null
+            <div>
+                <h1 className="loading-sentence">Loading...</h1> 
+                <div className="lds-spinner">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
             }
         </div>
         )
