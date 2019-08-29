@@ -1066,9 +1066,10 @@ p, h1 {
 
 .radio-checkbox-container {
   font-weight: 900;
-  box-sizing: border-box;
-  border: solid 1px white;
-  margin: 20px;
+  /* box-sizing: border-box; */
+  /* border: solid 1px white; */
+  margin-bottom: 14px;
+  padding: 18px;
   font-size: 15px;
 }
 
