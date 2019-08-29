@@ -117,8 +117,8 @@
 
 .title {
   position: absolute;
-  left: 18.5em;
-  top: 5em;
+  left: 19.5em;
+  top: 6em;
   color: #fff;
 }
 
@@ -161,6 +161,7 @@
 
 .head-img-banner-saved {
   width: 90em;
+  width: 100%;
   height: auto;
   margin-top: -20em;
 }
@@ -523,7 +524,8 @@ p, h1 {
 
 .media {
   height: auto;
-  width: 50.6em;
+  /* width: 50.6em; */
+  width: 95%;
 }
 
 .initial-letter {
