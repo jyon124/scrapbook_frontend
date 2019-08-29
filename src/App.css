@@ -249,11 +249,15 @@ p, h1 {
   background-color: #fff;
 }
 
+.card-description {
+  font-size: 13px;
+}
+
 .small {
   font-size: 0.75rem;
 }
 .card-heading {
-  font-size: 1.4rem;
+  font-size: 20px;
   font-family: "Montserrat";
   font-weight: 700;
 }
@@ -425,11 +429,33 @@ p, h1 {
   padding-top: 3rem;
 }
 
-/* need to be fixed count from wrapper 999 */
+/* need to be fixed count from wrapper */
+
+@media only screen and (max-width: 1350px) {
+  .card-description {
+    font-size: 9px;
+  }
+
+  .card-heading {
+    font-size: 12px;
+  }
+
+  .styled-link {
+    font-size: 8px;
+  }
+
+  .view-count {
+    font-size: 9px;
+  }
+}
 
 .card {
+  /* -webkit-column-width: 150px;
+  -moz-column-width: 150px;
+  column-width: 150px; */
+  
   -webkit-column-break-inside: avoid;
-	-moz-column-break-inside: avoid;
+  -moz-column-break-inside: avoid;
 
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -458,7 +484,7 @@ p, h1 {
 	column-gap: 1px;
 	column-fill: auto;
 
-  margin-left: 3em;
+  margin-left: 1em;
 }
 
 .saveTag {

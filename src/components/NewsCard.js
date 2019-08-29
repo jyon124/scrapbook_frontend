@@ -46,10 +46,10 @@ render(){
 
         <h5 className="view-count">{this.props.news.viewCount} views</h5>
 
-        <h1 style={{'fontSize':'20px'}} className="ff-serif font-weight-normal text-black card-heading mt-0 mb-1">
+        <h1 className="ff-serif font-weight-normal text-black card-heading mt-0 mb-1">
           {this.props.news.title}
         </h1>
-        <p className="mb-1" style={{'fontSize': '13px'}}>
+        <p className="mb-1 card-description">
           {this.props.news.description}
         </p>
         <div className="border-bottom-coverage">
