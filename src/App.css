@@ -1268,21 +1268,11 @@ box-shadow: 13px 13px 8px 0px rgba(151, 146, 153,0.6);
 
 @import url(https://fonts.googleapis.com/css?family=Exo:100,200,400);
 @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:700,400,300);
-/* 
-body{
-	margin: 0;
-	padding: 0;
-	background: #fff;
-
-	color: #fff;
-	font-family: Arial;
-	font-size: 12px;
-} */
 
 /* login & Sign up */
 
 .sign-up-name {
-  padding-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 .login-body{
