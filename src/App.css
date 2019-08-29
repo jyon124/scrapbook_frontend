@@ -434,6 +434,9 @@ p, h1 {
   margin: 1em 1em 1em 1em;
   display: inline-block;
   width: 300px;
+
+  /* Need to modify this place width with percentage. 999 */
+
   overflow: hidden; 
   border-radius: 1px;
 }
