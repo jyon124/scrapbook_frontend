@@ -1027,6 +1027,10 @@ p, h1 {
   #container {
     margin-left: -5.5em;
   }
+
+  .submit-highlight-btn {
+    font-size: 10px;
+  }
 }
 
 .notes {
