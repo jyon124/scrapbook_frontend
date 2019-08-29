@@ -21,7 +21,9 @@ class NewsCard extends React.Component {
   handleSavedState = () => {
     if(this.state.newsId){
       const found = this.props.clippedNewsTile.find(tile => {
-       return tile.id == this.state.newsId
+        if(tile !== undefined){
+          return tile.id == this.state.newsId
+        }
       });
     return found
     }
