@@ -155,7 +155,8 @@
 
 .head-img-banner {
   margin-top: -27em;
-  width: 90em;
+  /* width: 90em; */
+  width: 100%;
 }
 
 .head-img-banner-saved {
@@ -422,6 +423,39 @@ p, h1 {
 .pt-3 {
   padding-top: 3rem;
 }
+
+/* need to be fixed count from wrapper 999 */
+
+/* @media only screen and (max-width: 900px) {
+  .card {
+    -webkit-column-break-inside: avoid;
+    -moz-column-break-inside: avoid;
+  
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    height: auto;
+    margin: 1em 1em 1em 1em;
+    display: inline-block;
+    width: 85%;
+    overflow: hidden; 
+    border-radius: 1px;
+  }
+
+  .wrapper {
+  color: red;
+  -webkit-column-count: auto;
+  -webkit-column-gap: 1px;
+	-webkit-column-fill: auto;
+	-moz-column-count: auto;
+	-moz-column-gap: 1px;
+	-moz-column-fill: auto;
+	column-count: auto;
+	column-gap: 1px;
+	column-fill: auto;
+  margin-left: 3em;
+  }
+} */
 
 .card {
   -webkit-column-break-inside: avoid;
