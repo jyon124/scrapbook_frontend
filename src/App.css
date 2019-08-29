@@ -1281,6 +1281,10 @@ body{
 
 /* login & Sign up */
 
+.sign-up-name {
+  padding-bottom: 10px;
+}
+
 .login-body{
 	position: absolute;
 	top: -20px;
