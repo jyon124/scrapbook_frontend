@@ -427,37 +427,6 @@ p, h1 {
 
 /* need to be fixed count from wrapper 999 */
 
-/* @media only screen and (max-width: 900px) {
-  .card {
-    -webkit-column-break-inside: avoid;
-    -moz-column-break-inside: avoid;
-  
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    height: auto;
-    margin: 1em 1em 1em 1em;
-    display: inline-block;
-    width: 85%;
-    overflow: hidden; 
-    border-radius: 1px;
-  }
-
-  .wrapper {
-  color: red;
-  -webkit-column-count: auto;
-  -webkit-column-gap: 1px;
-	-webkit-column-fill: auto;
-	-moz-column-count: auto;
-	-moz-column-gap: 1px;
-	-moz-column-fill: auto;
-	column-count: auto;
-	column-gap: 1px;
-	column-fill: auto;
-  margin-left: 3em;
-  }
-} */
-
 .card {
   -webkit-column-break-inside: avoid;
 	-moz-column-break-inside: avoid;
@@ -1029,6 +998,26 @@ p, h1 {
   transform: rotate(0.5deg);
   -moz-transform: rotate(0.5deg);
   -o-transform: rotate(0.5deg);
+}
+
+@media only screen and (max-width: 1350px) {
+  .single-note {
+    width: 150px;
+  }
+
+  .notes-form {
+    width: 150px;
+    height: 180px;
+  }
+
+  .note-input-feild {
+    width: 120px;
+    height: 100px;
+  }
+
+  .scrapbooknews-img {
+    width: 20em;
+  }
 }
 
 .notes {
