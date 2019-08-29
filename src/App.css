@@ -784,7 +784,7 @@ p, h1 {
 
 
 /*** MEDIA QUERIES ***/
-@media only screen and ( min-width: 50em ) {
+@media only screen and ( min-width: 60em ) {
 
     .open-book {
         margin: 1em;
@@ -1017,6 +1017,15 @@ p, h1 {
 
   .scrapbooknews-img {
     width: 20em;
+  }
+
+  .note-container {
+    top: 3em;
+    margin-right: 1em;
+  }
+
+  #container {
+    margin-left: -5.5em;
   }
 }
 
