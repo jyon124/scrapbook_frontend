@@ -431,7 +431,7 @@ p, h1 {
 
 /* need to be fixed count from wrapper */
 
-@media only screen and (max-width: 1350px) {
+@media only screen and (max-width: 1250px) {
   .card-description {
     font-size: 9px;
   }
@@ -446,6 +446,12 @@ p, h1 {
 
   .view-count {
     font-size: 9px;
+  }
+
+  .wrapper {
+    -webkit-column-count: 2;
+    -moz-column-count: 2;
+    column-count: 2;
   }
 }
 
