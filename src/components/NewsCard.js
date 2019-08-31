@@ -38,7 +38,6 @@ class NewsCard extends React.Component {
     const check = this.props.allScrapbooknews.find(news => {return news.news_id === newsId})
     if(!check && e.target.innerText !== "❤️"){
     this.props.clipNews(newsId, scrapbookContainerId)
-    alert('Successfully Saved');
       e.target.innerText = "❤️";
   } else {
     const tile = this.props.allScrapbooknews.find(news => {return news.news_id === newsId})

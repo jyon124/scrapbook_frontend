@@ -540,6 +540,7 @@ p, h1 {
 }
 
 .saveTag {
+  cursor: pointer;
   float: right;
   position: absolute;
   bottom: 3.78em;
