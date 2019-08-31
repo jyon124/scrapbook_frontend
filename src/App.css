@@ -33,7 +33,7 @@
 }
 
 .lds-spinner {
-  left: 42em;
+  left: 45%;
   top: 10em;
   color: official;
   display: inline-block;
@@ -155,7 +155,6 @@
 
 .head-img-banner {
   margin-top: -27em;
-  /* width: 90em; */
   width: 100%;
 }
 
@@ -429,11 +428,13 @@ p, h1 {
   padding-top: 3rem;
 }
 
-/* need to be fixed count from wrapper */
-
-@media only screen and (max-width: 1050px) {
+@media only screen and (max-width: 1070px) {
   .card-description {
     font-size: 9px;
+  }
+
+  .border-bottom-coverage {
+    margin-right: 50% !important;
   }
 
   .card-heading {
@@ -454,9 +455,41 @@ p, h1 {
     column-count: 2;
   }
 
-  .border-bottom-coverage {
-    margin-right: 9em;
-    display: none;
+  .radio-checkbox-container {
+    margin-top: 2em;
+  }
+
+  .showNews-category {
+    font-size: 12px;
+  }
+
+  .news-title {
+    font-size: 17px !important;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .news-content {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    width: 100% !important;
+  }
+
+  .underline-newsShow {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+}
+
+@media only screen and (max-width: 730px) {
+  .showNews-container {
+    width: 100% !important;
+    margin-left: 2% !important;
+    margin-right: 2% !important;
+  }
+
+  .radio-checkbox-container {
+    margin-bottom: 20px !important;
   }
 }
 
@@ -477,21 +510,17 @@ p, h1 {
 
 .border-bottom-coverage {
   border-bottom: lightgrey 1px solid;
-  margin-right: 5em;
+  margin-right: 35%;
 }
 
 .wrapper {
   -webkit-column-width: 350px;
   -moz-column-width: 350px;
   column-width: 350px;
-
-  /* -webkit-column-count: 4; */
 	-webkit-column-gap: 1px;
 	-webkit-column-fill: auto;
-	/* -moz-column-count: 4; */
 	-moz-column-gap: 1px;
 	-moz-column-fill: auto;
-	/* column-count: 4; */
 	column-gap: 1px;
 	column-fill: auto;
 
@@ -502,7 +531,7 @@ p, h1 {
   float: right;
   position: absolute;
   bottom: 3.78em;
-  left: 13.1em;  
+  left: 70%;  
   font-size: 19px;
 }
 
@@ -512,13 +541,11 @@ p, h1 {
 
 .showNews-container {
   letter-spacing: 0.1px;
-  /* padding-left: 2em; */
   padding-top: 6em;
   padding-bottom: 3em;
-  margin-left: 17em;
-  margin-right: 17em;
+  margin-left: 16%;
+  width: 70%;
   box-sizing: border-box;
-  /* border: black 4px solid; */
 }
 
 .headerobjectswrapper {
@@ -530,7 +557,6 @@ p, h1 {
 
 .media {
   height: auto;
-  /* width: 50.6em; */
   width: 95%;
 }
 
@@ -557,14 +583,14 @@ p, h1 {
 
 .showNews-category {
   float: right;
-  margin-top: 3.3em;
-  margin-right: 10em;
+  margin-top: 9%;
+  margin-right: 10%;
 }
 
 .news-title {
   color: black;
   margin-left: 1.8em;
-  font-size: 25px;
+  font-size: 170%;
   font-weight: 900;
 }
 
@@ -623,7 +649,6 @@ p, h1 {
 }
 
 .author {
-  /* padding-left: 5em; */
   text-align: right;
 }
 
@@ -635,7 +660,6 @@ p, h1 {
 
 .scrapbooknews-img {
   padding-left: 6em;
-  /* width: 40em; */
 }
 
 #book-wrapper {
@@ -1101,8 +1125,6 @@ p, h1 {
 
 .radio-checkbox-container {
   font-weight: 900;
-  /* box-sizing: border-box; */
-  /* border: solid 1px white; */
   margin-bottom: 14px;
   padding: 18px;
   font-size: 15px;
@@ -1124,7 +1146,6 @@ p, h1 {
 }
 
 .book-image {
-  /* border: solid 2px brown; */
   border-radius: 3%;
   margin-top: 9.5em;
   margin-left: 2em;
@@ -1133,13 +1154,11 @@ p, h1 {
 }
 
 .link-saved{
-  /* background-color: #F7E999; */
   text-decoration: none;
   padding: 20px;
   color: black;
   font-size: 25px;
   font-weight: 900;
-  /* position: relative; */
 }
 
 .book-container {
@@ -1157,13 +1176,12 @@ p, h1 {
   height: 550px;
 
   margin-left: 2.2em;
-  /* margin: 5% auto; */
   border-radius: 2px 4px 4px 2px;
   background: linear-gradient(45deg,  #71380F 0%, rgb(59, 29, 8) 100%);
   font-family: acumin-pro, sans-serif;
   -webkit-box-shadow: 13px 13px 8px 0px rgba(151, 146, 153,0.6);
--moz-box-shadow: 13px 13px 8px 0px rgba(151, 146, 153,0.6);
-box-shadow: 13px 13px 8px 0px rgba(151, 146, 153,0.6);
+  -moz-box-shadow: 13px 13px 8px 0px rgba(151, 146, 153,0.6);
+  box-shadow: 13px 13px 8px 0px rgba(151, 146, 153,0.6);
   font-weight: 400;
   color: #fff;
   -webkit-transform-style: preserve-3d;
@@ -1241,7 +1259,7 @@ box-shadow: 13px 13px 8px 0px rgba(151, 146, 153,0.6);
 .book-container .book-front > div {
   border-radius: 0 3px 3px 0;
   box-shadow: 
-    inset 4px 0 10px rgba(0, 0, 0, 0.1);
+  inset 4px 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .book-container .book-front:after {
@@ -1297,9 +1315,6 @@ box-shadow: 13px 13px 8px 0px rgba(151, 146, 153,0.6);
 } 
 
 /* end */
-
-
-
 
 @import url(https://fonts.googleapis.com/css?family=Exo:100,200,400);
 @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:700,400,300);
