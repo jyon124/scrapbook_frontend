@@ -493,6 +493,13 @@ p, h1 {
   }
 }
 
+@media only screen and (max-width: 341px) {
+  .radio-checkbox-container {
+    margin-bottom: 55px !important;
+    margin-top: 5em !important;
+  }
+}
+
 .card {
   -webkit-column-break-inside: avoid;
   -moz-column-break-inside: avoid;
