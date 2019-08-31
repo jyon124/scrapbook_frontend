@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
+import { removeTile, postClip } from '../actions';
 import Api from '../services/Api';
 
 class NewsCard extends React.Component {
@@ -33,6 +34,18 @@ class NewsCard extends React.Component {
     Api.increaseView(news);
   }
 
+  handleFavorite = (newsId, scrapbookContainerId, e) => {
+    const check = this.props.allScrapbooknews.find(news => {return news.news_id === newsId})
+    if(!check && e.target.innerText !== "❤️"){
+    this.props.clipNews(newsId, scrapbookContainerId)
+    alert('Successfully Saved');
+      e.target.innerText = "❤️";
+  } else {
+    const tile = this.props.allScrapbooknews.find(news => {return news.news_id === newsId})
+    this.props.unSave(tile)
+    e.target.innerText = "♡";
+  }
+}
 
 render(){
     return(
@@ -55,9 +68,9 @@ render(){
         <div className="border-bottom-coverage">
         {
         this.handleSavedState() ? 
-        <div className="saveTag">❤️</div>
+        <div className="saveTag" onClick={(e) => this.handleFavorite(this.props.news.id, this.props.scrapbookContainer.id, e)}>❤️</div>
         :
-        <div className="saveTag">♡</div>
+        <div className="saveTag" onClick={(e) => this.handleFavorite(this.props.news.id, this.props.scrapbookContainer.id, e)}>♡</div>
         }
         </div>
       </div>
@@ -80,4 +93,15 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, null)(NewsCard);
+const mapDispatchToProps = dispatch => {
+  return {
+      clipNews: (newsId, scrapbookContainerId) => {
+          dispatch(postClip(newsId, scrapbookContainerId))
+      },
+      unSave: (tile) => {
+          dispatch(removeTile(tile))
+      }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(NewsCard);
