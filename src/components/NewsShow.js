@@ -32,7 +32,8 @@ class NewsShow extends Component {
 
     componentDidMount(){
         if(!localStorage.getItem('user')){
-            this.props.history.push('/login')
+            // this.props.history.push('/login')
+        this.getNews()
         } else{
         this.getNews()
         this.getUserData()
@@ -99,10 +100,17 @@ class NewsShow extends Component {
 
             <div className="btn-container">
             {
+            localStorage.getItem('user') ?
+            <div className="save-btn-container">
+            {
             this.handleSaveBtnState().length > 0 ? 
             <button className="saved-btn">Saved</button>
             :
             <button className="save-btn" onClick={() => this.handleFavorite(this.props.showNews.id, this.props.scrapbookContainer.id)}>Save</button>
+            }
+            </div>
+            :
+            null
             }
             <button className="link-btn" onClick={()=> window.open(`${this.props.showNews.url}`, "_blank")}>Link to this news</button>
             </div>

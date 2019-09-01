@@ -123,7 +123,7 @@
 }
 
 .nav-bar-container {
-  z-index: 1;
+  z-index: 3;
   margin-top: -1em;
   background-color: #2b2b2b;
   width: fill;
@@ -611,6 +611,10 @@ p, h1 {
 .btn-container {
   margin-top: 3em;
   margin-left: 1.6em;
+}
+
+.save-btn-container {
+  display: inline-block;
 }
 
 .save-btn, .link-btn {
@@ -1347,20 +1351,20 @@ p, h1 {
 	width: auto;
 	height: auto;
 	background-image: url(http://ginva.com/wp-content/uploads/2012/07/city-skyline-wallpapers-008.jpg);
-	background-size: cover;
+  background-size: cover;
 	-webkit-filter: blur(5px);
-	z-index: 0;
+  z-index: 0;
 }
 
 .grad{
-	position: absolute;
+  position: absolute;
 	top: -20px;
 	left: -20px;
 	right: -40px;
 	bottom: -40px;
 	width: auto;
 	height: auto;
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0)), color-stop(100%,rgba(0,0,0,0.65))); /* Chrome,Safari4+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0)), color-stop(100%,rgba(0,0,0,0.65)));
 	z-index: 1;
 	opacity: 0.7;
 }

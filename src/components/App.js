@@ -39,10 +39,7 @@ render(){
   return (
     <Router>
       <div>
-        <Navbar 
-          user={this.state.auth.user}
-          handleLogout={() => this.handleLogout()}
-        />
+        <Navbar user={this.state.auth.user} handleLogout={() => this.handleLogout()} />
             <Switch>
             <Route exact path="/" render={(routeProps) => {
               return <Login {...routeProps} handleLogin={(user) => {this.handleLogin(user)}} />

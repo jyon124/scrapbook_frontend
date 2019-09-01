@@ -12,7 +12,7 @@ class NewsCard extends React.Component {
 
   componentDidMount(){
     if(!localStorage.getItem('user')){
-      this.props.history.push('/login')
+      // this.props.history.push('/login')
     } else {
       setTimeout(()=> {this.handleSavedState()}, 3000)
     }
@@ -65,11 +65,19 @@ render(){
           {this.props.news.description}
         </p>
         <div className="border-bottom-coverage">
+        {localStorage.getItem('user') ?
+
+        <div>
         {
         this.handleSavedState() ? 
         <div className="saveTag" onClick={(e) => this.handleFavorite(this.props.news.id, this.props.scrapbookContainer.id, e)}>❤️</div>
         :
         <div className="saveTag" onClick={(e) => this.handleFavorite(this.props.news.id, this.props.scrapbookContainer.id, e)}>♡</div>
+        }
+        </div>
+        
+        :
+        null
         }
         </div>
       </div>

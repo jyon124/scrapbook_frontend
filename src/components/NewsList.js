@@ -15,7 +15,11 @@ class NewsList extends React.Component {
 
     componentDidMount(){
         if(!localStorage.getItem('user')){
-            this.props.history.push('/login')
+            // this.props.history.push('/login')
+            if(this.props.news.length < 1){
+                this.props.fetchNews()
+            }
+            
         } else{
         this.getUserData()
         if(this.props.news.length < 1){
@@ -89,8 +93,8 @@ class NewsList extends React.Component {
                      <img className="head-img-banner" src={headerImg} />
                  </div>
                      {this.props.getUser.id ? this.initializeScrapbook(this.props.getUser.id) : null}
-                {this.props.scrapbookContainer.id ? this.getAllScrapbook(this.props.scrapbookContainer.id) : null}
-                <div className="underline"></div>
+                     {this.props.scrapbookContainer.id ? this.getAllScrapbook(this.props.scrapbookContainer.id) : null}
+                 <div className="underline"></div>
                     {this.props.loader ? 
                     <div>
                         <h1 className="loading-sentence">Loading...</h1> 
