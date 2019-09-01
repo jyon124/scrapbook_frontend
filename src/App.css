@@ -508,7 +508,6 @@ p, h1 {
 .card {
   -webkit-column-break-inside: avoid;
   -moz-column-break-inside: avoid;
-
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -535,7 +534,6 @@ p, h1 {
 	-moz-column-fill: auto;
 	column-gap: 1px;
 	column-fill: auto;
-
   margin-left: 1em;
 }
 

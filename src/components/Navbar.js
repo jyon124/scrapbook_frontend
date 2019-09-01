@@ -20,6 +20,7 @@ const Navbar = props => {
           <nav role="navigation">
             <div id="menuToggle">
               <ul id="menu">
+                <Link to="/signin" className="nav-column"><li>Sign-up</li></Link>
                 <Link to="/login" className="nav-column"><li>Login</li></Link>
                 <Link to="/newslist" className="nav-enter"><li>News</li></Link>
               </ul>
