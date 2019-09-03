@@ -104,14 +104,14 @@ class NewsShow extends Component {
     // ✄ delete btn 
     handleShowMore = (note) => {
         if (note.content.length > 120){
-            return <div key={note.id} className="single-note"><button className='delete-note' onClick={(e) => this.handleDeleteNote(e, note.id)}>📍</button>
+            return <div key={note.id} className="single-note"><button className='delete-note' onClick={(e) => this.handleDeleteNote(e, note.id)}><span role="img" aria-label="redClip">📍</span></button>
               <button className="display-btn" onClick={(e) => this.handleDisplayNote(e, note)}>
                 [・・・]
               </button>
                 {note.content}
             </div>
         } else {
-            return <li key={note.id} className="single-note"><button className='delete-note' onClick={(e) => this.handleDeleteNote(e, note.id)}>📍</button>{note.content}</li>
+            return <li key={note.id} className="single-note"><button className='delete-note' onClick={(e) => this.handleDeleteNote(e, note.id)}><span role="img" aria-label="redClip">📍</span></button>{note.content}</li>
         }
     }
 

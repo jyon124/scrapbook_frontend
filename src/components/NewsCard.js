@@ -23,7 +23,7 @@ class NewsCard extends React.Component {
     if(this.state.newsId){
       const found = this.props.clippedNewsTile.find(tile => {
         if(tile !== undefined){
-          return tile.id === this.state.newsId
+          return tile.id === this.state.newsId;
         }
       });
     return found
@@ -70,9 +70,9 @@ render(){
         <div>
         {
         this.handleSavedState() ? 
-        <div className="saveTag" onClick={(e) => this.handleFavorite(this.props.news.id, this.props.scrapbookContainer.id, e)}>❤️</div>
+        <div className="saveTag" onClick={(e) => this.handleFavorite(this.props.news.id, this.props.scrapbookContainer.id, e)}><span role="img" aria-label="filledheart">❤️</span></div>
         :
-        <div className="saveTag" onClick={(e) => this.handleFavorite(this.props.news.id, this.props.scrapbookContainer.id, e)}>♡</div>
+        <div className="saveTag" onClick={(e) => this.handleFavorite(this.props.news.id, this.props.scrapbookContainer.id, e)}><span role="img" aria-label="emptyHeart">♡</span></div>
         }
         </div>
         
