@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import { fetchNews, fetchUser, fetchScrapbook, fetchAllScrapbooknewsAction, createClippedNewsTile } from '../actions';
 import NewsCard from './NewsCard';
 import headerImg from '../main-news-header.png';
@@ -63,7 +63,9 @@ class NewsList extends React.Component {
     getAllScrapbook = (scrapbookId) => {
         if(this.props.allScrapbooknews.length < 1 && this.state.scrapbooknewsRendered === false){
         this.props.fetchAllScrapbooknews(scrapbookId)
-        this.state.scrapbooknewsRendered = true
+        this.setState = ({
+            scrapbooknewsRendered: true
+            })
         }
     }
 
@@ -90,7 +92,7 @@ class NewsList extends React.Component {
             <Route path='/newslist' render={()=> {
                 return <div className="newslist-container">
                 <div className="head-img-container">
-                     <img className="head-img-banner" src={headerImg} />
+                     <img alt="headerImg" className="head-img-banner" src={headerImg} />
                  </div>
                      {this.props.getUser.id ? this.initializeScrapbook(this.props.getUser.id) : null}
                      {this.props.scrapbookContainer.id ? this.getAllScrapbook(this.props.scrapbookContainer.id) : null}
@@ -197,9 +199,6 @@ const mapDispatchToProps = (dispatch) => {
     },
     fetchAllScrapbooknews: (scrapbookId) => {
         dispatch(fetchAllScrapbooknewsAction(scrapbookId))
-    },
-    fetchNews: () => {
-        dispatch(fetchNews())
     },
     clippedNewsTileCreation: (clippedNews) => {
         dispatch(createClippedNewsTile(clippedNews))

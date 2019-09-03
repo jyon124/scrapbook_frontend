@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Api from '../services/Api';
-import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import {connect} from 'react-redux';
 import { showNews, fetchUser, fetchScrapbook, postClip } from '../actions';
 
@@ -119,20 +118,8 @@ class NewsShow extends Component {
             :
             <div>
                 <h1 className="loading-sentence">Loading...</h1> 
-                <div className="lds-spinner">
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                </div>
+                <div className="lds-spinner"><div></div><div></div><div></div><div></div><div></div>
+                <div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
             </div>
             }
         </div>

@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import '../App.css';
 import { connect } from 'react-redux';
-import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Navbar from './Navbar';
 import Login from './Login';
 import Signin from './Signin';
 import NewsList from './NewsList';
 import NewsShow from './NewsShow';
+import About from '../containers/about';
 import ClippedNewsShow from './ClippedNewsShow';
 import ScrapBooksContainer from '../containers/scrapbooksContainer'
 import { clearAllState } from '../actions'
@@ -52,6 +53,10 @@ render(){
             }} />
             <Route exact path="/newslist" render={(routeProps) => {
               return <NewsList {...routeProps} handleLogin={(user) => {this.handleLogin(user)}} />
+            }} />
+
+            <Route exact path="/about" render={(routeProps) => {
+              return <About {...routeProps} handleLogin={(user) => {this.handleLogin(user)}} />
             }} />
 
             <Route exact path="/scrapbooks/:user_id/scrapbooknews/:news_id" component={ClippedNewsShow} />

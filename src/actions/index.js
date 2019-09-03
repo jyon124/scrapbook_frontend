@@ -1,6 +1,6 @@
 import { FETCH_NEWS, SHOW_NEWS, FETCH_USER, FETCH_SCRAPBOOK, CLIP_NEWS, FETCHALLSCRAPBOOKTILE, CLIPPED_NEWS_TILE, CLEAR_ALL_STATE, REMOVE_TILE, DELETE_NOTE } from './types';
 import Api from '../services/Api.js'
-import { typeAlias } from '@babel/types';
+// import { typeAlias } from '@babel/types';
 
 export function fetchNews(){
     return function (dispatch){

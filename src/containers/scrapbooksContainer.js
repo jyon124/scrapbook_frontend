@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import ClippedNewsCard from '../components/ClippedNewsCard'
 import { fetchUser, fetchScrapbook, fetchAllScrapbooknewsAction, fetchNews, createClippedNewsTile } from '../actions'
-import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import scrapbookHeader from '../scrapbook-header.jpeg';
 
 class ScrapBooksContainers extends React.Component {
@@ -36,8 +35,10 @@ class ScrapBooksContainers extends React.Component {
 
     getAllScrapbook = (scrapbookId) => {
         if(this.props.allScrapbooknews.length < 1 && this.state.scrapbooknewsRendered === false){
-        this.props.fetchAllScrapbooknews(scrapbookId)
-        this.state.scrapbooknewsRendered = true
+        this.props.fetchAllScrapbooknews(scrapbookId);
+        this.setState = ({
+            scrapbooknewsRendered: true
+            });
         }
     }
 
@@ -67,7 +68,7 @@ class ScrapBooksContainers extends React.Component {
                 {this.props.getUser.id ? this.initializeScrapbook(this.props.getUser.id) : null}
                 {this.props.scrapbookContainer.id ? this.getAllScrapbook(this.props.scrapbookContainer.id) : null}
                 <div className="head-img-container">
-                    <img className="head-img-banner-saved" src={scrapbookHeader} />
+                    <img alt="scrapbookHeader" className="head-img-banner-saved" src={scrapbookHeader} />
                 </div>
                 <h1 className="title">SCRAPBOOKS</h1>
                 <div className="underline"></div>

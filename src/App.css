@@ -1,3 +1,29 @@
+/* Test */
+
+.about-container {
+  margin-left: 25%;
+  margin-right: 25%;
+}
+
+.about {
+  font-weight: 200;
+  font-size: 50px;
+  text-align: center;
+  top: 2em;
+  position: relative;
+}
+
+.about-content1 {
+  text-align: center;
+  margin-top: 8em;
+}
+
+.about-how {
+  font-weight: 300;
+}
+
+/* end */
+
 .error-container {
   box-sizing: border-box;
 }
@@ -126,7 +152,7 @@
   z-index: 3;
   margin-top: -1em;
   background-color: #2b2b2b;
-  width: fill;
+  width: stretch;
   position: fixed;
   overflow: hidden;
 }

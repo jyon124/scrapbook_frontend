@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { removeTile, postClip } from '../actions';
 import Api from '../services/Api';
 
@@ -23,7 +23,7 @@ class NewsCard extends React.Component {
     if(this.state.newsId){
       const found = this.props.clippedNewsTile.find(tile => {
         if(tile !== undefined){
-          return tile.id == this.state.newsId
+          return tile.id === this.state.newsId
         }
       });
     return found
