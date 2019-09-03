@@ -10,7 +10,6 @@ export default {
             },
             body: JSON.stringify(loginData)
         }
-        // return fetch('http://localhost:3001/api/v1/login', reqObj)
         return fetch(`${API_URL}api/v1/login`, reqObj)
         .then(res => res.json())
     },
@@ -21,7 +20,6 @@ export default {
                 Authorization: `Bearer ${localStorage.getItem("user")}`
             }
         }
-        // return fetch('http://localhost:3001/api/v1/profile', reqObj)
         return fetch(`${API_URL}api/v1/profile`, reqObj)
         .then(res => res.json())
     },
