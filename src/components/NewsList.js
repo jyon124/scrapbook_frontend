@@ -8,9 +8,13 @@ import headerImg from '../main-news-header.png';
 
 
 class NewsList extends React.Component {
-    state = {
-        scrapbooknewsRendered: false,
-        selectedOption: "All"
+    constructor(){
+        super();
+        this.state = {
+            scrapbooknewsRendered: false,
+            selectedOption: "All"
+        };
+        this.handleOptionChange = this.handleOptionChange.bind(this);
     }
 
     componentDidMount(){
@@ -21,7 +25,7 @@ class NewsList extends React.Component {
         } else {
         this.getUserData()
         if(this.props.news.length < 1){
-        this.props.fetchNews()
+            this.props.fetchNews()
         }
         setTimeout(()=> this.findClippedNews(), 500);
       }
@@ -80,9 +84,13 @@ class NewsList extends React.Component {
     }
 
     handleOptionChange = (e) => {
-        this.setState({
+        // Need to fix, this.setState is not a function error.
+        // Refresh and try to use radio checkbox and cause error.
+        if(typeof this.setState === 'function'){
+            this.setState({
             selectedOption: e.target.value
-        })
+            })
+        }
     }
     
     render(){
