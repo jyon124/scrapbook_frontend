@@ -561,7 +561,6 @@ p, h1 {
 	-moz-column-fill: auto;
 	column-gap: 1px;
 	column-fill: auto;
-  margin-left: 1em;
 }
 
 .saveTag {
