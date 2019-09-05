@@ -86,6 +86,7 @@ class NewsList extends React.Component {
             selectedOption: e.target.value
         })
     }
+    
     render(){
         return(
         <Switch>

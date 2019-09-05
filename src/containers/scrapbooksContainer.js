@@ -5,6 +5,7 @@ import { fetchUser, fetchScrapbook, fetchAllScrapbooknewsAction, fetchNews, crea
 import scrapbookHeader from '../scrapbook-header.jpeg';
 
 class ScrapBooksContainers extends React.Component {
+    
     state = {
         scrapbooknewsRendered: false
     }
@@ -86,18 +87,8 @@ class ScrapBooksContainers extends React.Component {
                             <div>
                                 <h1 className="loading-sentence">Loading...</h1> 
                                 <div className="lds-spinner">
-                                    <div></div>
-                                    <div></div>
-                                    <div></div>
-                                    <div></div>
-                                    <div></div>
-                                    <div></div>
-                                    <div></div>
-                                    <div></div>
-                                    <div></div>
-                                    <div></div>
-                                    <div></div>
-                                    <div></div>
+                                    <div></div><div></div><div></div><div></div><div></div><div></div>
+                                    <div></div><div></div><div></div><div></div><div></div><div></div>
                                 </div>
                             </div>
                             }
