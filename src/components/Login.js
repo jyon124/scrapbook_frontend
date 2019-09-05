@@ -12,6 +12,14 @@ class Login extends React.Component {
         }
     }
 
+    componentDidMount = () => {
+        if(localStorage.getItem('user')){
+            this.props.history.push('/newslist')
+          } else {
+            return
+        }
+    }
+
     handleUsernameChange(e){
         this.setState({
             username: e.target.value
