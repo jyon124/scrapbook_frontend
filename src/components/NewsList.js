@@ -15,11 +15,9 @@ class NewsList extends React.Component {
 
     componentDidMount(){
         if(!localStorage.getItem('user')){
-            // this.props.history.push('/login')
             if(this.props.news.length < 1){
-                this.props.fetchNews()
+               this.props.fetchNews()
             }
-            
         } else {
         this.getUserData()
         if(this.props.news.length < 1){
@@ -102,18 +100,8 @@ class NewsList extends React.Component {
                     <div>
                         <h1 className="loading-sentence">Loading...</h1> 
                         <div className="lds-spinner">
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
+                            <div></div><div></div><div></div><div></div><div></div><div></div>
+                            <div></div><div></div><div></div><div></div><div></div><div></div>
                         </div>
                     </div>
                     :
