@@ -52,7 +52,8 @@
 
 /* Loading Css */
 
-.loading-sentence{
+.loading-sentence {
+  margin-left: -1.7em;
   margin-top: 2em;
   margin-bottom: -4em;
   text-align: center;

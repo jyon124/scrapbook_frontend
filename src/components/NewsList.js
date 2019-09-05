@@ -20,7 +20,7 @@ class NewsList extends React.Component {
                 this.props.fetchNews()
             }
             
-        } else{
+        } else {
         this.getUserData()
         if(this.props.news.length < 1){
         this.props.fetchNews()
