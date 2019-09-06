@@ -64,10 +64,8 @@ class NewsList extends React.Component {
 
     getAllScrapbook = (scrapbookId) => {
         if(this.props.allScrapbooknews.length < 1 && this.state.scrapbooknewsRendered === false){
-        this.props.fetchAllScrapbooknews(scrapbookId)
-        this.setState = ({
-            scrapbooknewsRendered: true
-            })
+        this.props.fetchAllScrapbooknews(scrapbookId);
+        setTimeout(() => { this.setState({scrapbooknewsRendered: true}); }, 100);
         }
     }
 
@@ -84,13 +82,11 @@ class NewsList extends React.Component {
     }
 
     handleOptionChange = (e) => {
-        // Need to fix, this.setState is not a function error.
-        // Refresh and try to use radio checkbox and cause error.
         if(typeof this.setState === 'function'){
             this.setState({
-            selectedOption: e.target.value
-            })
-        }
+                selectedOption: e.target.value
+            });
+        } 
     }
     
     render(){
