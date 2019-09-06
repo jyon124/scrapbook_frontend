@@ -5,9 +5,11 @@ import { fetchUser, fetchScrapbook, fetchAllScrapbooknewsAction, fetchNews, crea
 import scrapbookHeader from '../scrapbook-header.jpeg';
 
 class ScrapBooksContainers extends React.Component {
-    
-    state = {
-        scrapbooknewsRendered: false
+    constructor(props){
+        super(props);
+        this.state = {
+            scrapbooknewsRendered: false
+        }
     }
     
     componentDidMount = () => {
@@ -37,8 +39,8 @@ class ScrapBooksContainers extends React.Component {
     getAllScrapbook = (scrapbookId) => {
         if(this.props.allScrapbooknews.length < 1 && this.state.scrapbooknewsRendered === false){
         this.props.fetchAllScrapbooknews(scrapbookId);
-        this.setState = ({
-            scrapbooknewsRendered: true
+        this.setState({
+                scrapbooknewsRendered: true
             });
         }
     }
