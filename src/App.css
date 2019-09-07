@@ -206,7 +206,8 @@
 
 .nav-bar-container a:hover {
   border-radius: 12%;
-  color: #3D8BD0;
+  /* color: #3D8BD0; */
+  color: aquamarine;
   background-color: black;
 }
 
