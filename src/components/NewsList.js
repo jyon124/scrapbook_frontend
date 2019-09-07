@@ -95,7 +95,7 @@ class NewsList extends React.Component {
             <Route path='/newslist' render={()=> {
                 return <div className="newslist-container">
                 <div className="head-img-container">
-                     <h1 className="news-title">NEWS</h1>
+                     <h1 className="news-header-title">NEWS</h1>
                      <img alt="headerImg" className="head-img-banner" src={headerImg} />
                  </div>
                      {this.props.getUser.id ? this.initializeScrapbook(this.props.getUser.id) : null}
