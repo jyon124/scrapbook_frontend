@@ -225,6 +225,11 @@
 
 /* news card */
 
+.published-date {
+  position: relative;
+  margin-bottom: -2.9em;
+}
+
 .view-count {
   text-align: right;
 }

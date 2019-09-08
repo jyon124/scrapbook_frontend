@@ -56,6 +56,7 @@ render(){
           {this.props.news.category.charAt(0).toUpperCase() + this.props.news.category.slice(1)}
         </p>
 
+        <h5 className="published-date">{this.props.news.publishedAt ? this.props.news.publishedAt.split("T")[0].split("-").join(" ") : null}</h5>
         <h5 className="view-count">{this.props.news.viewCount} views</h5>
 
         <h1 className="ff-serif font-weight-normal text-black card-heading mt-0 mb-1">
