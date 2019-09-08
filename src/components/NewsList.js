@@ -5,8 +5,6 @@ import { fetchNews, fetchUser, fetchScrapbook, fetchAllScrapbooknewsAction, crea
 import NewsCard from './NewsCard';
 import headerImg from '../main-news-header.png';
 
-
-
 class NewsList extends React.Component {
     constructor(){
         super();
