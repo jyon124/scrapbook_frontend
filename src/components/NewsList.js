@@ -31,7 +31,8 @@ class NewsList extends React.Component {
 
     renderNews = () => {
         if (this.state.selectedOption === "All"){
-        const sortedNews = this.props.news.sort((a, b) => (a.viewCount > b.viewCount) ? -1 : 1);
+        // const sortedNews = this.props.news.sort((a, b) => (a.viewCount > b.viewCount) ? -1 : 1);
+        const sortedNews = this.props.news.sort((a, b) => (a.publishedAt > b.publishedAt) ? -1 : 1);
        return sortedNews.map(news => {
         return (
             < NewsCard news={news} key={news.id} />
@@ -39,7 +40,8 @@ class NewsList extends React.Component {
         })
         } else {
             const filtered = this.props.news.filter(news => news.category === this.state.selectedOption);
-            const sortedfiltered = filtered.sort((a, b) => (a.viewCount > b.viewCount) ? -1 : 1);
+            // const sortedfiltered = filtered.sort((a, b) => (a.viewCount > b.viewCount) ? -1 : 1);
+            const sortedfiltered = filtered.sort((a, b) => (a.publishedAt > b.publishedAt) ? -1 : 1);
             return sortedfiltered.map(news => {
                 return (
                     < NewsCard news={news} key={news.id} />
