@@ -5,6 +5,30 @@
   width: 100%;
 }
 
+@media only screen and (max-width: 550px) {
+  .about-header {
+    margin-top: 3em;
+  }
+
+  .news-header-title{
+    display: none;
+  }
+
+  .title{
+    display: none;
+  }
+
+  .head-img-banner{
+    margin-top: -6em !important;
+    margin-bottom: -4em !important;
+  }
+
+  .head-img-banner-saved{
+    margin-top: -2em !important;
+    margin-bottom: 0em !important;
+  }
+}
+
 .about-container {
   text-align: center;
   margin-left: 30%;
