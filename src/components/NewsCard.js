@@ -32,6 +32,7 @@ class NewsCard extends React.Component {
 
   handleView = (e, news) => {
     Api.increaseView(news);
+    // From All news, find this news and update view count
   }
 
   handleFavorite = (newsId, scrapbookContainerId, e) => {
