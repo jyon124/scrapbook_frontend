@@ -59,7 +59,7 @@ class ScrapBooksContainers extends React.Component {
 
     renderClippedNewsTile = () => {
        return this.props.clippedNewsTile.map(news => {
-           if(news.id !== undefined){
+           if(news !== undefined){
             return (
                 < ClippedNewsCard newsCard={news} key={news.id} />
               )

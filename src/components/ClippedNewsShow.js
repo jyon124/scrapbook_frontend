@@ -247,6 +247,7 @@ class NewsShow extends Component {
     handleDeleteHighlight = (e, highlight) => {
         Api.handleDeleteHighlightReq(highlight.id)
         e.target.parentNode.remove();
+        this.props.clearScrapbooknewsState();
     }
     
     render(){
