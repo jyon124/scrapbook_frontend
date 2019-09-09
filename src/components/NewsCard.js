@@ -30,7 +30,7 @@ class NewsCard extends React.Component {
     }
   }
 
-  handleView = (e, news) => {
+  handleView = (news) => {
     Api.increaseView(news);
     this.props.clearNewsState();
   }
@@ -83,7 +83,7 @@ render(){
         }
         </div>
       </div>
-        <Link to={`/newslist/${this.props.news.id}`} onClick={(e) => this.handleView(e, this.props.news)} className="text-uppercase d-inline-block font-weight-medium lts-2px ml-2 mb-2 text-center styled-link">
+        <Link to={`/newslist/${this.props.news.id}`} onClick={() => this.handleView(this.props.news)} className="text-uppercase d-inline-block font-weight-medium lts-2px ml-2 mb-2 text-center styled-link">
           View Full Coverage
         </Link>
       </div>

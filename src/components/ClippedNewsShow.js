@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Api from '../services/Api';
 import {connect} from 'react-redux';
-import { showNews, fetchUser, fetchScrapbook, postClip, removeTile, fetchAllScrapbooknewsAction, deleteNoteReq } from '../actions';
+import { showNews, fetchUser, fetchScrapbook, postClip, removeTile, fetchAllScrapbooknewsAction, deleteNoteReq, clearAllScrapbooknewsState } from '../actions';
 
 class NewsShow extends Component {
     constructor(props){
@@ -87,6 +87,8 @@ class NewsShow extends Component {
         li.innerText = note.content;
         li.append(btn);
         noteUl.append(li);
+        // this.props.clearScrapbooknewsState();
+        // Show more and less has to be available without refresh.
     }
 
     handleDisplayNote = (e, note) => {
@@ -178,7 +180,11 @@ class NewsShow extends Component {
         }
         Api.handlePostReqHighlight(bodyObj)
         .then(highlighted => {console.log(highlighted)})
-        this.props.history.push('/scrapbooks')
+        this.props.clearScrapbooknewsState();
+        this.setState({
+            selectedSentence: '',
+            color: ''
+        })
     }
 
     handleRenderHighlights = (content) => {
@@ -370,6 +376,9 @@ const mapStateToProps = (state) => {
         },
         deleteNote: (noteId) => {
             dispatch(deleteNoteReq(noteId))
+        },
+        clearScrapbooknewsState: () => {
+          dispatch(clearAllScrapbooknewsState())
         }
     }
 }

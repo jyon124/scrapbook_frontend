@@ -8,6 +8,8 @@ export default function allScrapbooknews(state = [], action){
                 return state.filter(news => news.id !== action.tileId)
         case 'CLEAR_ALL_STATE':
                 return state = []
+        case 'CLEAR_ALL_SCRAPBOOKNEWS_STATE':
+                return state = []
         default:
             return state;
     }
