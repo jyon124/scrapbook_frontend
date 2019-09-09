@@ -58,21 +58,25 @@ class ScrapBooksContainers extends React.Component {
     }
 
     renderClippedNewsTile = () => {
+        let load = false;
        return this.props.clippedNewsTile.map(news => {
            if(news !== undefined){
             return (
                 < ClippedNewsCard newsCard={news} key={news.id} />
               )
             } else {
-                return (
-                    <div>
-                        <h1 className="loading-sentence">Loading...</h1> 
-                        <div className="lds-spinner">
-                            <div></div><div></div><div></div><div></div><div></div><div></div>
-                            <div></div><div></div><div></div><div></div><div></div><div></div>
+                if(load === false){
+                    load = true;
+                    return (
+                        <div>
+                            <h1 className="loading-sentence">Loading...</h1> 
+                            <div className="lds-spinner">
+                                <div></div><div></div><div></div><div></div><div></div><div></div>
+                                <div></div><div></div><div></div><div></div><div></div><div></div>
+                            </div>
                         </div>
-                    </div>
-                )
+                    )
+                }
             }
          })
      }

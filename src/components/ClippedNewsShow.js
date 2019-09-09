@@ -252,7 +252,7 @@ class NewsShow extends Component {
         Api.handleDeleteHighlightReq(highlight.id)
         setTimeout(() => {
             this.props.clearScrapbooknewsState();
-        }, 1000);
+        }, 500);
     }
     
     render(){
