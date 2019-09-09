@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { removeTile, postClip } from '../actions';
+import { removeTile, postClip, clearAllNewsState } from '../actions';
 import Api from '../services/Api';
 
 class NewsCard extends React.Component {
@@ -32,7 +32,7 @@ class NewsCard extends React.Component {
 
   handleView = (e, news) => {
     Api.increaseView(news);
-    // From All news, find this news and update view count
+    this.props.clearNewsState();
   }
 
   handleFavorite = (newsId, scrapbookContainerId, e) => {
@@ -109,6 +109,9 @@ const mapDispatchToProps = dispatch => {
       },
       unSave: (tile) => {
           dispatch(removeTile(tile))
+      },
+      clearNewsState: () => {
+        dispatch(clearAllNewsState())
       }
   }
 }
