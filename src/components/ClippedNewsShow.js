@@ -179,7 +179,7 @@ class NewsShow extends Component {
             color: this.state.color
         }
         Api.handlePostReqHighlight(bodyObj)
-        .then(highlighted => {console.log(highlighted)})
+        // .then(highlighted => {console.log(highlighted)})
         
         setTimeout(() => {
             this.props.clearScrapbooknewsState();
