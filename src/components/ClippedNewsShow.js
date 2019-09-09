@@ -180,11 +180,14 @@ class NewsShow extends Component {
         }
         Api.handlePostReqHighlight(bodyObj)
         .then(highlighted => {console.log(highlighted)})
-        this.props.clearScrapbooknewsState();
-        this.setState({
-            selectedSentence: '',
-            color: ''
-        })
+        
+        setTimeout(() => {
+            this.props.clearScrapbooknewsState();
+            this.setState({
+                selectedSentence: '',
+                color: ''
+            });
+        }, 500);
     }
 
     handleRenderHighlights = (content) => {
@@ -245,9 +248,11 @@ class NewsShow extends Component {
     }
 
     handleDeleteHighlight = (e, highlight) => {
-        Api.handleDeleteHighlightReq(highlight.id)
         e.target.parentNode.remove();
-        this.props.clearScrapbooknewsState();
+        Api.handleDeleteHighlightReq(highlight.id)
+        setTimeout(() => {
+            this.props.clearScrapbooknewsState();
+        }, 1000);
     }
     
     render(){

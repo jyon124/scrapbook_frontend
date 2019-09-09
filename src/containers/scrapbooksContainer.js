@@ -63,6 +63,16 @@ class ScrapBooksContainers extends React.Component {
             return (
                 < ClippedNewsCard newsCard={news} key={news.id} />
               )
+            } else {
+                return (
+                    <div>
+                        <h1 className="loading-sentence">Loading...</h1> 
+                        <div className="lds-spinner">
+                            <div></div><div></div><div></div><div></div><div></div><div></div>
+                            <div></div><div></div><div></div><div></div><div></div><div></div>
+                        </div>
+                    </div>
+                )
             }
          })
      }
