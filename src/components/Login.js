@@ -73,7 +73,7 @@ class Login extends React.Component {
                 <input onChange={(e) => this.handleUsernameChange(e)} value={this.state.username} type="text" placeholder="username" name="user"/><br/>
                 <input onChange={(e) => this.handlePasswordChange(e)} value={this.state.password} type="password" placeholder="password" name="password"/><br/>
                 <input type='submit' value="Login"/>
-                <Link to="/signin" className="nav-enter"><div className="member-link">not a member yet? <u> Sign up</u></div></Link>
+                <div className="member-link"><Link to="/signin" className="nav-enter">not a member yet? <u> Sign up</u></Link></div>
             </div>
         </form>
         )

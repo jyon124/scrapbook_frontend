@@ -1561,10 +1561,15 @@ a {
 }
 
 .member-link {
+  text-decoration: none !important;
   margin-left: 1.9em;
-  color: white;
+  color: white !important;
   margin-top: 0.5em;
-  margin-right: 30%;
+}
+
+.nav-enter {
+  color: white !important;
+  text-decoration: none !important;
 }
 
 /* end */

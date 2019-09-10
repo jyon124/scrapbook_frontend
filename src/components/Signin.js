@@ -107,7 +107,7 @@ export default class Signin extends React.Component {
           <input onChange={(e) => this.handleUsernameChange(e)} value={this.state.username} type="text" name="username" placeholder="username" /><br/>
           <input onChange={(e) => this.handlePasswordChange(e)} value={this.state.password} type="password" name="password" placeholder="password" /><br/>
           <input className="sign-in-btn" type="submit" value="Sign up" />
-          <Link to="/login" className="nav-enter"><div className="member-link">already a member? <u>Log in</u></div></Link>
+          <div className="member-link"><Link to="/login" className="nav-enter">already a member? <u>Log in</u></Link></div>
         </div>
       </form>
     )
