@@ -218,12 +218,12 @@ class NewsShow extends Component {
             j++;
             start = i;
           } else {
-            // let j = 0;
             start = 0;
           }
           if (highlightSplit.length === j){
             last = i+2;
-            start = last-j-1;
+            start = i-j;
+
             let p = document.querySelector('.please');
             if(p !== null){
                 contentSplit.splice(start, 0, `<span style="background-color: rgba(222,255,0,0.75)">`)
