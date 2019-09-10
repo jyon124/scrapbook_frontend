@@ -163,7 +163,7 @@ class NewsShow extends Component {
             alert('Please select sentences.');
         } else if(this.state.selectedSentence.length < 3){
             alert('Please select sentences longer than 3 characters.');
-        } else if (!this.state.color) {
+        } else if (this.state.color === 'white' || !this.state.color) {
             alert('Please select the color.');
         } else {
         this.handlePostHighlights(e);
@@ -225,10 +225,22 @@ class NewsShow extends Component {
 
             let p = document.querySelector('.please');
             if(p !== null){
-                contentSplit.splice(start, 0, `<span style="background-color: rgba(222,255,0,0.75)">`)
-                contentSplit.splice(last, 0, '</span>')
-                content = contentSplit.join('')
-                return content
+                if(highlight.color === 'greenyellow'){
+                    contentSplit.splice(start, 0, `<span style="background-color: rgba(222,255,0,0.75)">`)
+                    contentSplit.splice(last, 0, '</span>')
+                    content = contentSplit.join('')
+                    return content
+                } else if(highlight.color === 'yellow') {
+                    contentSplit.splice(start, 0, `<span style="background-color: yellow">`)
+                    contentSplit.splice(last, 0, '</span>')
+                    content = contentSplit.join('')
+                    return content
+                } else if(highlight.color === 'pink'){
+                    contentSplit.splice(start, 0, `<span style="background-color: pink">`)
+                    contentSplit.splice(last, 0, '</span>')
+                    content = contentSplit.join('')
+                    return content
+                }
             } else {
                 console.log("*'-'*")
             }
@@ -292,6 +304,8 @@ class NewsShow extends Component {
                                     <select onChange={(e) => this.colorChange(e)} value={this.state.color}>
                                         <option defaultValue="none">-------</option>
                                         <option value="greenyellow">Greenyellow</option>
+                                        <option value="yellow">Yellow</option>
+                                        <option value="pink">Pink</option>
                                     </select>
                                     <br/>
                                     <input className="submit-highlight-btn" type="submit" value="Save Selected Highlight" />
