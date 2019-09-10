@@ -208,7 +208,6 @@ class NewsShow extends Component {
 
     handleApplySpan(highlight, content){
         if(content){
-        // let failCount = 0;
         let highlightSplit = highlight.sentence.split('');
         let contentSplit = content.split('');
         let start = 0;
@@ -222,7 +221,7 @@ class NewsShow extends Component {
           }
           if (highlightSplit.length === j){
             last = i+2;
-            start = i-j;
+            start = i+1-j;
 
             let p = document.querySelector('.please');
             if(p !== null){
@@ -231,8 +230,7 @@ class NewsShow extends Component {
                 content = contentSplit.join('')
                 return content
             } else {
-                // failCount += 1;
-                // console.log('p finding fail count:', failCount, p)
+                console.log("*'-'*")
             }
           }
         }
