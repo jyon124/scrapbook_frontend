@@ -240,6 +240,16 @@ class NewsShow extends Component {
                     contentSplit.splice(last, 0, '</span>')
                     content = contentSplit.join('')
                     return content
+                } else if(highlight.color === 'orange'){
+                    contentSplit.splice(start, 0, `<span style="background-color: orange">`)
+                    contentSplit.splice(last, 0, '</span>')
+                    content = contentSplit.join('')
+                    return content
+                } else if (highlight.color === 'lightblue') {
+                    contentSplit.splice(start, 0, `<span style="background-color: lightblue">`)
+                    contentSplit.splice(last, 0, '</span>')
+                    content = contentSplit.join('')
+                    return content
                 }
             } else {
                 console.log("*'-'*")
@@ -306,6 +316,8 @@ class NewsShow extends Component {
                                         <option value="greenyellow">Greenyellow</option>
                                         <option value="yellow">Yellow</option>
                                         <option value="pink">Pink</option>
+                                        <option value="orange">Orange</option>
+                                        <option value="lightblue">LightBlue</option>
                                     </select>
                                     <br/>
                                     <input className="submit-highlight-btn" type="submit" value="Save Selected Highlight" />
