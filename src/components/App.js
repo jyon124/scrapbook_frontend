@@ -9,8 +9,8 @@ import NewsList from './NewsList';
 import NewsShow from './NewsShow';
 import About from '../containers/about';
 import ClippedNewsShow from './ClippedNewsShow';
-import ScrapBooksContainer from '../containers/scrapbooksContainer'
-import { clearAllState } from '../actions'
+import ScrapBooksContainer from '../containers/scrapbooksContainer';
+import { clearAllState } from '../actions';
 
 class App extends Component {
 

@@ -1,5 +1,5 @@
 import { FETCH_NEWS, SHOW_NEWS, FETCH_USER, FETCH_SCRAPBOOK, CLIP_NEWS, FETCHALLSCRAPBOOKTILE, CLIPPED_NEWS_TILE, CLEAR_ALL_STATE, REMOVE_TILE, DELETE_NOTE, CLEAR_ALL_NEWS_STATE, CLEAR_ALL_SCRAPBOOKNEWS_STATE } from './types';
-import Api from '../services/Api.js'
+import Api from '../services/Api.js';
 // import { typeAlias } from '@babel/types';
 
 export function fetchNews(){

@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import ClippedNewsCard from '../components/ClippedNewsCard'
-import { fetchUser, fetchScrapbook, fetchAllScrapbooknewsAction, fetchNews, createClippedNewsTile } from '../actions'
+import ClippedNewsCard from '../components/ClippedNewsCard';
+import { fetchUser, fetchScrapbook, fetchAllScrapbooknewsAction, fetchNews, createClippedNewsTile } from '../actions';
 import scrapbookHeader from '../scrapbook-header.jpeg';
 
 class ScrapBooksContainers extends React.Component {
