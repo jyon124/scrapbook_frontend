@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 // const USERS = 'http://localhost:3001/api/v1/users';
 const USERS = 'https://scrapbook-backend.herokuapp.com/api/v1/users';
 
-
 export default class Signin extends React.Component {
   constructor(props){
     super(props)
@@ -72,7 +71,7 @@ export default class Signin extends React.Component {
   }
 
   pushToLogin = () => {
-    setTimeout(() => { this.props.history.push('/login') }, 1000);
+    setTimeout(() => { this.props.history.push('/login') }, 500);
   }
 
 
