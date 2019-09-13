@@ -112,51 +112,51 @@ class NewsList extends React.Component {
                     :
                     <div>
                         <form className="radio-checkbox-container">
-                        <div className="radio">
-                        <label className="radio-label">
-                            <input type="radio" value="All" 
-                            checked={this.state.selectedOption === 'All'} 
-                            onChange={(e) => this.handleOptionChange(e)} />
-                            All
-                        </label>
-                        </div>
-                        <div className="radio">
-                        <label className="radio-label">
-                            <input type="radio" value="Apple" 
-                            checked={this.state.selectedOption === 'Apple'} 
-                            onChange={(e) => this.handleOptionChange(e)} />
-                            Apple
-                        </label>
-                        </div>
-                        <div className="radio">
-                        <label className="radio-label">
-                            <input type="radio" value="TechCrunch" 
-                            checked={this.state.selectedOption === 'TechCrunch'} 
-                            onChange={(e) => this.handleOptionChange(e)} />
-                            Tech Crunch
-                        </label>
-                        </div>
-                        <div className="radio">
-                        <label className="radio-label">
-                            <input type="radio" value="bitcoin" 
-                            checked={this.state.selectedOption === 'bitcoin'} 
-                            onChange={(e) => this.handleOptionChange(e)} />
-                            Bitcoin
-                        </label>
-                        </div>
-                        <div className="radio">
-                        <label className="radio-label">
-                            <input type="radio" value="Top business headlines" 
-                            checked={this.state.selectedOption === 'Top business headlines'} 
-                            onChange={(e) => this.handleOptionChange(e)} />
-                            Top Business Headlines
-                        </label>
-                        </div>
-                    </form>
+                            <div className="radio">
+                            <label className="radio-label">
+                                <input type="radio" value="All" 
+                                checked={this.state.selectedOption === 'All'} 
+                                onChange={(e) => this.handleOptionChange(e)} />
+                                All
+                            </label>
+                            </div>
+                            <div className="radio">
+                            <label className="radio-label">
+                                <input type="radio" value="Apple" 
+                                checked={this.state.selectedOption === 'Apple'} 
+                                onChange={(e) => this.handleOptionChange(e)} />
+                                Apple
+                            </label>
+                            </div>
+                            <div className="radio">
+                            <label className="radio-label">
+                                <input type="radio" value="TechCrunch" 
+                                checked={this.state.selectedOption === 'TechCrunch'} 
+                                onChange={(e) => this.handleOptionChange(e)} />
+                                Tech Crunch
+                            </label>
+                            </div>
+                            <div className="radio">
+                            <label className="radio-label">
+                                <input type="radio" value="bitcoin" 
+                                checked={this.state.selectedOption === 'bitcoin'} 
+                                onChange={(e) => this.handleOptionChange(e)} />
+                                Bitcoin
+                            </label>
+                            </div>
+                            <div className="radio">
+                            <label className="radio-label">
+                                <input type="radio" value="Top business headlines" 
+                                checked={this.state.selectedOption === 'Top business headlines'} 
+                                onChange={(e) => this.handleOptionChange(e)} />
+                                Top Business Headlines
+                            </label>
+                            </div>
+                        </form>
 
-                    <div className="wrapper"> 
-                        {this.renderNews()}
-                    </div>
+                        <div className="wrapper"> 
+                            {this.renderNews()}
+                        </div>
                     </div>
                     }
                 </div>

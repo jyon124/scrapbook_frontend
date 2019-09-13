@@ -30,6 +30,7 @@ export default {
               Authorization: `Bearer ${localStorage.getItem("user")}`
             }
           }
+        // return fetch(`${API_URL}news`, reqObj)
         return fetch(`${API_URL}news`, reqObj)
         .then(resp => resp.json())
     },

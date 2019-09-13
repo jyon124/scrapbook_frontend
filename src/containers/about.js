@@ -3,8 +3,35 @@ import { connect } from 'react-redux';
 import { fetchUser } from '../actions';
 import headerImg from '../aboutus.jpg';
 
+// import NewsCard from '../components/NewsCard';
 
 class About extends React.Component {
+    // constructor(props){
+    //     super(props);
+    //     this.state = {
+    //         news: ''
+    //     }
+    // }
+
+    // componentDidMount = () => {
+    //     this.renderRecentNews();
+    // }
+
+    // renderRecentNews = () => {
+    //     fetch('https://newsapi.org/v2/everything?q=bitcoin&from=2019-08-12&sortBy=publishedAt&apiKey=e9c0304ad98341b7a7173f9e047cbfd4')
+    //     .then(resp => resp.json())
+    //     .then(news => this.setState({news: news.articles}))
+    // }
+
+    // handleDisplayRecentNews = (news) => {
+    //     if(this.state.news !== ''){
+    //         return this.state.news.map(news => {
+    //             return(
+    //                 < NewsCard news={news} key={news.id} />
+    //             )
+    //         })
+    //     }
+    // }
 
     render(){
         return(
@@ -27,6 +54,11 @@ class About extends React.Component {
                         ways to assist better understanding of the contents by allowing the readers to save any wished posts into their scrapbook page.
                     </p>
                 </div>
+                {/* <h1>Recent News</h1>
+                        <div className='wrapper'>
+                            {this.handleDisplayRecentNews()}
+                        </div>
+                <hr/> */}
             </div>
         )
     }
