@@ -1,7 +1,6 @@
 // const API_URL = 'http://localhost:3001/';
 const API_URL = 'https://scrapbook-backend.herokuapp.com/';
 
-
 export default {
     login: (loginData) => {
         const reqObj = {
