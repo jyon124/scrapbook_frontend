@@ -3,6 +3,16 @@ import { connect } from 'react-redux';
 import { fetchUser } from '../actions';
 import headerImg from '../aboutus.jpg';
 
+
+// API Keys ( 9/17/2019 ) posted
+
+// Bitcoin = fetch('https://newsapi.org/v2/everything?q=bitcoin&from=2019-08-17&sortBy=publishedAt&apiKey=e9c0304ad98341b7a7173f9e047cbfd4')
+// Apple = fetch('https://newsapi.org/v2/everything?q=apple&from=2019-09-16&to=2019-09-16&sortBy=popularity&apiKey=e9c0304ad98341b7a7173f9e047cbfd4')
+// Top Business Headlines = fetch('https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=e9c0304ad98341b7a7173f9e047cbfd4')
+// Tech Crunch = fetch('https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=e9c0304ad98341b7a7173f9e047cbfd4')
+// Wall Street Journal = fetch('https://newsapi.org/v2/everything?domains=wsj.com&apiKey=e9c0304ad98341b7a7173f9e047cbfd4')
+
+
 class About extends React.Component {
 
     render(){
