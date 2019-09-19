@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-// const USERS = 'http://localhost:3001/api/v1/users';
-const USERS = 'https://scrapbook-backend.herokuapp.com/api/v1/users';
+const USERS = 'http://localhost:3001/api/v1/users';
+// const USERS = 'https://scrapbook-backend.herokuapp.com/api/v1/users';
 
 export default class Signin extends React.Component {
   constructor(props){
@@ -11,7 +11,8 @@ export default class Signin extends React.Component {
       password: '',
       name: '',
       error: false,
-      success: false
+      success: false,
+      errorMessage: ''
     }
   }
 
@@ -60,7 +61,8 @@ export default class Signin extends React.Component {
     .then(data => {
       if(data.error){
         this.setState({
-          error: true
+          error: true,
+          errorMessage: data.error
         })
       } else {
         this.setState({
@@ -88,7 +90,7 @@ export default class Signin extends React.Component {
           {
           this.state.error ? 
           <div className="error-container">
-              <h4 className="error-message">Failed to create account.</h4>
+              <h4 className="error-message">{this.state.errorMessage}</h4>
           </div> 
           : 
           null
