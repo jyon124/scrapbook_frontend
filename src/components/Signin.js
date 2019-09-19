@@ -66,14 +66,15 @@ export default class Signin extends React.Component {
         })
       } else {
         this.setState({
-          success: true
+          success: true,
+          errorMessage: ''
         })
       }
     })
   }
 
   pushToLogin = () => {
-    setTimeout(() => { this.props.history.push('/login') }, 500);
+    setTimeout(() => { this.props.history.push('/login') }, 700);
   }
 
 
