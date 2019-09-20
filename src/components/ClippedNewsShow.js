@@ -17,8 +17,9 @@ class NewsShow extends Component {
         if(!localStorage.getItem('user')){
             this.props.history.push('/login')
         } else{
-        this.getNews()
-        this.getUserData()
+        this.getNews();
+        this.getUserData();
+        window.scrollTo(0, 0);
         }
     }
 

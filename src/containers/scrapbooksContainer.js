@@ -14,9 +14,10 @@ class ScrapBooksContainers extends React.Component {
     
     componentDidMount = () => {
         if(!localStorage.getItem('user')){
-            this.props.history.push('/login')
+            this.props.history.push('/login');
         } else {
-        this.getUserData()
+        this.getUserData();
+        window.scrollTo(0, 0);
         if(this.props.news.length < 1){
             this.props.fetchNews()
         }

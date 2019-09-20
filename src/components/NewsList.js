@@ -16,14 +16,17 @@ class NewsList extends React.Component {
     }
 
     componentDidMount(){
+        window.scrollTo(0, 0);
         if(!localStorage.getItem('user')){
             if(this.props.news.length < 1){
-               this.props.fetchNews()
+               this.props.fetchNews();
+               window.scrollTo(0, 0);
             }
         } else {
         this.getUserData()
         if(this.props.news.length < 1){
             this.props.fetchNews()
+            window.scrollTo(0, 0);
         }
         setTimeout(()=> this.findClippedNews(), 500);
       }
