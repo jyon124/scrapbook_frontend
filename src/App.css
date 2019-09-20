@@ -29,6 +29,10 @@
     margin-top: 3em !important;
     margin-bottom: 0em !important;
   }
+
+  .about-container {
+    padding-bottom: 4em !important;
+  }
 }
 
 .about-container {
