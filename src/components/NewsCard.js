@@ -13,7 +13,7 @@ class NewsCard extends React.Component {
   componentDidMount(){
     if(!localStorage.getItem('user')){
     } else {
-      setTimeout(()=> {this.handleSavedState()}, 3000)
+      setTimeout(()=> {this.handleSavedState()}, 1000)
     }
  
   }

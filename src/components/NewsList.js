@@ -25,7 +25,7 @@ class NewsList extends React.Component {
         } else {
         this.getUserData()
         if(this.props.news.length < 1){
-            this.props.fetchNews()
+            this.props.fetchNews();
             window.scrollTo(0, 0);
         }
         setTimeout(()=> this.findClippedNews(), 500);
@@ -73,6 +73,7 @@ class NewsList extends React.Component {
     }
 
     findClippedNews = () => {
+        console.log('O_O!?')
         const newsIdArr = this.props.allScrapbooknews.map(news => {
             return news.news_id
         })
