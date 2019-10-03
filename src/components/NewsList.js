@@ -73,7 +73,6 @@ class NewsList extends React.Component {
     }
 
     findClippedNews = () => {
-        console.log('O_O!?')
         const newsIdArr = this.props.allScrapbooknews.map(news => {
             return news.news_id
         })
