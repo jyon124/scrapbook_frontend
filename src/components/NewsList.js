@@ -5,6 +5,16 @@ import { fetchNews, fetchUser, fetchScrapbook, fetchAllScrapbooknewsAction, crea
 import NewsCard from './NewsCard';
 import headerImg from '../main-news-header.png';
 
+// var total = 0;
+// fetch('https://scrapbook-backend.herokuapp.com/news')
+// .then(resp => resp.json())
+// .then(data => {
+// 	data.map(news => total = total + news.viewCount)
+// 	console.log(total);
+// })
+
+// View Count Check: Total has to be 33 checked at 10/10/2019
+
 class NewsList extends React.Component {
     constructor(){
         super();
