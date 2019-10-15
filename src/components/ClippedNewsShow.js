@@ -252,7 +252,7 @@ class NewsShow extends Component {
                     return content
                 }
             } else {
-                console.log("*'-'*")
+                console.log("null")
             }
           }
         }
