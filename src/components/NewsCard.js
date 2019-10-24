@@ -15,7 +15,6 @@ class NewsCard extends React.Component {
     } else {
       setTimeout(()=> {this.handleSavedState()}, 1000)
     }
- 
   }
 
   handleSavedState = () => {
@@ -65,7 +64,7 @@ render(){
         <p className="mb-1 card-description">
           {this.props.news.description}
         </p>
-        <div className="border-bottom-coverage">
+      <div className="border-bottom-coverage">
         {localStorage.getItem('user') ?
 
         <div>
@@ -76,15 +75,15 @@ render(){
         <div className="saveTag" onClick={(e) => this.handleFavorite(this.props.news.id, this.props.scrapbookContainer.id, e)}><span role="img" aria-label="emptyHeart">♡</span></div>
         }
         </div>
-        
         :
         null
         }
-        </div>
       </div>
-        <Link to={`/newslist/${this.props.news.id}`} onClick={() => this.handleView(this.props.news)} className="text-uppercase d-inline-block font-weight-medium lts-2px ml-2 mb-2 text-center styled-link">
-          View Full Coverage
-        </Link>
+
+      </div>
+          <Link to={`/newslist/${this.props.news.id}`} onClick={() => this.handleView(this.props.news)} className="text-uppercase d-inline-block font-weight-medium lts-2px ml-2 mb-2 text-center styled-link">
+            View Full Coverage
+          </Link>
       </div>
     )
   }
