@@ -3,9 +3,6 @@ import Api from '../services/Api';
 import {connect} from 'react-redux';
 import { showNews, fetchUser, fetchScrapbook, postClip } from '../actions';
 
-
-
-
 class NewsShow extends Component {
     fetchNews = (id) => {
         Api.fetchOneNews(id)
