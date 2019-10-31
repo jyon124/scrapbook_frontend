@@ -372,8 +372,6 @@ class NewsShow extends Component {
       }
     }
 
-
-
 const mapStateToProps = (state) => {
     return {
       news: state.news,
