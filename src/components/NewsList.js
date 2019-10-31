@@ -174,7 +174,6 @@ class NewsList extends React.Component {
                 </div>
             }}/>
         </Switch>
-
         )
     }
 }
@@ -183,7 +182,6 @@ const mapStateToProps = (state) => {
     return {
         news: state.news,
         loader: state.loader,
-        clippedNews: state.clippedNews,
         getUser: state.getUser,
         scrapbookContainer: state.scrapbookContainer,
         showNews: state.showNews,
