@@ -77,7 +77,6 @@ export default class Signin extends React.Component {
     setTimeout(() => { this.props.history.push('/login') }, 700);
   }
 
-
   render(){
     return(
       <form onSubmit={(e) => this.handleSubmit(e)}>
