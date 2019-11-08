@@ -6,7 +6,7 @@ const USERS = 'https://scrapbook-backend.herokuapp.com/api/v1/users';
 export default class Signin extends React.Component {
   constructor(props){
     super(props)
-    this.state={
+    this.state = {
       username: '',
       password: '',
       name: '',
