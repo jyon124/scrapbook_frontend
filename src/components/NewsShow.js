@@ -47,7 +47,7 @@ class NewsShow extends Component {
         if(!check){
         this.props.clipNews(newsId, scrapbookContainerId)
         alert('Successfully Saved');
-            this.props.history.push('/newslist');
+            this.props.history.push('/scrapbooks');
         } else {
             alert('Already Saved');
         }
