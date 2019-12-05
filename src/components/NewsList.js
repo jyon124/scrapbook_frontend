@@ -13,7 +13,7 @@ import headerImg from '../main-news-header.png';
 // 	console.log(total);
 // })
 
-// View Count Check: Total has to be 37 checked at 10/31/2019
+// View Count Check: Total has to be 40 checked at 12/5/2019
 
 class NewsList extends React.Component {
     constructor(){
