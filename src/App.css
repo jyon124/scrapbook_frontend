@@ -1,3 +1,16 @@
+/* error */
+
+.page-not-found {
+  margin-top: 10em;
+  text-align: center;
+}
+
+.error-num {
+  font-size: 8em;
+}
+
+/* end */
+
 /* About */
 
 .about-header {

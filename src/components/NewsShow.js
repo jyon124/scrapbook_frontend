@@ -114,9 +114,18 @@ class NewsShow extends Component {
             </div>
             :
             <div>
+                {!this.props.showNews.error ?
+                <div>
                 <h1 className="loading-sentence">Loading...</h1> 
                 <div className="lds-spinner"><div></div><div></div><div></div><div></div><div></div>
                 <div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+                </div>
+                :
+                <div className="page-not-found">
+                    <h1 className="error-num">404</h1>
+                    <h1>Page Not Found</h1>
+                </div>
+                }
             </div>
             }
         </div>
