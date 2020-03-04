@@ -25,3 +25,6 @@ The scrapbook is an application that allows users to view the world news on a si
 
 ## Saved news view
 <img src="/src/readmeImgs/scrapbookShow.png" alt="scrapbook images" width="600px" height="auto">
+
+## Scrapbook-Backend Link
+https://github.com/jyon124/scrapbook_backend
