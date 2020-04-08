@@ -38,7 +38,7 @@ class NewsList extends React.Component {
             this.props.fetchNews();
             window.scrollTo(0, 0);
         }
-        setTimeout(()=> this.findClippedNews(), 500);
+        this.findClippedNews();
       }
     }
 
@@ -78,7 +78,7 @@ class NewsList extends React.Component {
     getAllScrapbook = (scrapbookId) => {
         if(this.props.allScrapbooknews.length < 1 && this.state.scrapbooknewsRendered === false){
         this.props.fetchAllScrapbooknews(scrapbookId);
-        setTimeout(() => { this.setState({scrapbooknewsRendered: true}); }, 100);
+        this.setState({scrapbooknewsRendered: true});
         }
     }
 

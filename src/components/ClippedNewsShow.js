@@ -180,14 +180,13 @@ class NewsShow extends Component {
             color: this.state.color
         }
         Api.handlePostReqHighlight(bodyObj)
-        
-        setTimeout(() => {
+        .then(resp => {
             this.props.clearScrapbooknewsState();
             this.setState({
                 selectedSentence: '',
                 color: ''
             });
-        }, 500);
+        })
     }
 
     handleRenderHighlights = (content) => {
@@ -270,9 +269,7 @@ class NewsShow extends Component {
     handleDeleteHighlight = (e, highlight) => {
         e.target.parentNode.remove();
         Api.handleDeleteHighlightReq(highlight.id)
-        setTimeout(() => {
-            this.props.clearScrapbooknewsState();
-        }, 500);
+        .then(resp => {this.props.clearScrapbooknewsState()})
     }
     
     render(){

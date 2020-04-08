@@ -21,7 +21,7 @@ class ScrapBooksContainers extends React.Component {
         if(this.props.news.length < 1){
             this.props.fetchNews()
         }
-        setTimeout(()=> this.findClippedNews(), 500);
+        this.findClippedNews();
       }
     }
 
