@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "handlebars": "^4.7.2",
+    "ionic-native": "https://github.com/ionic-team/ionic-native/tarball/v3.5.0",
     "jquery": "^3.5.0",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
@@ -14,7 +15,7 @@
     "redux-thunk": "^2.3.0",
     "semantic-ui-css": "^2.2.12",
     "semantic-ui-react": "^0.87.3",
-    "serialize-javascript": "^2.1.2"
+    "serialize-javascript": "^3.1.0"
   },
   "scripts": {
     "start": "react-scripts start",
