@@ -128,8 +128,12 @@ class NewsShow extends Component {
     }
 
     handleDeleteNote = (e, noteId) => {
-        this.props.deleteNote(noteId)
-        e.target.parentNode.remove();
+        this.props.deleteNote(noteId);
+        if(e.target.parentNode.className !== "single-note"){
+            e.target.parentNode.parentNode.remove();
+        } else {
+            e.target.parentNode.remove();
+        }
     }
 
     getAllScrapbook = (scrapbookId) => {
